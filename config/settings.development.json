@@ -9,5 +9,11 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "goals": [
+    { "goal": "Water Bottles", "description": "Use less water bottles", "owner": "john@foo.com", "signUpList": "john@foo.com admin@foo.com"},
+    { "goal": "Bags", "description": "Use reuseable bags instead of single use ones", "owner": "john@foo.com", "signUpList": "john@foo.com"},
+    { "goal": "Transportation", "description": "Use less thank 50% the average american's CO2", "owner": "admin@foo.com", "signUpList": "admin@foo.com"}
   ]
 }

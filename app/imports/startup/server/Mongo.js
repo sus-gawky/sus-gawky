@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Goals } from '../../api/goal/Goal';
 
 /* eslint-disable no-console */
 
@@ -9,10 +10,24 @@ const addData = (data) => {
   Stuffs.collection.insert(data);
 };
 
+// Initialize the database with a default data document.
+const addGoals = (data) => {
+  console.log(`  Adding: ${data.goal} (${data.owner})`);
+  Goals.collection.insert(data);
+};
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.forEach(data => addData(data));
+  }
+}
+
+// Initialize the StuffsCollection if empty.
+if (Goals.collection.find().count() === 0) {
+  if (Meteor.settings.goals) {
+    console.log('Creating default data.');
+    Meteor.settings.goals.forEach(data => addGoals(data));
   }
 }
