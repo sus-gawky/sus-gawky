@@ -26,6 +26,17 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(Goals.userPublicationName, function () {
   if (this.userId) {
+    // const username = Meteor.users.findOne(this.userId).username;
+    // return Goals.collection.find({ owner: username });
+    return Goals.collection.find();
+  }
+  return this.ready();
+});
+
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Goals.ownerPublicationName, function () {
+  if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Goals.collection.find({ owner: username });
   }

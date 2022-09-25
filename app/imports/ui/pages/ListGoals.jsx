@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Goals } from '../../api/goal/Goal';
-import StuffItem from '../components/StuffItem';
+import GoalItem from '../components/GoalItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -35,12 +35,15 @@ const ListGoals = () => {
               <tr>
                 <th>Goal</th>
                 <th>Description</th>
+                <th>Tags</th>
+                <th>End Date</th>
+                <th>Points</th>
                 <th>Users who are already Signed Up</th>
                 <th>Sign Up</th>
               </tr>
             </thead>
             <tbody>
-              {goals.map((goal) => <StuffItem key={goal._id} goal={goal} />)}
+              {goals.map((goal) => <GoalItem key={goal._id} goal={goal} />)}
             </tbody>
           </Table>
         </Col>
