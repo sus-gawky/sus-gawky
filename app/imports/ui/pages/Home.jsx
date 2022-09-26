@@ -3,7 +3,7 @@ import { Button, Carousel, Col, Container, Form, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 
 const Home = () => {
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
     const fakeGoals = [];
     for (let i = 0; i < 3; i++) {
@@ -26,7 +26,8 @@ const Home = () => {
             <>
               <div className="fredoka-one goals mt-5">
                 Goals
-                <Button className="mx-3" size="sm" onClick={() => (setModal(true))}>Add Goal</Button>
+                {/* eslint-disable-next-line no-console */}
+                <Button className="mx-3" size="sm" onClick={() => { console.log('add goal'); }}>Add Goal</Button>
               </div>
               {createFakeGoals().map((data, index) => (
                 <motion.div
