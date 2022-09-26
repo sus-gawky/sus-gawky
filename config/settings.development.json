@@ -9,5 +9,10 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "Users":[
+    { "firstName": "John", "lastName": "Smith", "owner": "john@foo.com", "zipCode": 11111, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Steve", "lastName": "Jobs", "owner": "admin@foo.com", "zipCode": 11111, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 }
   ]
 }

@@ -17,3 +17,17 @@ if (Stuffs.collection.find().count() === 0) {
     Meteor.settings.defaultData.forEach(data => addData(data));
   }
 }
+
+// Initialize the database with a default data document.
+const userData = (data) => {
+  console.log(`  Adding: ${data.firstName} (${data.owner})`);
+  Users.collection.insert(data);
+};
+
+// Initialize the StuffsCollection if empty.
+if (Users.collection.find().count() === 0) {
+  if (Meteor.settings.Users) {
+    console.log('Creating default data.');
+    Meteor.settings.Users.forEach(data => userData(data));
+  }
+}
