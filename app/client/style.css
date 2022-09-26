@@ -32,6 +32,28 @@ html {
   padding-bottom: 20px;
 }
 
+.fredoka-one { 
+  font-family: 'Fredoka One', cursive;
+  font-size: 3.3em;
+}
+
+.fredoka-one.goals {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5em;
+}
+
+.home-picture {
+  width: 18.75em; 
+  height: 18.75em; 
+  background-color: lightcoral;
+}
+
+.score-card {
+  width: 40em;
+  height: 18.75em;
+  background-color: lightgrey;
+}
+
 #neighbors-page {
   background-color: #f8f8f5;
   height: 100%;
