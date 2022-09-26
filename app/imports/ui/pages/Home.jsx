@@ -67,8 +67,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row className="mt-5 mb-3">
-        {/* TODO: Make this a carousel */}
-        <Col className="d-flex justify-content-center">
+        <Col className="d-flex justify-content-center mx-5">
           <div className="score-card">
             <Carousel>
               <Carousel.Item interval={1500}>
