@@ -4,12 +4,13 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Users } from '../../api/user/User';
+import BulletinBoard from '../components/BulletinBoard';
 import UnityFrame from '../components/UnityFrame';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* A simple static component to render some text for the landing page. */
 const Neighbors = () => {
-  const { ready, users } = useTracker(() => {
+  const { ready, users, currentUser } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
@@ -18,7 +19,9 @@ const Neighbors = () => {
     const rdy = subscription.ready();
     // Get the Stuff documents
     const userItems = Users.collection.find({}).fetch();
+    const currentUserItem = userItems.filter((user) => (user.owner === Meteor.user().username))[0];
     return {
+      currentUser: currentUserItem,
       users: userItems,
       ready: rdy,
     };
@@ -37,6 +40,7 @@ const Neighbors = () => {
         </Col>
 
         <Col xs={5} className="d-flex flex-column justify-content-center">
+          <BulletinBoard />
           <h2>Neighborhood Chat</h2>
           <p>--------------------------------------</p>
           <p>--------------------------------------</p>
