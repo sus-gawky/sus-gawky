@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Carousel, Col, Container, Form, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 
