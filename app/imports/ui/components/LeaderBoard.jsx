@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Col, Container } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const LeaderBoard = () => (
