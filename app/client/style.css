@@ -44,7 +44,7 @@ body {
 }
 
 .score-card {
-  width: 18.75em;
+  width: 40em;
   height: 18.75em;
-  background-color: lightgreen;
+  background-color: lightgrey;
 }
