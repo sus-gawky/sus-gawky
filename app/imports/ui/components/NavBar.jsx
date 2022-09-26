@@ -2,9 +2,16 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Roles } from 'meteor/alanning:roles';
-import { Container, Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
-import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import { Nav, Image, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import {
+  BoxArrowRight,
+  Building,
+  Globe2,
+  PersonCircle,
+  Stars,
+} from 'react-bootstrap-icons';
+import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -13,53 +20,73 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand as={NavLink} to="/">
-          <Image src="images/gawkysaurTurtleFancy.png" width="50em" />
-        </Navbar.Brand>
-        <Navbar.Brand as={NavLink} to="/">
-          <h2>Gawkysaur</h2>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto justify-content-start">
-            {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Stuff</Nav.Link>,
-              <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">List Stuff</Nav.Link>,
-            ]) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
-            ) : ''}
-          </Nav>
-          <Nav className="justify-content-end">
-            {currentUser === '' ? (
-              <NavDropdown id="login-dropdown" title="Login">
-                <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} to="/signin">
-                  <PersonFill />
-                  Sign
-                  in
-                </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
-                  <PersonPlusFill />
-                  Sign
-                  up
-                </NavDropdown.Item>
-              </NavDropdown>
-            ) : (
-              <NavDropdown id="navbar-current-user" title={currentUser}>
-                <NavDropdown.Item id="navbar-sign-out" as={NavLink} to="/signout">
-                  <BoxArrowRight />
-                  {' '}
-                  Sign
-                  out
-                </NavDropdown.Item>
-              </NavDropdown>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div>
+      <ProSidebar collapsed className="position-fixed">
+        <Menu iconShape="circle">
+          <MenuItem icon={<Image src="images/gawkysaurTurtleFancy.png" width="50em" />}>
+            <Nav.Link as={NavLink} to="/" />
+          </MenuItem>
+          {currentUser ? ([
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 200 }}
+              overlay={<Tooltip>Profile</Tooltip>}
+            >
+              <MenuItem className="mt-3" icon={<PersonCircle size={50} />}>
+                <Nav.Link as={NavLink} to="/" />
+              </MenuItem>
+            </OverlayTrigger>]) :
+            ([
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 200 }}
+                overlay={<Tooltip>Login</Tooltip>}
+              >
+                <MenuItem className="mt-3" icon={<PersonCircle size={50} />}>
+                  <Nav.Link as={NavLink} to="/signin" />
+                </MenuItem>
+              </OverlayTrigger>])}
+          {currentUser ? ([
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 200 }}
+              overlay={<Tooltip>Option 1</Tooltip>}
+            >
+              <MenuItem className="mt-3" icon={<Stars size={50} />}>
+                <Nav.Link as={NavLink} to="/" />
+              </MenuItem>
+            </OverlayTrigger>,
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 200 }}
+              overlay={<Tooltip>option 2</Tooltip>}
+            >
+              <MenuItem className="mt-3" icon={<Building size={50} />}>
+                <Nav.Link as={NavLink} to="/add" />
+              </MenuItem>
+            </OverlayTrigger>,
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 200 }}
+              overlay={<Tooltip>option 2</Tooltip>}
+            >
+              <MenuItem className="mt-3" icon={<Globe2 size={50} />}>
+                <Nav.Link as={NavLink} to="/" />
+              </MenuItem>
+            </OverlayTrigger>,
+            <OverlayTrigger
+              placement="right"
+              delay={{ show: 250, hide: 200 }}
+              overlay={<Tooltip>Logout</Tooltip>}
+            >
+              <MenuItem className="position-absolute bottom-0 mb-4" icon={<BoxArrowRight size={50} />}>
+                <Nav.Link as={NavLink} to="/signout" />
+              </MenuItem>
+            </OverlayTrigger>,
+          ]) : ''}
+        </Menu>
+      </ProSidebar>
+    </div>
   );
 };
 
