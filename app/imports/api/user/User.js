@@ -3,7 +3,7 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /**
- * The UsersCollection. It encapsulates state and variable values for stuff.
+ * The UsersCollection. It encapsulates state and variable values for users.
  */
 
 const specificInfosSchema = new SimpleSchema({
@@ -22,7 +22,7 @@ const specificInfosSchema = new SimpleSchema({
     allowedValues: ['Beef', 'Pork', 'Dairy', 'Eggs', 'Poultry', 'Fish', 'Plant-based'],
   },
 
-  // Transportion:
+  // Transportation:
   gasolineUsed: {
     type: Number,
     defaultValue: -1,
@@ -42,6 +42,10 @@ class UsersCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
+      firstName: String,
+      lastName: String,
+      owner: String,
+      zipCode: Number,
       // All scores out of 100
       fullScore: Number,
       foodScore: Number,
