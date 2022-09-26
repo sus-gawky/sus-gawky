@@ -5,15 +5,15 @@ import { Tracker } from 'meteor/tracker';
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
  */
-class GoalsCollection {
+class ChallengesCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'GoalsCollection';
+    this.name = 'ChallengesCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      goal: String,
+      challenge: String,
       description: String,
       owner: String,
       signUpList: Array,
@@ -33,7 +33,7 @@ class GoalsCollection {
 }
 
 /**
- * The singleton instance of the GoalsCollection.
- * @type {GoalCollection}
+ * The singleton instance of the ChallengesCollection.
+ * @type {ChallengeCollection}
  */
-export const Goals = new GoalsCollection();
+export const Challenges = new ChallengesCollection();

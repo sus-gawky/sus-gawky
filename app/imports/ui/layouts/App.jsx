@@ -5,7 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListGoals from '../pages/ListGoals';
+import ListChallenges from '../pages/ListChallenges';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import NotFound from '../pages/NotFound';
@@ -14,7 +14,7 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
-import ManageGoal from '../pages/ManageGoal';
+import ManageChallenge from '../pages/ManageChallenge';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -27,9 +27,9 @@ const App = () => (
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-        <Route path="/list" element={<ProtectedRoute><ListGoals /></ProtectedRoute>} />
+        <Route path="/list" element={<ProtectedRoute><ListChallenges /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-        <Route path="/edit/:_id" element={<ProtectedRoute><ManageGoal /></ProtectedRoute>} />
+        <Route path="/edit/:_id" element={<ProtectedRoute><ManageChallenge /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
