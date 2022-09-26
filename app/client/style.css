@@ -26,3 +26,25 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.fredoka-one { 
+  font-family: 'Fredoka One', cursive;
+  font-size: 3.3em;
+}
+
+.fredoka-one.goals {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5em;
+}
+
+.home-picture {
+  width: 18.75em; 
+  height: 18.75em; 
+  background-color: lightcoral;
+}
+
+.score-card {
+  width: 18.75em;
+  height: 18.75em;
+  background-color: lightgreen;
+}
