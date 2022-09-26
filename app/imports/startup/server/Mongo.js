@@ -36,7 +36,8 @@ if (Users.collection.find().count() === 0) {
   if (Meteor.settings.Users) {
     console.log('Creating default data.');
     Meteor.settings.Users.forEach(data => userData(data));
-
+  }
+}
 // Initialize the StuffsCollection if empty.
 if (Challenges.collection.find().count() === 0) {
   if (Meteor.settings.challenges) {
