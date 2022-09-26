@@ -12,6 +12,11 @@
  */
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 /* Set the alert background on the signin and signup pages. */
@@ -25,4 +30,13 @@ body {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+#neighbors-page {
+  background-color: #f8f8f5;
+  height: 100%;
+}
+
+.title {
+  font-size: xxx-large;
 }
