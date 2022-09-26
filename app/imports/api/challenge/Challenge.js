@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import { Meteor } from 'meteor/meteor';
 
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
@@ -37,3 +38,27 @@ class ChallengesCollection {
  * @type {ChallengeCollection}
  */
 export const Challenges = new ChallengesCollection();
+
+Meteor.methods({
+  // eslint-disable-next-line meteor/audit-argument-checks
+  'updateChallenge'(challengeId, newChallenger) {
+    console.log(`updateChallenge ${challengeId} ${newChallenger} `);
+    // TODO Check if user is already in list
+    Challenges.collection.update(
+      { _id: challengeId },
+      { $push: { signUpList: newChallenger } },
+    );
+  },
+
+  // eslint-disable-next-line meteor/audit-argument-checks
+  'leaveChallenge'(challengeId, challenger, challengeOwner) {
+    console.log(`leaveChallenge ${challengeId} ${challenger} `);
+    // TODO Check if user is owner, if they are, don't delete
+    if (challenger !== challengeOwner) {
+      Challenges.collection.update(
+        { _id: challengeId },
+        { $pull: { signUpList: challenger } },
+      );
+    }
+  },
+});

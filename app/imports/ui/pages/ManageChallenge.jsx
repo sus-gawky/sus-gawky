@@ -32,8 +32,8 @@ const ManageChallenge = () => {
   // console.log('EditStuff', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { challenge, description, signUpList, tags, endDate, points } = data;
-    Challenges.collection.update(_id, { $set: { challenge, description, signUpList, tags, endDate, points } }, (error) => (error ?
+    const { challenge, description, tags, endDate, points } = data;
+    Challenges.collection.update(_id, { $set: { challenge, description, tags, endDate, points } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
@@ -48,7 +48,6 @@ const ManageChallenge = () => {
               <Card.Body>
                 <TextField name="challenge" />
                 <TextField name="description" />
-                <TextField name="signUpList" />
                 <TextField name="tags" />
                 <TextField name="endDate" />
                 <TextField name="points" />

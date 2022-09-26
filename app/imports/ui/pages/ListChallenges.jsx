@@ -26,7 +26,7 @@ const ListChallenges = () => {
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
-        <Col md={7}>
+        <Col md={10}>
           <Col className="text-center">
             <h2>List Challenges</h2>
           </Col>
@@ -38,7 +38,7 @@ const ListChallenges = () => {
                 <th>Tags</th>
                 <th>End Date</th>
                 <th>Points</th>
-                <th>Users who are already Signed Up</th>
+                <th>Popularity</th>
                 <th>Sign Up</th>
               </tr>
             </thead>
