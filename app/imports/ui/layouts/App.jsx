@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Setup from '../pages/Setup';
 import Neighbors from '../pages/Neighbors';

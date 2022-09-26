@@ -43,7 +43,7 @@ const Setup = () => {
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Setup your profile</h2></Col>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data)}>
+          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
                 <TextField name="firstName" />

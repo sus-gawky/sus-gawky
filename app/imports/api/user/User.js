@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
+import swal from 'sweetalert';
 
 /**
  * The UsersCollection. It encapsulates state and variable values for users.
@@ -75,3 +77,18 @@ class UsersCollection {
  * @type {UsersCollection}
  */
 export const Users = new UsersCollection();
+
+Meteor.methods({
+  // eslint-disable-next-line meteor/audit-argument-checks
+  'dailyCheckIn'(owner, fullScore, foodScore, transportationScore, miscScore) {
+    console.log(`dailyCheckIn ${owner} ${fullScore} ${foodScore} ${transportationScore} ${miscScore}`);
+    // TODO Check if user is owner, if they are, don't delete
+    Users.collection.update(
+      { owner: owner },
+      { $set: { fullScore, foodScore, transportationScore, miscScore } },
+      (error) => (error ?
+        swal('Error', error.message, 'error') :
+        swal('Success', 'Daily check-in completed successfully!', 'success')),
+    );
+  },
+});

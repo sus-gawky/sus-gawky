@@ -6,9 +6,6 @@ import { Card } from 'react-bootstrap';
 import { AutoForm, ErrorsField, NumField, SelectField, SubmitField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import swal from 'sweetalert';
-import { Users } from '../../api/user/User';
-import { Stuffs } from '../../api/stuff/Stuff';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const formSchema = new SimpleSchema({
@@ -23,7 +20,7 @@ const formSchema = new SimpleSchema({
   modeOfTransport: {
     type: String,
     allowedValues: ['Gas Vehicle', 'Bus', 'Bike/Walk', 'Electric Vehicle'],
-    defaultValue: 'Car',
+    defaultValue: 'Gas Vehicle',
   },
   plasticTrash: Number,
 });
@@ -32,22 +29,14 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 // On submit, insert the data.
 const submit = (data) => {
   // Will use these variables to calculate scores
+  // eslint-disable-next-line no-unused-vars
   const { foodWasted, minutesShowering, mainProteinType, milesTraveled, modeOfTransport, plasticTrash } = data;
   const owner = Meteor.user().username;
   const fullScore = 100;
   const foodScore = 100;
   const transportationScore = 100;
   const miscScore = 100;
-  const subscription = Meteor.subscribe(Users.userPublicationName); // not sure if this is needed
-  // Call meteor method to update instead? but works on
-  const num = Users.collection.update(
-    { owner: owner },
-    { $set: { fullScore, foodScore, transportationScore, miscScore } },
-    (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Daily check-in completed successfully!', 'success')),
-  );
-  console.log(num);
+  Meteor.call('dailyCheckIn', owner, fullScore, foodScore, transportationScore, miscScore);
 };
 
 const DailyCheck = () => {
