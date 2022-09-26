@@ -9,5 +9,28 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultUsers": [
+    { "firstName": "Yong-Sung",
+      "lastName": "Masuda",
+      "owner": "admin@foo.com",
+      "zipCode": 96815,
+      "fullScore": 78,
+      "foodScore": 40,
+      "transportationScore": 90,
+      "miscScore": 54,
+      "householdSize": 3
+    },
+    { "firstName": "John",
+      "lastName": "Hanson",
+      "owner": "john@foo.com",
+      "zipCode": 96815,
+      "fullScore": 58,
+      "foodScore": 39,
+      "transportationScore": 39,
+      "miscScore": 85,
+      "householdSize": 2
+    }
   ]
 }
