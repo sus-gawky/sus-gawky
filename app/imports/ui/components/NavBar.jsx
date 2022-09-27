@@ -85,7 +85,7 @@ const NavBar = () => {
               overlay={<Tooltip>Praise</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Stars size={50} />}>
-                <Nav.Link as={NavLink} to="/">
+                <Nav.Link as={NavLink} to="/praise">
                   <h4 className="text-center">Praise</h4>
                 </Nav.Link>
               </MenuItem>
