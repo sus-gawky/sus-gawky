@@ -40,7 +40,7 @@ const AddChallengeModal = () => {
     // eslint-disable-next-line no-unused-vars
     const { challenge, endDate, description, points, tags } = data;
     const owner = Meteor.user().username;
-    const signUpList = [owner];
+    const signUpList = [];
     Challenges.collection.insert(
       { challenge, endDate, description, points, tags, owner, signUpList },
       (error) => {
@@ -55,8 +55,9 @@ const AddChallengeModal = () => {
   };
   return (
     <>
-      <Button variant="success" size="sm" className="mx-3" onClick={handleShow}>
-        Add Challenge
+      <Button variant="success" className="mx-3 w-100" onClick={handleShow}>
+        <h5>Add Praise
+        </h5>
       </Button>
 
       <Modal show={show} onHide={handleClose} centered backdrop="static">
