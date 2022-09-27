@@ -8,7 +8,7 @@ import {
   ErrorsField, LongTextField, NumField,
   SelectField,
   SubmitField,
-  TextField
+  TextField,
 } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
