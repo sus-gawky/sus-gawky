@@ -3,6 +3,7 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
 import { Bulletins } from '../../api/bulletin/Bulletin.js';
 import { Challenges } from '../../api/challenge/Challenge';
+import { Tips } from '../../api/tip/Tips';
 
 /* eslint-disable no-console */
 
@@ -56,5 +57,19 @@ if (Challenges.collection.find().count() === 0) {
   if (Meteor.settings.challenges) {
     console.log('Creating default data.');
     Meteor.settings.challenges.forEach(data => addChallenges(data));
+  }
+}
+
+// Initialize the database with a default data document.
+const addTips = (data) => {
+  console.log(`  Adding: ${data.firstName} (${data.owner})`);
+  Tips.collection.insert(data);
+};
+
+// Initialize the StuffsCollection if empty.
+if (Tips.collection.find().count() === 0) {
+  if (Meteor.settings.tips) {
+    console.log('Creating default data.');
+    Meteor.settings.tips.forEach(data => addTips(data));
   }
 }

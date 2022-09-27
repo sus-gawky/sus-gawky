@@ -16,7 +16,7 @@
       "points": 83, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
     { "firstName": "Steve", "lastName": "Jobs", "owner": "admin@foo.com", "zipCode": 11111, "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 }
     ],
-  
+
   "challenges": [
     { "challenge": "Water Bottles",
       "description": "Use less water bottles",
@@ -39,5 +39,20 @@
       "tags":  ["environment", "conservation"],
       "endDate":  "2022-09-21",
       "points":  "10"}
+  ],
+
+  "tips": [
+    {
+      "tip": "Water Bottles",
+      "id": 1
+    },
+    {
+      "tip": "Bags",
+      "id": 2
+    },
+    {
+      "tip": "Transportation",
+      "id": 3
+    }
   ]
 }
