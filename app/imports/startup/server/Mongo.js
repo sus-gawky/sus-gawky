@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
+import { Bulletins } from '../../api/bulletin/Bulletin.js';
 import { Challenges } from '../../api/challenge/Challenge';
 
 /* eslint-disable no-console */
@@ -9,6 +10,11 @@ import { Challenges } from '../../api/challenge/Challenge';
 const addData = (data) => {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.collection.insert(data);
+};
+
+const addUsers = (user) => {
+  console.log(`  Adding: ${user.firstName}`);
+  Users.collection.insert(user);
 };
 
 // Initialize the database with a default data document.
@@ -22,6 +28,13 @@ if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.forEach(data => addData(data));
+  }
+}
+
+if (Users.collection.find().count() === 0) {
+  if (Meteor.settings.defaultUsers) {
+    console.log('Creating users.');
+    Meteor.settings.defaultUsers.map(data => addUsers(data));
   }
 }
 

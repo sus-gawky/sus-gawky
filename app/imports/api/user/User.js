@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 /**
  * The UsersCollection. It encapsulates state and variable values for users.
  */
+
 class UsersCollection {
   constructor() {
     // The name of this collection.
@@ -46,7 +47,6 @@ class UsersCollection {
         allowedValues: ['Beef', 'Pork', 'Dairy', 'Eggs', 'Poultry', 'Fish', 'Plant-based'],
         optional: true,
       },
-
       // Transportation:
       gasolineUsed: {
         type: Number,
