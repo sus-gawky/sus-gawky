@@ -18,29 +18,36 @@ import NotAuthorized from '../pages/NotAuthorized';
 import ManageChallenge from '../pages/ManageChallenge';
 import Home from '../pages/Home';
 import Global from '../pages/Global';
+import { Col, Row } from 'react-bootstrap';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
   <Router>
     <div className="d-flex flex-column min-vh-100">
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signout" element={<SignOut />} />
-        <Route path="/setup" element={<ProtectedRoute><Setup /></ProtectedRoute>} />
-        <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-        <Route path="/challenges" element={<ProtectedRoute><ListChallenges /></ProtectedRoute>} />
-        <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-        <Route path="/edit/:_id" element={<ProtectedRoute><ManageChallenge /></ProtectedRoute>} />
-        <Route path="/neighbors" element={<ProtectedRoute><Neighbors /></ProtectedRoute>} />
-        <Route path="/homepage" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/map" element={<ProtectedRoute><Global /></ProtectedRoute>} />
-        <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
-        <Route path="/notauthorized" element={<NotAuthorized />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Row>
+        <Col className="col-auto" style={{ marginRight: 80 }}>
+          <NavBar />
+        </Col>
+        <Col>
+          <Routes>
+            <Route exact path="/" element={<Landing />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signout" element={<SignOut />} />
+            <Route path="/setup" element={<ProtectedRoute><Setup /></ProtectedRoute>} />
+            <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+            <Route path="/challenges" element={<ProtectedRoute><ListChallenges /></ProtectedRoute>} />
+            <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
+            <Route path="/edit/:_id" element={<ProtectedRoute><ManageChallenge /></ProtectedRoute>} />
+            <Route path="/neighbors" element={<ProtectedRoute><Neighbors /></ProtectedRoute>} />
+            <Route path="/homepage" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/map" element={<ProtectedRoute><Global /></ProtectedRoute>} />
+            <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
+            <Route path="/notauthorized" element={<NotAuthorized />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Col>
+      </Row>
     </div>
   </Router>
 );
