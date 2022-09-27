@@ -39,6 +39,7 @@ const BulletinBoard = () => {
     message: String,
   });
   const submit = (doc) => {
+    handleClose();
     const { subject, message } = doc;
     const from = currentUser.owner;
     const createdAt = new Date();
@@ -64,8 +65,8 @@ const BulletinBoard = () => {
                 <Card.Title>Create a post</Card.Title>
               </Card.Header>
               <Card.Body>
-                <TextField name="subject" placeholder="What do you want to talk about?" />
-                <TextField name="message" placeholder="Elaborate here..." />
+                <TextField name="subject" placeholder="What do you want to talk about?" autoComplete="off" />
+                <TextField name="message" placeholder="Elaborate here..." autoComplete="off" />
                 <ErrorsField />
               </Card.Body>
               <Card.Footer>
@@ -76,7 +77,7 @@ const BulletinBoard = () => {
                     </Button>
                   </Col>
                   <Col style={{ textAlign: 'right' }}>
-                    <SubmitField onClick={handleClose} />
+                    <SubmitField />
                   </Col>
                 </Row>
               </Card.Footer>
