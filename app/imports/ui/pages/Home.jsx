@@ -3,11 +3,30 @@ import { Button, Carousel, Col, Container, Form, Nav, Row } from 'react-bootstra
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import AddChallengeModal from '../components/AddChallengeModal';
 import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
+import { Users } from '../../api/user/User';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home = () => {
+  const { ready, users, currentUser } = useTracker(() => {
+    // Note that this subscription will get cleaned up
+    // when your component is unmounted or deps change.
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe(Users.userPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    // Get the Stuff documents
+    const userItems = Users.collection.find({}).fetch();
+    const currentUserItem = userItems.filter((user) => (user.owner === Meteor.user().username))[0];
+    return {
+      currentUser: currentUserItem,
+      users: userItems,
+      ready: rdy,
+    };
+  }, []);
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
     const fakeGoals = [];
@@ -20,11 +39,11 @@ const Home = () => {
     return fakeGoals;
   };
 
-  return (
+  return (ready ? (
     <Container style={{ backgroundColor: '#F5F5F5' }}>
       <Row className="fredoka-one">
-        <Col className="d-flex justify-content-center">Welcome, Gavin Peng</Col>
-        <h1>Points{Meteor.call('getCurrentPoints', Meteor.user().username)}</h1>
+        <Col className="d-flex justify-content-center">Welcome, {currentUser.firstName} {currentUser.lastName}</Col>
+        <h1>Points {currentUser.points}</h1>
       </Row>
       <Row className="mt-4">
         <Col className="d-flex justify-content-center">
@@ -103,7 +122,7 @@ const Home = () => {
         </Col>
       </Row>
     </Container>
-  );
+  ) : <LoadingSpinner />);
 };
 
 export default Home;
