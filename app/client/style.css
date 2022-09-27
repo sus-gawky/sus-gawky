@@ -63,7 +63,7 @@ html {
   font-size: xxx-large;
 }
 
-.carousel {
+#leader-carousel {
   width:640px;
   height:500px;
   background-color: darkseagreen;
