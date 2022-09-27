@@ -42,10 +42,12 @@ const Global = () => {
   const retrievePaths = () => {
     const returnArr = [];
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const coordinates of polygon) {
       // combine multi polygon into one
       let s = [];
       if (coordinates.length > 1) {
+        // eslint-disable-next-line no-restricted-syntax
         for (const cods of coordinates) {
           s = [...s, ...cods];
         }
@@ -53,7 +55,9 @@ const Global = () => {
         s = [...coordinates];
       }
       const part = [];
+      // eslint-disable-next-line no-restricted-syntax
       for (const coordinate of s) {
+        // eslint-disable-next-line no-restricted-syntax
         for (const c of coordinate) {
           part.push({ lat: parseFloat(c[1]), lng: parseFloat(c[0]) });
         }
