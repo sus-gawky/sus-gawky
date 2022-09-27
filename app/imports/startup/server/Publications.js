@@ -4,6 +4,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Users } from '../../api/user/User';
 import { Bulletins } from '../../api/bulletin/Bulletin';
 import { Challenges } from '../../api/challenge/Challenge';
+import { Praise } from '../../api/praise/Praise';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -48,6 +49,13 @@ Meteor.publish(Challenges.userPublicationName, function () {
   }
   return this.ready();
 });
+
+Meteor.publish(Praise.userPublicationName, function() {
+  if (this.userId) {
+    return Praise.collection.find();
+  }
+  return this.ready();
+})
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
