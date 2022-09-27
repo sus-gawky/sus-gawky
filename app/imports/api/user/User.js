@@ -116,8 +116,8 @@ Meteor.methods({
 
     Users.collection.update(
       { owner: owner },
-      { $set: { fullScore, foodScore, transportationScore, miscScore } },
-      { $inc: { points: dailyCheckInPointsAdd } },
+      { $set: { fullScore, foodScore, transportationScore, miscScore },
+        $inc: { points: dailyCheckInPointsAdd } },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
