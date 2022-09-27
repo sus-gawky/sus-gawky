@@ -17,6 +17,7 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import ManageChallenge from '../pages/ManageChallenge';
 import Home from '../pages/Home';
+import Global from '../pages/Global';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -35,6 +36,7 @@ const App = () => (
         <Route path="/edit/:_id" element={<ProtectedRoute><ManageChallenge /></ProtectedRoute>} />
         <Route path="/neighbors" element={<ProtectedRoute><Neighbors /></ProtectedRoute>} />
         <Route path="/homepage" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/map" element={<ProtectedRoute><Global /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />

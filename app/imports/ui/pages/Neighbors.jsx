@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import UnityFrame from '../components/UnityFrame';
+import LeaderBoard from '../components/LeaderBoard';
 
 /* A simple static component to render some text for the landing page. */
 const Neighbors = () => (
@@ -39,6 +40,7 @@ const Neighbors = () => (
         <p>10) ___________________________</p>
       </Col>
     </Row>
+    <LeaderBoard />
   </Container>
 );
 
