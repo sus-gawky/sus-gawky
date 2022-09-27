@@ -26,16 +26,68 @@ const formSchema = new SimpleSchema({
 });
 const bridge = new SimpleSchema2Bridge(formSchema);
 
+const calcFoodScore = (foodWaste, minShower, mainProtein) => {
+  let points = 34;
+  points -= foodWaste % 2;
+  points -= minShower % 5;
+  switch (mainProtein) {
+  case 'Beef':
+    points -= 20;
+    break;
+  case 'Pork':
+    points -= 10;
+    break;
+  case 'Poultry':
+    points -= 5;
+    break;
+  case 'Eggs':
+    points -= 5;
+    break;
+  case 'Fish':
+    points -= 5;
+    break;
+  default:
+    console.log('vegetarian');
+  }
+  return points < 0 ? 0 : points;
+};
+
+const calcTransportationScore = (milesTraveled, modeOfTransport) => {
+  let points = 33;
+  points -= milesTraveled % 2;
+  switch (modeOfTransport) {
+  case 'Gas Vehicle':
+    points -= 20;
+    break;
+  case 'Bus':
+    points -= 10;
+    break;
+  case 'Electric Vehicle':
+    points -= 3;
+    break;
+  default:
+    console.log('Bike/Walk');
+  }
+  return points < 0 ? 0 : points;
+};
+
+const calcMiscScore = (plasticTrash) => {
+  let points = 33;
+  points -= plasticTrash % 2;
+  return points < 0 ? 0 : points;
+};
+
 // On submit, insert the data.
 const submit = (data) => {
   // Will use these variables to calculate scores
   // eslint-disable-next-line no-unused-vars
   const { foodWasted, minutesShowering, mainProteinType, milesTraveled, modeOfTransport, plasticTrash } = data;
   const owner = Meteor.user().username;
-  const fullScore = 100;
-  const foodScore = 100;
-  const transportationScore = 100;
-  const miscScore = 100;
+
+  const foodScore = calcFoodScore(foodWasted, minutesShowering, mainProteinType);
+  const transportationScore = calcTransportationScore(milesTraveled, modeOfTransport);
+  const miscScore = calcMiscScore(plasticTrash);
+  const fullScore = foodScore + transportationScore + miscScore;
   Meteor.call('dailyCheckIn', owner, fullScore, foodScore, transportationScore, miscScore);
 };
 

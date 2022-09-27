@@ -109,7 +109,7 @@ Meteor.methods({
       { $set: { fullScore, foodScore, transportationScore, miscScore } },
       (error) => (error ?
         swal('Error', error.message, 'error') :
-        swal('Success', 'Daily check-in completed successfully!', 'success')),
+        swal(`Today's Score: ${fullScore}`, 'Continute being a gawkysaur!', 'success')),
     );
   },
 
