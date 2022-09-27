@@ -30,6 +30,7 @@ const NavBar = () => {
           {currentUser ? ([
             <OverlayTrigger
               placement="right"
+              key="k-1"
               delay={{ show: 250, hide: 200 }}
               overlay={<Tooltip>Home</Tooltip>}
             >
@@ -41,6 +42,7 @@ const NavBar = () => {
             </OverlayTrigger>,
             <OverlayTrigger
               placement="right"
+              key="k-2"
               delay={{ show: 250, hide: 200 }}
               overlay={<Tooltip>Profile</Tooltip>}
             >
@@ -53,6 +55,7 @@ const NavBar = () => {
             ([
               <OverlayTrigger
                 placement="right"
+                key="k-3"
                 delay={{ show: 250, hide: 200 }}
                 overlay={<Tooltip>Home</Tooltip>}
               >
@@ -64,6 +67,7 @@ const NavBar = () => {
               </OverlayTrigger>,
               <OverlayTrigger
                 placement="right"
+                key="k-4"
                 delay={{ show: 250, hide: 200 }}
                 overlay={<Tooltip>Login</Tooltip>}
               >
@@ -76,6 +80,7 @@ const NavBar = () => {
           {currentUser ? ([
             <OverlayTrigger
               placement="right"
+              key="k-5"
               delay={{ show: 250, hide: 200 }}
               overlay={<Tooltip>Praise</Tooltip>}
             >
@@ -87,6 +92,7 @@ const NavBar = () => {
             </OverlayTrigger>,
             <OverlayTrigger
               placement="right"
+              key="k-6"
               delay={{ show: 250, hide: 200 }}
               overlay={<Tooltip>Neighborhood</Tooltip>}
             >
@@ -98,6 +104,7 @@ const NavBar = () => {
             </OverlayTrigger>,
             <OverlayTrigger
               placement="right"
+              key="k-7"
               delay={{ show: 250, hide: 200 }}
               overlay={<Tooltip>World View</Tooltip>}
             >
@@ -109,6 +116,7 @@ const NavBar = () => {
             </OverlayTrigger>,
             <OverlayTrigger
               placement="right"
+              key="k-8"
               delay={{ show: 250, hide: 200 }}
               overlay={<Tooltip>Logout</Tooltip>}
             >

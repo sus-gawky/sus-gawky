@@ -35,7 +35,7 @@ class ChallengesCollection {
 
 /**
  * The singleton instance of the ChallengesCollection.
- * @type {ChallengeCollection}
+ * @type {ChallengesCollection}
  */
 export const Challenges = new ChallengesCollection();
 

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Button, Carousel, Col, Container, Form, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import AddChallengeModal from '../components/AddChallengeModal';
 
 const Home = () => {
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
     const fakeGoals = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       fakeGoals.push({
-        goal: `Fake goal ${i}`,
+        goal: `Fake goal ${i + 1}`,
         finished: false,
       });
     }
@@ -25,9 +26,8 @@ const Home = () => {
           <Form>
             <>
               <div className="fredoka-one goals mt-5">
-                Goals
-                {/* eslint-disable-next-line no-console */}
-                <Button className="mx-3" size="sm" onClick={() => { console.log('add goal'); }}>Add Goal</Button>
+                Challenges
+                <AddChallengeModal />
               </div>
               {createFakeGoals().map((data, index) => (
                 <motion.div
@@ -95,7 +95,6 @@ const Home = () => {
           </div>
         </Col>
       </Row>
-
     </Container>
   );
 };
