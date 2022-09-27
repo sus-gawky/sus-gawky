@@ -148,17 +148,8 @@ Leaderboard
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0) scale(1, 1);
-}
+  border-radius: 5px 5px 0px 0px;
 
-.leaderboard ul li {
-  position: relative;
-  z-index: 1;
-  font-size: 14px;
-  padding: 18px 10px 18px 50px;
-  cursor: pointer;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0) scale(1, 1);
 }
 
 .leaderboard ul li mark {
@@ -213,6 +204,8 @@ Leaderboard
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease-in-out;
   opacity: 0;
+  border-radius: 5px 5px 0px 0px;
+
 }
 
 .leaderboard ul li:nth-child(1) {
