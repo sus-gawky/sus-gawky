@@ -2,16 +2,16 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { GoogleMap, Polygon, useLoadScript } from '@react-google-maps/api';
 import { ListGroup, Offcanvas, Spinner } from 'react-bootstrap';
 import axios from 'axios';
+import apiKey from '../../../apiKey.json';
 
 const Global = () => {
-  const [locationData, setLocationData] = useState({});
   const [showOverlay, setShowOverlay] = useState(false);
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
   const [polygon, setPolygon] = useState([]);
   const { isLoaded } = useLoadScript({
     id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyASlpfLxUWXlRshNWQGvZWAX9kGP63yj7s',
+    googleMapsApiKey: apiKey['react-maps-api-key'],
   });
   useEffect(() => {
     async function fetchData() {
@@ -19,15 +19,14 @@ const Global = () => {
         const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
           params: {
             address: 96822,
-            key: 'AIzaSyASlpfLxUWXlRshNWQGvZWAX9kGP63yj7s',
+            key: apiKey['react-maps-api-key'],
           },
         });
-        setLocationData(response);
         setLat(response.data.results[0].geometry.location.lat);
         setLng(response.data.results[0].geometry.location.lng);
         const polygonResponse = await axios.get('https://nominatim.openstreetmap.org/search.php', {
           params: {
-            q: 'waimalu',
+            q: 'aiea',
             polygon_geojson: 1,
             format: 'json',
           },
@@ -40,7 +39,6 @@ const Global = () => {
     }
     fetchData();
   }, []);
-  console.log(locationData);
   const retrievePaths = () => {
     const returnArr = [];
 
