@@ -4,7 +4,7 @@ import { EmojiAngry, EmojiNeutral, EmojiSmile, Trophy } from 'react-bootstrap-ic
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const LeaderBoard = () => (
-  <Carousel variant="dark" className="center-block">
+  <Carousel id="leader-carousel" variant="dark" className="center-block">
     <Carousel.Item className="leader-body">
       <div className="leaderboard">
         <h1>

@@ -73,7 +73,7 @@ const DailyCheck = () => {
             <p />
             <Row>
               <h4>Full Carbon Footprint</h4>
-              <iframe title="carbonfootprint" width="710" height="1300" frameBorder="0" marginWidth="0" marginHeight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx" />
+              <iframe title="carbonfootprint" width="710" height="500" frameBorder="0" marginWidth="0" marginHeight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx" />
             </Row>
           </Container>
         </Modal.Body>

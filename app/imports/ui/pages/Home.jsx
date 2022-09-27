@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Carousel, Col, Container, Form, Nav, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
+import AddChallengeModal from '../components/AddChallengeModal';
 import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
 
@@ -9,9 +10,9 @@ const Home = () => {
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
     const fakeGoals = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       fakeGoals.push({
-        goal: `Fake goal ${i}`,
+        goal: `Fake goal ${i + 1}`,
         finished: false,
       });
     }
@@ -28,9 +29,8 @@ const Home = () => {
           <Form>
             <>
               <div className="fredoka-one goals mt-5">
-                Goals
-                {/* eslint-disable-next-line no-console */}
-                <Button className="mx-3" size="sm" onClick={() => { console.log('add goal'); }}>Add Goal</Button>
+                Challenges
+                <AddChallengeModal />
               </div>
               {createFakeGoals().map((data, index) => (
                 <motion.div
@@ -61,7 +61,6 @@ const Home = () => {
       <Row className="mt-5">
         {/* TODO: Make this have a dotted line connecting the buttons */}
         <Col className="d-flex justify-content-center">
-
           <Nav.Link as={NavLink} to="/challenges" className="homeButtons">
             <Button style={{ backgroundColor: '#60E831FF', border: 'none', width: '100%', height: '100%' }}>Challenges</Button>
           </Nav.Link>
@@ -101,7 +100,6 @@ const Home = () => {
           </div>
         </Col>
       </Row>
-
     </Container>
   );
 };
