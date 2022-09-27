@@ -34,8 +34,9 @@ const NavBar = () => {
               overlay={<Tooltip>Home</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<House size={50} />}>
-                <Nav.Link as={NavLink} to="/homepage" />
-                <h4 className="text-center">Home</h4>
+                <Nav.Link as={NavLink} to="/homepage">
+                  <h4 className="text-center">Home</h4>
+                </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
             <OverlayTrigger
@@ -44,19 +45,32 @@ const NavBar = () => {
               overlay={<Tooltip>Profile</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<PersonCircle size={50} />}>
-                <Nav.Link as={NavLink} to="/" />
-                <h4 className="text-center">Profile</h4>
+                <Nav.Link as={NavLink} to="/">
+                  <h4 className="text-center">Profile</h4>
+                </Nav.Link>
               </MenuItem>
             </OverlayTrigger>]) :
             ([
               <OverlayTrigger
                 placement="right"
                 delay={{ show: 250, hide: 200 }}
+                overlay={<Tooltip>Home</Tooltip>}
+              >
+                <MenuItem className="mt-3" icon={<House size={50} />}>
+                  <Nav.Link as={NavLink} to="/">
+                    <h4 className="text-center">Home</h4>
+                  </Nav.Link>
+                </MenuItem>
+              </OverlayTrigger>,
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 200 }}
                 overlay={<Tooltip>Login</Tooltip>}
               >
                 <MenuItem className="mt-3" icon={<PersonCircle size={50} />}>
-                  <Nav.Link as={NavLink} to="/signin" />
-                  <h4 className="text-center">Login</h4>
+                  <Nav.Link as={NavLink} to="/signin">
+                    <h4 className="text-center">Login</h4>
+                  </Nav.Link>
                 </MenuItem>
               </OverlayTrigger>])}
           {currentUser ? ([
@@ -66,8 +80,9 @@ const NavBar = () => {
               overlay={<Tooltip>Praise</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Stars size={50} />}>
-                <Nav.Link as={NavLink} to="/" />
-                <h4 className="text-center">Praise</h4>
+                <Nav.Link as={NavLink} to="/">
+                  <h4 className="text-center">Praise</h4>
+                </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
             <OverlayTrigger
@@ -76,8 +91,9 @@ const NavBar = () => {
               overlay={<Tooltip>Neighborhood</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Building size={50} />}>
-                <Nav.Link as={NavLink} to="/neighbors" />
-                <h4 className="text-center">Neighborhood</h4>
+                <Nav.Link as={NavLink} to="/neighbors">
+                  <h4 className="text-center">Neighborhood</h4>
+                </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
             <OverlayTrigger
@@ -86,8 +102,9 @@ const NavBar = () => {
               overlay={<Tooltip>World View</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Globe2 size={50} />}>
-                <Nav.Link as={NavLink} to="/map" />
-                <h4 className="text-center">World View</h4>
+                <Nav.Link as={NavLink} to="/map">
+                  <h4 className="text-center">World View</h4>
+                </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
             <OverlayTrigger
@@ -96,8 +113,9 @@ const NavBar = () => {
               overlay={<Tooltip>Logout</Tooltip>}
             >
               <MenuItem className="position-absolute bottom-0 mb-4" icon={<BoxArrowRight size={50} />}>
-                <Nav.Link as={NavLink} to="/signout" />
-                <h4 className="position-absolute bottom-0 mb-3 ms-5 float-start">Logout</h4>
+                <Nav.Link as={NavLink} to="/signout">
+                  <h4 className="position-absolute bottom-0 mb-3 ms-5 float-start">Logout</h4>
+                </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
           ]) : ''}
