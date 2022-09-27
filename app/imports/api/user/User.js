@@ -20,6 +20,7 @@ class UsersCollection {
       lastName: String,
       owner: String,
       zipCode: Number,
+      points: Number,
       // All scores out of 100
       fullScore: Number,
       foodScore: Number,
@@ -98,18 +99,33 @@ class UsersCollection {
  */
 export const Users = new UsersCollection();
 
+const dailyCheckInPointsAdd = 10;
+
 Meteor.methods({
+  // eslint-disable-next-line meteor/audit-argument-checks
+  'getCurrentPoints'(owner) {
+    console.log('getCurrentPoints');
+    return Users.collection.find({ owner: owner });
+  },
+
   // eslint-disable-next-line meteor/audit-argument-checks
   'dailyCheckIn'(owner, fullScore, foodScore, transportationScore, miscScore) {
     console.log(`dailyCheckIn ${owner} ${fullScore} ${foodScore} ${transportationScore} ${miscScore}`);
-    // TODO Check if user is owner, if they are, don't delete
+   // const newPoints = Meteor.call('getCurrentPoints', owner) + dailyCheckInPointsAdd;
+    //console.log(Meteor.call('getCurrentPoints', owner));
 
     Users.collection.update(
       { owner: owner },
       { $set: { fullScore, foodScore, transportationScore, miscScore } },
-      (error) => (error ?
-        swal('Error', error.message, 'error') :
-        swal(`Today's Score: ${fullScore}`, 'Continute being a gawkysaur!', 'success')),
+      { $inc: { points: dailyCheckInPointsAdd } },
+      (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal(`Today's Score: ${fullScore}`, 'Continue being a gawkysaur!', 'success');
+          console.log(`Add ${dailyCheckInPointsAdd}`);
+        }
+      },
     );
   },
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Carousel, Col, Container, Form, Nav, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
+import { Meteor } from 'meteor/meteor';
 import AddChallengeModal from '../components/AddChallengeModal';
 import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
@@ -23,6 +24,7 @@ const Home = () => {
     <Container style={{ backgroundColor: '#F5F5F5' }}>
       <Row className="fredoka-one">
         <Col className="d-flex justify-content-center">Welcome, Gavin Peng</Col>
+        <h1>Points{Meteor.call('getCurrentPoints', Meteor.user().username)}</h1>
       </Row>
       <Row className="mt-4">
         <Col className="d-flex justify-content-center">
