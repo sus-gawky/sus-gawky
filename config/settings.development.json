@@ -11,43 +11,50 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
-  "defaultUsers": [
-    { "firstName": "Yong-Sung",
-      "lastName": "Masuda",
-      "owner": "admin@foo.com",
-      "zipCode": 96815,
-      "fullScore": 78,
-      "foodScore": 40,
-      "transportationScore": 90,
-      "miscScore": 54,
-      "householdSize": 3
-    },
+  "Users":[
     { "firstName": "John",
-      "lastName": "Hanson",
+      "lastName": "Smith",
       "owner": "john@foo.com",
-      "zipCode": 96815,
-      "fullScore": 58,
-      "foodScore": 39,
-      "transportationScore": 39,
-      "miscScore": 85,
-      "householdSize": 2
-    }
-  ],
-
-  "defaultBulletins": [
-    {
-      "subject": "Introduction",
-      "message": "Hi neighbors, my name is Yong-Sung.",
-      "from": "admin@foo.com",
-      "createdAt": "2022-08-24T03:12:33.095Z",
-      "zipCode": 96815
-    },
-    {
-      "subject": "Saying hi",
-      "message": "Hi everybody, my name is John.",
-      "from": "john@foo.com",
-      "createdAt": "2022-09-26T06:33:20.350Z",
-      "zipCode": 96815
-    }
+      "zipCode": 11111,
+      "fullScore": 1,
+      "foodScore": 1,
+      "transportationScore": 1,
+      "miscScore": 1,
+      "carbonFootprintScore": 1,
+      "householdSize": 1 },
+    { "firstName": "Steve",
+      "lastName": "Jobs",
+      "owner": "admin@foo.com",
+      "zipCode": 11111,
+      "fullScore": 1,
+      "foodScore": 1,
+      "transportationScore": 1,
+      "miscScore": 1,
+      "carbonFootprintScore": 1,
+      "householdSize": 1 }
+    ],
+  
+  "challenges": [
+    { "challenge": "Water Bottles",
+      "description": "Use less water bottles",
+      "owner": "john@foo.com",
+      "signUpList": ["john@foo.com", "admin@foo.com"],
+      "tags": ["environment", "conservation"],
+      "endDate":  "2022-09-21",
+      "points":  "10"},
+    { "challenge": "Bags",
+      "description": "Use reuseable bags instead of single use ones",
+      "owner": "john@foo.com",
+      "signUpList": ["john@foo.com"],
+      "tags":  ["environment", "conservation"],
+      "endDate":  "2022-09-21",
+      "points":  "10"},
+    { "challenge": "Transportation",
+      "description": "Use less thank 50% the average american's CO2",
+      "owner": "admin@foo.com",
+      "signUpList": ["admin@foo.com"],
+      "tags":  ["environment", "conservation"],
+      "endDate":  "2022-09-21",
+      "points":  "10"}
   ]
 }

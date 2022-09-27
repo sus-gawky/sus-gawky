@@ -7,6 +7,7 @@ import { Users } from '../../api/user/User';
 import BulletinBoard from '../components/BulletinBoard';
 import UnityFrame from '../components/UnityFrame';
 import LoadingSpinner from '../components/LoadingSpinner';
+import LeaderBoard from '../components/LeaderBoard';
 
 /* A simple static component to render some text for the landing page. */
 const Neighbors = () => {
@@ -38,22 +39,11 @@ const Neighbors = () => {
           <UnityFrame score={0} />
           <Button variant="success">Score</Button>
         </Col>
-
         <Col xs={5} className="d-flex flex-column justify-content-center">
           <BulletinBoard />
         </Col>
         <Col xs={4} className="d-flex flex-column justify-content-center">
-          <h2>Leaderboard</h2>
-          <p>1) ___________________________</p>
-          <p>2) ___________________________</p>
-          <p>3) ___________________________</p>
-          <p>4) ___________________________</p>
-          <p>5) ___________________________</p>
-          <p>6) ___________________________</p>
-          <p>7) ___________________________</p>
-          <p>8) ___________________________</p>
-          <p>9) ___________________________</p>
-          <p>10) ___________________________</p>
+          <LeaderBoard />
         </Col>
       </Row>
     </Container>
