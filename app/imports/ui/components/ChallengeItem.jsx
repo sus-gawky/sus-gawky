@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Badge } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 
@@ -13,14 +13,14 @@ const ChallengeItem = ({ challenge }) => (
       {challenge.owner === Meteor.users.findOne(Meteor.userId).username && <Link to={`/edit/${challenge._id}`}>Edit Challenge</Link>}
     </td>
     <td>{challenge.description}</td>
-    <td>{challenge.tags.join(' ')}</td>
+    <td>{challenge.tags.map((tag) => <Badge pill bg="dark">{tag}</Badge>)}</td>
     <td>{challenge.endDate}</td>
     <td>{challenge.points}</td>
     <td>{challenge.signUpList.length}</td>
     <td>
       {challenge.signUpList.includes(Meteor.user().username) ?
-        <Button onClick={() => Meteor.call('leaveChallenge', challenge._id, Meteor.user().username, challenge.owner)}>Leave</Button>
-        : <Button onClick={() => Meteor.call('updateChallenge', challenge._id, Meteor.user().username)}>Sign Up</Button>}
+        <Button variant="success" onClick={() => Meteor.call('leaveChallenge', challenge._id, Meteor.user().username, challenge.owner)}>Leave</Button>
+        : <Button variant="success" onClick={() => Meteor.call('updateChallenge', challenge._id, Meteor.user().username)}>Sign Up</Button>}
     </td>
   </tr>
 );

@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Landing from '../pages/Landing';
+import Setup from '../pages/Setup';
 import ListChallenges from '../pages/ListChallenges';
 import Neighbors from '../pages/Neighbors';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
@@ -28,6 +29,7 @@ const App = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/setup" element={<ProtectedRoute><Setup /></ProtectedRoute>} />
         <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
         <Route path="/challenges" element={<ProtectedRoute><ListChallenges /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
