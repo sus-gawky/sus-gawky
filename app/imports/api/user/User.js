@@ -7,35 +7,6 @@ import swal from 'sweetalert';
 /**
  * The UsersCollection. It encapsulates state and variable values for users.
  */
-
-const specificInfosSchema = new SimpleSchema({
-  // Food:
-  wastedFood: {
-    type: Number,
-    defaultValue: -1,
-  },
-  minutesShowerRunning: {
-    type: Number,
-    defaultValue: -1,
-  },
-  // TODO: change this to percentages eventually
-  mainProteinSource: {
-    type: String,
-    allowedValues: ['Beef', 'Pork', 'Dairy', 'Eggs', 'Poultry', 'Fish', 'Plant-based'],
-  },
-
-  // Transportation:
-  gasolineUsed: {
-    type: Number,
-    defaultValue: -1,
-  },
-  // Misc:
-  PlasticItemsThrownAway: {
-    type: Number,
-    defaultValue: -1,
-  },
-});
-
 class UsersCollection {
   constructor() {
     // The name of this collection.
@@ -58,11 +29,60 @@ class UsersCollection {
         optional: true,
       },
       householdSize: Number,
-      specificInfos: {
-        type: Array,
+      // Food:
+      wastedFood: {
+        type: Number,
+        defaultValue: -1,
         optional: true,
       },
-      'specificInfos.$': { type: specificInfosSchema },
+      minutesShowerRunning: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
+      // TODO: change this to percentages eventually
+      mainProteinSource: {
+        type: String,
+        allowedValues: ['Beef', 'Pork', 'Dairy', 'Eggs', 'Poultry', 'Fish', 'Plant-based'],
+        optional: true,
+      },
+
+      // Transportation:
+      gasolineUsed: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
+      // Misc:
+      PlasticItemsThrownAway: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
+      // Not-daily
+      electricityBill: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
+
+      waterBill: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
+
+      donation: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
+
+      volunteer: {
+        type: Number,
+        defaultValue: -1,
+        optional: true,
+      },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -83,6 +103,7 @@ Meteor.methods({
   'dailyCheckIn'(owner, fullScore, foodScore, transportationScore, miscScore) {
     console.log(`dailyCheckIn ${owner} ${fullScore} ${foodScore} ${transportationScore} ${miscScore}`);
     // TODO Check if user is owner, if they are, don't delete
+
     Users.collection.update(
       { owner: owner },
       { $set: { fullScore, foodScore, transportationScore, miscScore } },
@@ -90,5 +111,23 @@ Meteor.methods({
         swal('Error', error.message, 'error') :
         swal('Success', 'Daily check-in completed successfully!', 'success')),
     );
+  },
+
+  // eslint-disable-next-line meteor/audit-argument-checks
+  'specialCheckIn'(owner, electricityBill, waterBill, donation, volunteer) {
+    console.log(`specialCheckIn ${owner} ${electricityBill} ${waterBill} ${donation} ${volunteer}`);
+    Users.collection.update(
+      { owner: owner },
+      { $set: { electricityBill, waterBill, donation, volunteer } },
+      (error) => (error ?
+        swal('Error', error.message, 'error') :
+        swal('Success', 'Special check-in completed successfully!', 'success')),
+    );
+    /*
+    carbonFootprintScore: {
+        type: Number,
+        optional: true,
+      },
+    * */
   },
 });
