@@ -41,12 +41,6 @@ const Neighbors = () => {
 
         <Col xs={5} className="d-flex flex-column justify-content-center">
           <BulletinBoard />
-          <h2>Neighborhood Chat</h2>
-          <p>--------------------------------------</p>
-          <p>--------------------------------------</p>
-          <p>--------------------------------------</p>
-          <Button variant="outline-success">Success</Button>
-          <Button variant="success">Success</Button>
         </Col>
         <Col xs={4} className="d-flex flex-column justify-content-center">
           <h2>Leaderboard</h2>

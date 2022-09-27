@@ -36,12 +36,14 @@
 
   "defaultBulletins": [
     {
+      "subject": "Introduction",
       "message": "Hi neighbors, my name is Yong-Sung.",
       "from": "admin@foo.com",
       "createdAt": "2022-08-24T03:12:33.095Z",
       "zipCode": 96815
     },
     {
+      "subject": "Saying hi",
       "message": "Hi everybody, my name is John.",
       "from": "john@foo.com",
       "createdAt": "2022-09-26T06:33:20.350Z",
