@@ -33,8 +33,8 @@ const DailyCheck = () => {
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
-        SPECIAL
+      <Button variant="success" onClick={handleShow} style={{ backgroundColor: '#257206FF', border: 'none' }} className="homeButtons">
+        Special
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">

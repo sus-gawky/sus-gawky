@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, Carousel, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Carousel, Col, Container, Form, Nav, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
+import { NavLink } from 'react-router-dom';
+import DailyCheck from '../components/DailyCheck';
+import SpecialCheck from '../components/SpecialCheck';
 
 const Home = () => {
   // const [modal, setModal] = useState(false);
@@ -58,13 +61,16 @@ const Home = () => {
       <Row className="mt-5">
         {/* TODO: Make this have a dotted line connecting the buttons */}
         <Col className="d-flex justify-content-center">
-          <Button style={{ backgroundColor: '#60E831FF', border: 'none' }}>Button 1</Button>
+
+          <Nav.Link as={NavLink} to="/challenges" className="homeButtons">
+            <Button style={{ backgroundColor: '#60E831FF', border: 'none', width: '100%', height: '100%' }}>Challenges</Button>
+          </Nav.Link>
         </Col>
         <Col className="d-flex justify-content-center">
-          <Button style={{ backgroundColor: '#2AA404FF', border: 'none' }}>Button 2</Button>
+          <DailyCheck />
         </Col>
         <Col className="d-flex justify-content-center">
-          <Button style={{ backgroundColor: '#257206FF', border: 'none' }}>Button 3</Button>
+          <SpecialCheck />
         </Col>
       </Row>
       <Row className="mt-5 mb-3">

@@ -47,8 +47,8 @@ const DailyCheck = () => {
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
-        DAILY
+      <Button variant="success" onClick={handleShow} style={{ backgroundColor: '#2AA404FF', border: 'none' }} className="homeButtons">
+        Daily
       </Button>
 
       <Modal show={show} onHide={handleClose}>

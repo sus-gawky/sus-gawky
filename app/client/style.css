@@ -414,3 +414,8 @@ Leaderboard
 .the-most img {
   max-width: 100%;
 }
+
+.homeButtons {
+  width: 35%;
+  height: 150%;
+}
