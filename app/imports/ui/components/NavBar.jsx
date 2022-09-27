@@ -31,7 +31,7 @@ const NavBar = () => {
             <OverlayTrigger
               placement="right"
               delay={{ show: 250, hide: 200 }}
-              overlay={<Tooltip>Profile</Tooltip>}
+              overlay={<Tooltip>Home</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<House size={50} />}>
                 <Nav.Link as={NavLink} to="/homepage" />
@@ -63,7 +63,7 @@ const NavBar = () => {
             <OverlayTrigger
               placement="right"
               delay={{ show: 250, hide: 200 }}
-              overlay={<Tooltip>Option 1</Tooltip>}
+              overlay={<Tooltip>Praise</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Stars size={50} />}>
                 <Nav.Link as={NavLink} to="/" />
@@ -73,20 +73,20 @@ const NavBar = () => {
             <OverlayTrigger
               placement="right"
               delay={{ show: 250, hide: 200 }}
-              overlay={<Tooltip>option 2</Tooltip>}
+              overlay={<Tooltip>Neighborhood</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Building size={50} />}>
-                <Nav.Link as={NavLink} to="/add" />
+                <Nav.Link as={NavLink} to="/neighbors" />
                 <h4 className="text-center">Neighborhood</h4>
               </MenuItem>
             </OverlayTrigger>,
             <OverlayTrigger
               placement="right"
               delay={{ show: 250, hide: 200 }}
-              overlay={<Tooltip>option 2</Tooltip>}
+              overlay={<Tooltip>World View</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Globe2 size={50} />}>
-                <Nav.Link as={NavLink} to="/" />
+                <Nav.Link as={NavLink} to="/map" />
                 <h4 className="text-center">World View</h4>
               </MenuItem>
             </OverlayTrigger>,
