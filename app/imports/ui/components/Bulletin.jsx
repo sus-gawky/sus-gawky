@@ -48,8 +48,8 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
               <div className="mt-3 goalItems" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(bulletin.createdAt)}</div>
             </Col>
           </Row>
-          <div className="title" style={{ textAlign: 'left' }}>{subject}</div>
-          <div style={{ textAlign: 'left', paddingBottom: '10px'}}>
+          <div className="title" style={{ textAlign: 'left', fontSize: 'xx-large' }}>{subject}</div>
+          <div style={{ textAlign: 'left', paddingBottom: '10px', fontSize: 'large' }}>
             {message}
           </div>
           <Accordion>
@@ -58,8 +58,12 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
               <Accordion.Body style={{ padding: 0 }}>
                 {bulletin.comments.map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
                 <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-                  <LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
-                  <SubmitField style={{ textAlign: 'left' }} />
+                  <Row>
+                    <Col xs={10}><LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
+                    </Col>
+                    <Col xs={2} style={{ padding: '0.5em 0em 1em 0em' }}><SubmitField style={{ textAlign: 'left', color: '#2AA404FF' }} /></Col>
+                  </Row>
+
                 </AutoForm>
               </Accordion.Body>
             </Accordion.Item>

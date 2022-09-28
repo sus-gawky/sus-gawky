@@ -17,14 +17,14 @@ const Comment = ({ comment, currentUser, users }) => {
       <div>
         <Row className="mt-3 goalItems" style={{ paddingLeft: 8, paddingRight: 8, paddingTop: 5 }}>
           <Col md="auto">
-            <div className="subTitle" style={{ textAlign: 'left', color: color }}>{nameDisplayed}</div>
+            <div className="subTitle" style={{ textAlign: 'left', color: color, fontSize: 'small' }}>{nameDisplayed}</div>
           </Col>
           <Col>
-            <div className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(comment.createdAt)}
+            <div className="mb-2 text-muted" style={{ textAlign: 'left', fontSize: 'small' }}> - posted {Functions.timeDisplay(comment.createdAt)}
             </div>
           </Col>
         </Row>
-        <Row style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 0 }}>
+        <Row style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 0, fontSize: 'medium' }}>
           {comment.text}
         </Row>
         <hr />
