@@ -20,6 +20,7 @@ class UsersCollection {
       lastName: String,
       owner: String,
       zipCode: Number,
+      city: String,
       points: Number,
       // All scores out of 100
       fullScore: Number,

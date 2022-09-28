@@ -40,7 +40,7 @@ const Neighbors = () => {
         </Col>
         <Col xs={5} className="d-flex flex-column justify-content-top">
           <Row>
-            <LeaderBoard />
+            <LeaderBoard className="mb-5" />
           </Row>
           <Row>
             <UnityFrame score={0} />

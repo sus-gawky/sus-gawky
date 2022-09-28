@@ -43,9 +43,10 @@ const Global = () => {
   useEffect(() => {
     async function fetchData() {
       try {
+        // Iteratively, { aiea: totalScore }
         const response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
           params: {
-            address: 96822,
+            address: 96701,
             key: apiKey['react-maps-api-key'],
           },
         });
