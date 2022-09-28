@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Renders a unity iframe */
-const style = { overflow: 'hidden'};
+const style = { overflow: 'hidden' };
 const srcs = [0, 0, 0, 0, 'https://itch.io/embed-upload/6566421?color=e3f1d4'];
 const hrefs = [0, 0, 0, 0, 'https://alyssiachen.itch.io/gawkysaur'];
 

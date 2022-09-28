@@ -11,6 +11,7 @@ import { Users } from '../../api/user/User';
 const formSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
+  city: String,
   zipCode: Number,
   householdSize: Number,
   carbonFootprintScore: Number,
@@ -23,10 +24,10 @@ const Setup = () => {
 
   // On submit, insert the data.
   const submit = (data) => {
-    const { firstName, lastName, zipCode, householdSize, carbonFootprintScore } = data;
+    const { firstName, lastName, zipCode, householdSize, carbonFootprintScore, city } = data;
     const owner = Meteor.user().username;
     Users.collection.insert(
-      { fullScore: '-1', foodScore: '-1', transportationScore: '-1', miscScore: '-1', firstName, lastName, zipCode, householdSize, carbonFootprintScore, owner, specificInfos: [] },
+      { fullScore: '-1', foodScore: '-1', transportationScore: '-1', miscScore: '-1', firstName, lastName, zipCode, householdSize, carbonFootprintScore, city, owner, specificInfos: [] },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -48,6 +49,8 @@ const Setup = () => {
               <Card.Body>
                 <TextField name="firstName" />
                 <TextField name="lastName" />
+                <TextField name="lastName" />
+                <TextField name="city" />
                 <NumField name="zipCode" decimal={null} />
                 <NumField name="householdSize" decimal={null} />
                 <NumField name="carbonFootprintScore" decimal={null} />
