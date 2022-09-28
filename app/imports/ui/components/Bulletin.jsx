@@ -38,20 +38,20 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
   let fRef = null;
   return (
     (
-      <Card style={{ width: '100%' }}>
-        <Card.Body>
+      <div className="fredoka-one goals" style={{ width: '100%' }}>
+        <div>
           <Row>
             <Col md="auto">
-              <Card.Subtitle style={{ textAlign: 'left', color: color }}>{nameDisplayed}</Card.Subtitle>
+              <div className="mt-3 goalItems" style={{ textAlign: 'left', color: color }}>{nameDisplayed}</div>
             </Col>
             <Col>
-              <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(bulletin.createdAt)}</Card.Subtitle>
+              <div className="mt-3 goalItems" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(bulletin.createdAt)}</div>
             </Col>
           </Row>
-          <Card.Title style={{ textAlign: 'left' }}>{subject}</Card.Title>
-          <Card.Text style={{ textAlign: 'left' }}>
+          <div className="title" style={{ textAlign: 'left' }}>{subject}</div>
+          <div style={{ textAlign: 'left', paddingBottom: '10px'}}>
             {message}
-          </Card.Text>
+          </div>
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Comments</Accordion.Header>
@@ -64,8 +64,9 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </Card.Body>
-      </Card>
+          <hr />
+        </div>
+      </div>
     ));
 };
 

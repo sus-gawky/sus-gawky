@@ -15,12 +15,13 @@ const Comment = ({ comment, currentUser, users }) => {
   return (
     (
       <div>
-        <Row style={{ paddingLeft: 8, paddingRight: 8, paddingTop: 5 }}>
+        <Row className="mt-3 goalItems" style={{ paddingLeft: 8, paddingRight: 8, paddingTop: 5 }}>
           <Col md="auto">
-            <Card.Subtitle style={{ textAlign: 'left', color: color }}>{nameDisplayed}</Card.Subtitle>
+            <div className="subTitle" style={{ textAlign: 'left', color: color }}>{nameDisplayed}</div>
           </Col>
           <Col>
-            <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(comment.createdAt)}</Card.Subtitle>
+            <div className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(comment.createdAt)}
+            </div>
           </Col>
         </Row>
         <Row style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 0 }}>

@@ -10,6 +10,7 @@ import BulletinBoard from '../components/BulletinBoard';
 import UnityFrame from '../components/UnityFrame';
 import LoadingSpinner from '../components/LoadingSpinner';
 import LeaderBoard from '../components/LeaderBoard';
+import Functions from '../../api/functions/functions';
 
 /* A simple static component to render some text for the landing page. */
 const Neighbors = () => {
@@ -29,15 +30,15 @@ const Neighbors = () => {
       ready: rdy,
     };
   }, []);
+  console.log(Functions.topTravelScores(users));
   return (ready ? (
     <Container id="neighbors-page" fluid className="py-3">
-      <Row className="align-middle">
-        <Col xs={12} className="title">
-          Zip Code: {currentUser.zipCode}
-        </Col>
-      </Row>
       <Row className="align-middle text-center">
         <Col xs={6} className="d-flex flex-column justify-content-top" syle={{ paddingTop: 0 }}>
+          <Col xs={12} className="fredoka-one" style={{ textAlign: 'center' }}>
+            {currentUser.city} forum
+          </Col>
+          <hr />
           <BulletinBoard />
         </Col>
         <Col xs={5}>

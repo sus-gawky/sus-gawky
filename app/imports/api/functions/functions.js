@@ -55,6 +55,12 @@ class Functions {
     result = result.map((user) => user.fullScore).reduce((a, b) => a + b, 0) / result.length;
     return result;
   };
+
+  static topFoodScores = (users) => users.sort(function (a, b) { return b.foodScore - a.foodScore; }).slice(0, 10);
+
+  static topTravelScores = (users) => users.sort(function (a, b) { return b.transportationScore - a.transportationScore; }).slice(0, 10);
+
+  static topTotalScores = (users) => users.sort(function (a, b) { return b.fullScore - a.fullScore; }).slice(0, 10);
 }
 
 export default Functions;
