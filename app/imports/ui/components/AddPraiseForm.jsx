@@ -13,10 +13,11 @@ const AddPraiseForm = () => {
   };
   const submit = (e) => {
     e.preventDefault();
-    const emojiCounter = [];
+    const emojiCounter = {};
     const category = praiseType;
+    const dateCreated = new Date();
     Praise.collection.insert(
-      { comment, category, emojiCounter },
+      { comment, category, emojiCounter, dateCreated },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');

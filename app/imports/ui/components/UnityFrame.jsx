@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Renders a unity iframe */
-const style = { 'border-radius': '20px', overflow: 'hidden' };
+const style = { borderRadius: '20px', overflow: 'hidden' };
 const srcs = ['https://itch.io/embed-upload/6186209?color=577139'];
 const hrefs = ['https://alyssiachen.itch.io/pomegranate-baby'];
 
