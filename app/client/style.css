@@ -27,6 +27,10 @@ html {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
+#signin-page, #signout-page, #setup-page, #signup-page {
+  font-family: "Advent Pro";
+}
+
 /* Define custom styles */
 .gray-background {
   background-color: var(--matr-navbar-bg);
@@ -39,9 +43,13 @@ html {
   position: relative;
 }
 
-.card {
-  width: 100%;
-  margin: 0px;
+.store-card {
+  width: 80% !important;
+  margin: 20px;
+}
+
+.store-card .card {
+  margin: 20px;
 }
 
 .fredoka-one { 

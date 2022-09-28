@@ -25,7 +25,7 @@ const StoreNavigation = () => {
     };
   }, []);
   return (
-    <Card className="pt-3 pb-3">
+    <Card className="pt-3 pb-3 store-card">
       <Tabs>
         <Tab eventKey="weekly" title="Weekly">
           <CardGroup>
