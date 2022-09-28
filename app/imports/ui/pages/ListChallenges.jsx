@@ -28,7 +28,7 @@ const ListChallenges = () => {
       <Row className="justify-content-center">
         <Col md={10}>
           <Col className="text-center">
-            <h2>List Challenges</h2>
+            <h2 className="fredoka-one">List Challenges</h2>
           </Col>
           <Table striped bordered hover>
             <thead>

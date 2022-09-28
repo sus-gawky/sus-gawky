@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { Col, Row } from 'react-bootstrap';
 import Landing from '../pages/Landing';
 import Setup from '../pages/Setup';
 import ListChallenges from '../pages/ListChallenges';
@@ -18,7 +19,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 import ManageChallenge from '../pages/ManageChallenge';
 import Home from '../pages/Home';
 import Global from '../pages/Global';
-import { Col, Row } from 'react-bootstrap';
+import Store from '../pages/Store';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signout" element={<SignOut />} />
             <Route path="/setup" element={<ProtectedRoute><Setup /></ProtectedRoute>} />
+            <Route path="/store" element={<ProtectedRoute><Store /></ProtectedRoute>} />
             <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
             <Route path="/challenges" element={<ProtectedRoute><ListChallenges /></ProtectedRoute>} />
             <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />

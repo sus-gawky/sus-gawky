@@ -7,7 +7,7 @@ import {
   BoxArrowRight,
   Building,
   Globe2, House,
-  PersonCircle,
+  PersonCircle, Shop,
   Stars,
 } from 'react-bootstrap-icons';
 import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar';
@@ -111,6 +111,18 @@ const NavBar = () => {
               <MenuItem className="mt-3" icon={<Globe2 size={50} />}>
                 <Nav.Link as={NavLink} to="/map">
                   <h4 className="text-center">World View</h4>
+                </Nav.Link>
+              </MenuItem>
+            </OverlayTrigger>,
+            <OverlayTrigger
+              placement="right"
+              key="k-7"
+              delay={{ show: 250, hide: 200 }}
+              overlay={<Tooltip>Store</Tooltip>}
+            >
+              <MenuItem className="mt-3" icon={<Shop size={50} />}>
+                <Nav.Link as={NavLink} to="/store">
+                  <h4 className="text-center">Store</h4>
                 </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
