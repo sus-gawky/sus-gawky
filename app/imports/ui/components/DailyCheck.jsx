@@ -77,25 +77,26 @@ const calcMiscScore = (plasticTrash) => {
   return points < 0 ? 0 : points;
 };
 
-// On submit, insert the data.
-const submit = (data) => {
-  // Will use these variables to calculate scores
-  // eslint-disable-next-line no-unused-vars
-  const { foodWasted, minutesShowering, mainProteinType, milesTraveled, modeOfTransport, plasticTrash } = data;
-  const owner = Meteor.user().username;
-
-  const foodScore = calcFoodScore(foodWasted, minutesShowering, mainProteinType);
-  const transportationScore = calcTransportationScore(milesTraveled, modeOfTransport);
-  const miscScore = calcMiscScore(plasticTrash);
-  const fullScore = foodScore + transportationScore + miscScore;
-  Meteor.call('dailyCheckIn', owner, fullScore, foodScore, transportationScore, miscScore);
-};
-
 const DailyCheck = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // On submit, insert the data.
+  const submit = (data) => {
+    // Will use these variables to calculate scores
+    // eslint-disable-next-line no-unused-vars
+    const { foodWasted, minutesShowering, mainProteinType, milesTraveled, modeOfTransport, plasticTrash } = data;
+    const owner = Meteor.user().username;
+
+    const foodScore = calcFoodScore(foodWasted, minutesShowering, mainProteinType);
+    const transportationScore = calcTransportationScore(milesTraveled, modeOfTransport);
+    const miscScore = calcMiscScore(plasticTrash);
+    const fullScore = foodScore + transportationScore + miscScore;
+    Meteor.call('dailyCheckIn', owner, fullScore, foodScore, transportationScore, miscScore);
+    handleClose();
+  };
 
   return (
     <>

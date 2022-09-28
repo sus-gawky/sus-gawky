@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Meteor } from 'meteor/meteor';
 import { Card } from 'react-bootstrap';
 import { AutoField, AutoForm, ErrorsField, SubmitField } from 'uniforms-bootstrap5';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -15,30 +14,31 @@ const formSchema = new SimpleSchema({
 });
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-// On submit, insert the data.
-const submit = (data) => {
-  // Will use these variables to calculate scores
-  // eslint-disable-next-line no-unused-vars
-  const { tip } = data;
-  const id = 9;
-
-  Tips.collection.insert(
-    { tip, id },
-    (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Your tip has been recorded successfully', 'success');
-      }
-    },
-  );
-};
-
 const TipSubmission = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // On submit, insert the data.
+  const submit = (data) => {
+    // Will use these variables to calculate scores
+    // eslint-disable-next-line no-unused-vars
+    const { tip } = data;
+    const id = 9;
+
+    Tips.collection.insert(
+      { tip, id },
+      (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Your tip has been recorded successfully', 'success');
+        }
+      },
+    );
+    handleClose();
+  };
 
   return (
     <>
