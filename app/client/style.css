@@ -13,10 +13,12 @@
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
   height: 100%;
+  font-family: 'Advent Pro';
 }
 
 html {
   height: 100%;
+  font-family: 'Advent Pro';
 }
 
 /* Set the alert background on the signin and signup pages. */
@@ -33,12 +35,12 @@ html {
 }
 
 .fredoka-one { 
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Advent Pro';
   font-size: 3.3em;
 }
 
 .fredoka-one.goals {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Advent Pro';
   font-size: 1.5em;
 }
 
@@ -416,6 +418,10 @@ Leaderboard
 }
 
 .homeButtons {
-  width: 35%;
-  height: 150%;
+  width: 55%;
+  height: 55%;
+}
+
+.goalItems {
+  font-size: large;
 }

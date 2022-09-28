@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Renders a unity iframe */
-const style = { 'border-radius': '20px', overflow: 'hidden' };
-const srcs = ['https://itch.io/embed-upload/6186209?color=577139'];
-const hrefs = ['https://alyssiachen.itch.io/pomegranate-baby'];
+const style = { overflow: 'hidden'};
+const srcs = [0, 0, 0, 0, 'https://itch.io/embed-upload/6566421?color=e3f1d4'];
+const hrefs = [0, 0, 0, 0, 'https://alyssiachen.itch.io/gawkysaur'];
 
 const UnityFrame = ({ score }) => (
   <div style={style}>
-    <iframe frameBorder="0.1" src={srcs[score]} allowFullScreen="" width="100%" height="280" title="unity">
+    <iframe frameBorder="0" src={srcs[Math.ceil(score / 10 / 2) - 1]} allowFullScreen="" width="320em" height="320em" title="unity">
       <a href={hrefs[score]}>Play Pomegranate Baby on itch.io</a>
     </iframe>
   </div>
