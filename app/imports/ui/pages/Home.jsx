@@ -21,8 +21,7 @@ const Home = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    console.log(Meteor.user().username);
-    const ownerItem = Meteor.user().username;
+    const ownerItem = Meteor.user() == null ? null : Meteor.user().username;
     const userItems = Users.collection.find({}).fetch();
     const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
     return {
@@ -50,7 +49,7 @@ const Home = () => {
       </Row>
       <Row className="mt-4">
         <Col xs={8} className="d-flex justify-content-center">
-          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em' }}>
+          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em', borderRadius: '1%' }}>
             <h2>Challenges<span style={{ float: 'right' }}><AddChallengeModal /></span></h2>
 
             {createFakeGoals().map((data, index) => (
@@ -74,13 +73,11 @@ const Home = () => {
             ))}
           </div>
         </Col>
-        <Col className="d-flex justify-content-center" style={{ paddingRight: '1em' }}>
-
-        </Col>
+        <Col className="d-flex justify-content-center" style={{ paddingRight: '1em' }} />
       </Row>
       <Row className="mt-3">
         <Col className="d-flex justify-content-center">
-          <UnityFrame score={100} givenWidth='640em' givenHeight='300em'/>
+          <UnityFrame score={100} givenWidth="640em" givenHeight="300em" />
         </Col>
         <Col>
           <Row style={{ height: '50%', marginTop: '3em' }}>
@@ -98,7 +95,7 @@ const Home = () => {
           </Row>
           <Row style={{ height: '50%' }}>
             <Col className="d-flex justify-content-center">
-              <h2>"Tip of the day" - Albert Einstein</h2>
+              <h2>&quot;Tip of the day&quot; - Albert Einstein</h2>
             </Col>
           </Row>
         </Col>

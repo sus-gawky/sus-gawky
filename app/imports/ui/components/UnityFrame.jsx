@@ -18,9 +18,9 @@ const UnityFrame = ({ score, givenWidth = '320', givenHeight='320' }) => (
 UnityFrame.propTypes = {
   score: PropTypes.number.isRequired,
   // eslint-disable-next-line react/require-default-props
-  givenWidth: PropTypes.number,
+  givenWidth: PropTypes.string,
   // eslint-disable-next-line react/require-default-props
-  givenHeight: PropTypes.number,
+  givenHeight: PropTypes.string,
 };
 
 export default UnityFrame;
