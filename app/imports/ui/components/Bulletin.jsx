@@ -50,14 +50,14 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
           <Card.Text style={{ textAlign: 'left' }}>
             {message}
           </Card.Text>
-          <Accordion style={{ paddingLeft: 0 }}>
+          <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Comments</Accordion.Header>
-              <Accordion.Body>
+              <Accordion.Body style={{ padding: 0 }}>
                 {bulletin.comments.map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
                 <AutoForm schema={bridge} onSubmit={data => submit(data)}>
                   <LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
-                  <SubmitField />
+                  <SubmitField style={{ textAlign: 'left' }} />
                 </AutoForm>
               </Accordion.Body>
             </Accordion.Item>

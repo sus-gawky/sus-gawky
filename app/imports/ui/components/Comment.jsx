@@ -14,7 +14,7 @@ const Comment = ({ comment, currentUser, users }) => {
   return (
     (
       <Card>
-        <Row>
+        <Row style={{ paddingLeft: 8, paddingRight: 8, paddingTop: 5 }}>
           <Col md="auto">
             <Card.Subtitle style={{ textAlign: 'left', color: color }}>{nameDisplayed}</Card.Subtitle>
           </Col>
@@ -22,7 +22,7 @@ const Comment = ({ comment, currentUser, users }) => {
             <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(comment.createdAt)}</Card.Subtitle>
           </Col>
         </Row>
-        <Row>
+        <Row style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 20 }}>
           {comment.text}
         </Row>
       </Card>
