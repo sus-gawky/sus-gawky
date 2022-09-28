@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import { SlackSelector } from 'react-reactions/src';
 import { Praise } from '../../api/praise/Praise';
 import AddPraiseModal from '../components/AddPraiseForm';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -19,29 +19,47 @@ const Praises = () => {
     };
   });
 
+  const colorMatch = (type) => {
+    const styles = {};
+    switch (type) {
+    case 'Shopping':
+      styles.borderColor = 'yellow';
+      break;
+    case 'Food':
+      styles.borderColor = 'lightgreen';
+      break;
+    case 'Transportation':
+      styles.borderColor = 'lightblue';
+      break;
+    default:
+      break;
+    }
+    return styles;
+  };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   return ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Col className="text-center"><h2>Praises</h2></Col>
           <Col>
             <AddPraiseModal />
           </Col>
           <Col>
-            <>
+            <Container style={{ backgroundColor: '#F5F5F5' }}>
               {praises.map((praise) => (
-                <Card>
+                <Card style={colorMatch(praise.category)} className="my-3">
                   <Card.Body>
-                    Some Text
+                    Date Created: {praise.dateCreated.toLocaleDateString()}
+                  </Card.Body>
+                  <Card.Body>
+                    {praise.comment}
                   </Card.Body>
                   <Card.Footer>
-                    Name
-                    like emoji
+                    <SlackSelector />
                   </Card.Footer>
                 </Card>
               ))}
-            </>
+            </Container>
           </Col>
         </Col>
       </Row>
