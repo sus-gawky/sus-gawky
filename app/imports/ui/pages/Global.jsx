@@ -1,10 +1,26 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { GoogleMap, Polygon, useLoadScript } from '@react-google-maps/api';
 import { ListGroup, Offcanvas, Spinner } from 'react-bootstrap';
 import axios from 'axios';
+import { useTracker } from 'meteor/react-meteor-data';
 import apiKey from '../../../apiKey.json';
+import Functions from '../../api/functions/functions';
+import { Users } from '../../api/user/User';
 
 const Global = () => {
+  const { ready, currentUser, users } = useTracker(() => {
+    const subscription = Meteor.subscribe(Users.userPublicationName);
+    // Determine if the subscription is ready
+    const rdy = subscription.ready();
+    const userItems = Users.collection.find({}).fetch();
+    const currentUserItem = userItems.filter((user) => (user.owner === Meteor.user().username))[0];
+    return {
+      currentUser: currentUserItem,
+      users: userItems,
+      ready: rdy,
+    };
+  }, []);
   const [showOverlay, setShowOverlay] = useState(false);
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
@@ -13,6 +29,17 @@ const Global = () => {
     id: 'google-map-script',
     googleMapsApiKey: apiKey['react-maps-api-key'],
   });
+  console.log('calling avPoints');
+  console.log(Functions.avPoints(11111, users));
+  console.log('calling avFoodScore');
+  console.log(Functions.avFoodScore(11111, users));
+  console.log('calling avFullScore');
+  console.log(Functions.avFullScore(11111, users));
+  console.log('calling avTransporationScore');
+  console.log(Functions.avTransportationScore(11111, users));
+  console.log('calling avMiscScore');
+  console.log(Functions.avMiscScore(11111, users));
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -67,7 +94,7 @@ const Global = () => {
     return returnArr;
   };
   const center = useMemo(() => ({ lat, lng }), [lat, lng]);
-  return isLoaded ? (
+  return (isLoaded && ready) ? (
     <>
       <GoogleMap
         mapContainerStyle={{ width: '100vw', height: '100vh' }}

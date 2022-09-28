@@ -30,20 +30,22 @@ const Neighbors = () => {
   return (ready ? (
     <Container id="neighbors-page" fluid className="py-3">
       <Row className="align-middle">
-        <Col xs={12} className="fredoka-one text-center">
-          Neighborhood
+        <Col xs={12} className="title">
+          Zip Code: {currentUser.zipCode}
         </Col>
       </Row>
       <Row className="align-middle text-center">
-        <Col xs={3} className="d-flex flex-column justify-content-center">
-          <UnityFrame score={0} />
-          <Button variant="success">Score</Button>
-        </Col>
-        <Col xs={5} className="d-flex flex-column justify-content-center">
+        <Col xs={6} className="d-flex flex-column justify-content-top" syle={{ paddingTop: 0 }}>
           <BulletinBoard />
         </Col>
-        <Col xs={4} className="d-flex flex-column justify-content-center">
-          <LeaderBoard />
+        <Col xs={5} className="d-flex flex-column justify-content-top">
+          <Row>
+            <LeaderBoard />
+          </Row>
+          <Row>
+            <UnityFrame score={0} />
+            <Button variant="success">Score</Button>
+          </Row>
         </Col>
       </Row>
     </Container>

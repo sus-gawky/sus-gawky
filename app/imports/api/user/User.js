@@ -103,17 +103,8 @@ const dailyCheckInPointsAdd = 10;
 
 Meteor.methods({
   // eslint-disable-next-line meteor/audit-argument-checks
-  'getCurrentPoints'(owner) {
-    console.log('getCurrentPoints');
-    return Users.collection.find({ owner: owner });
-  },
-
-  // eslint-disable-next-line meteor/audit-argument-checks
   'dailyCheckIn'(owner, fullScore, foodScore, transportationScore, miscScore) {
     console.log(`dailyCheckIn ${owner} ${fullScore} ${foodScore} ${transportationScore} ${miscScore}`);
-   // const newPoints = Meteor.call('getCurrentPoints', owner) + dailyCheckInPointsAdd;
-    //console.log(Meteor.call('getCurrentPoints', owner));
-
     Users.collection.update(
       { owner: owner },
       { $set: { fullScore, foodScore, transportationScore, miscScore },
