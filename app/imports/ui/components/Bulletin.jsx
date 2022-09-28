@@ -71,9 +71,9 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
 };
 
 Bulletin.propTypes = {
-  bulletin: PropTypes.objectOf.isRequired,
-  currentUser: PropTypes.objectOf.isRequired,
-  users: PropTypes.arrayOf.isRequired,
+  bulletin: PropTypes.object.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired,
 };
 
 export default Bulletin;
