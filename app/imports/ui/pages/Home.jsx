@@ -43,7 +43,7 @@ const Home = () => {
     <Container style={{ backgroundColor: '#F5F5F5' }}>
       <Row className="fredoka-one">
         <Col className="d-flex justify-content-center">Welcome, {currentUser.firstName} {currentUser.lastName}</Col>
-        <h1>Points {currentUser.points}</h1>
+        <h1>Points: {currentUser.points}</h1>
       </Row>
       <Row className="mt-4">
         <Col className="d-flex justify-content-center">

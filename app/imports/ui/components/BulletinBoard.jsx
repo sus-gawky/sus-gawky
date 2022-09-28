@@ -49,7 +49,7 @@ const BulletinBoard = () => {
   const bridge = new SimpleSchema2Bridge(schema);
   return (ready ? (
     <Container>
-      <h2>Neighborhood Chat</h2>
+      <h2 className="fredoka-one goals mt-5">Local Forum</h2>
       <div className="overflow-scroll" style={{ height: 400 }}>
         {bulletins.reverse().map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
       </div>

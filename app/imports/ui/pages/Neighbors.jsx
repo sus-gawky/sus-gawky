@@ -30,7 +30,7 @@ const Neighbors = () => {
   return (ready ? (
     <Container id="neighbors-page" fluid className="py-3">
       <Row className="align-middle">
-        <Col xs={12} className="title">
+        <Col xs={12} className="fredoka-one text-center">
           Neighborhood
         </Col>
       </Row>
