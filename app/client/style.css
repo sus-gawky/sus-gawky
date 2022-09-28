@@ -40,8 +40,8 @@ html {
 }
 
 .card {
-  width: 80% !important;
-  margin: 20px;
+  width: 100%;
+  margin: 0px;
 }
 
 .fredoka-one { 

@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -56,14 +56,14 @@ const BulletinBoard = () => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
-              <Card.Header closeButton>
+          <Card>
+            <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+              <Card.Header>
                 <Card.Title>Create a post</Card.Title>
               </Card.Header>
               <Card.Body>
-                <TextField name="subject" placeholder="What do you want to talk about?" autoComplete="off" />
-                <TextField name="message" placeholder="Elaborate here..." autoComplete="off" />
+                <TextField name="subject" label="Title" placeholder="What do you want to talk about?" autoComplete="off" />
+                <LongTextField name="message" label="Body" placeholder="Elaborate here..." autoComplete="off" />
                 <ErrorsField />
               </Card.Body>
               <Card.Footer>
@@ -78,8 +78,8 @@ const BulletinBoard = () => {
                   </Col>
                 </Row>
               </Card.Footer>
-            </Card>
-          </AutoForm>
+            </AutoForm>
+          </Card>
         </Modal>
       </>
       <hr />
