@@ -4,7 +4,11 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Users } from '../../api/user/User';
 import { Bulletins } from '../../api/bulletin/Bulletin';
 import { Challenges } from '../../api/challenge/Challenge';
+<<<<<<< HEAD
 import { Praise } from '../../api/praise/Praise';
+=======
+import { Tips } from '../../api/tip/Tips';
+>>>>>>> 22145b37154cb5c39cfb39accdf073b935bd2d22
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -89,6 +93,13 @@ Meteor.publish(Users.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Users.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Tips.userPublicationName, function () {
+  if (this.userId) {
+    return Tips.collection.find();
   }
   return this.ready();
 });
