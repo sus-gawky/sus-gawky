@@ -12,11 +12,16 @@
   ],
 
   "Users":[
-    { "firstName": "John", "lastName": "Smith", "owner": "john@foo.com", "zipCode": 11111, "city": "aiea",
-      "points": 83, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
-    { "firstName": "Steve", "lastName": "Jobs", "owner": "admin@foo.com", "zipCode": 11111, "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "city": "waimalu", "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 }
+    { "firstName": "John", "lastName": "Smith", "owner": "john@foo.com", "zipCode": 96701, "city": "aiea", "points": 83, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Steve", "lastName": "Jobs", "owner": "admin@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Beve", "lastName": "Jobs", "owner": "admins@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Beve", "lastName": "Jobs", "owner": "adminss@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Beve", "lastName": "Jobs", "owner": "adminsss@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Beve", "lastName": "Jobs", "owner": "adminssss@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Beve", "lastName": "Jobs", "owner": "adminsssss@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
+    { "firstName": "Test", "lastName": "Test2", "owner": "test@foo.com", "zipCode": 96782, "city": "waimalu", "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 }
     ],
-
+  
   "challenges": [
     { "challenge": "Water Bottles",
       "description": "Use less water bottles",

@@ -26,32 +26,32 @@ class Functions {
     return returnString;
   };
 
-  static avPoints = (city, users) => {
-    let result = users.filter(user => user.city === city);
+  static avPoints = (zipCode, users) => {
+    let result = users.filter(user => user.zipCode === zipCode);
     result = result.map((user) => user.points).reduce((a, b) => a + b, 0) / result.length;
     return result;
   };
 
-  static avFoodScore = (city, users) => {
-    let result = users.filter(user => user.city === city);
+  static avFoodScore = (zipCode, users) => {
+    let result = users.filter(user => user.zipCode === zipCode);
     result = result.map((user) => user.foodScore).reduce((a, b) => a + b, 0) / result.length;
     return result;
   };
 
-  static avMiscScore = (city, users) => {
-    let result = users.filter(user => user.city === city);
+  static avMiscScore = (zipCode, users) => {
+    let result = users.filter(user => user.zipCode === zipCode);
     result = result.map((user) => user.miscScore).reduce((a, b) => a + b, 0) / result.length;
     return result;
   };
 
-  static avTransportationScore = (city, users) => {
-    let result = users.filter(user => user.city === city);
+  static avTransportationScore = (zipCode, users) => {
+    let result = users.filter(user => user.zipCode === zipCode);
     result = result.map((user) => user.transportationScore).reduce((a, b) => a + b, 0) / result.length;
     return result;
   };
 
-  static avFullScore = (city, users) => {
-    let result = users.filter(user => user.city === city);
+  static avFullScore = (zipCode, users) => {
+    let result = users.filter(user => user.zipCode === zipCode);
     result = result.map((user) => user.fullScore).reduce((a, b) => a + b, 0) / result.length;
     return result;
   };
