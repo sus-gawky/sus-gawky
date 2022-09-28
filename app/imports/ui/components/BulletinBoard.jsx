@@ -49,9 +49,8 @@ const BulletinBoard = () => {
     Bulletins.collection.insert({ subject, message, from, createdAt, zipCode, comments });
   };
   return (ready ? (
-    <Container>
-      <h2>Neighborhood Chat</h2>
-      <div className="overflow-scroll" style={{ height: 400, width: 600 }}>
+    <Container style={{ padding: 0 }}>
+      <div style={{ height: '100%', width: '100%' }}>
         {bulletins.reverse().map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
       </div>
       <>

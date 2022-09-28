@@ -18,7 +18,8 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
   const from = users.filter(user => (user.owner === bulletin.from))[0];
   const ownMessage = bulletin.from === currentUser.owner;
   const color = ownMessage ? 'green' : 'black';
-  const nameDisplayed = `${from.firstName} ${from.lastName}`;
+  let nameDisplayed = `${from.firstName} ${from.lastName}`;
+  nameDisplayed += ownMessage ? ' (you)' : '';
   const schema = new SimpleSchema({
     text: String,
   });

@@ -10,7 +10,8 @@ const Comment = ({ comment, currentUser, users }) => {
   const from = users.filter(user => (user.owner === comment.from))[0];
   const ownComment = comment.from === currentUser.owner;
   const color = ownComment ? 'green' : 'black';
-  const nameDisplayed = `${from.firstName} ${from.lastName}`;
+  let nameDisplayed = `${from.firstName} ${from.lastName}`;
+  nameDisplayed += ownComment ? ' (you)' : '';
   return (
     (
       <Card>
