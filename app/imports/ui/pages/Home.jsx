@@ -10,6 +10,7 @@ import SpecialCheck from '../components/SpecialCheck';
 import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
+import LeaderBoard from '../components/LeaderBoard';
 
 const Home = () => {
   const { ready, currentUser, owner, users } = useTracker(() => {
@@ -74,30 +75,12 @@ const Home = () => {
           </div>
         </Col>
         <Col className="d-flex justify-content-center" style={{ paddingRight: '1em' }}>
-          <UnityFrame score={100} />
+
         </Col>
       </Row>
       <Row className="mt-3">
         <Col className="d-flex justify-content-center">
-          <div className="score-card">
-            <Carousel>
-              <Carousel.Item interval={1500}>
-                <div className="score-card">
-                  Green card one
-                </div>
-              </Carousel.Item>
-              <Carousel.Item interval={1500}>
-                <div className="score-card">
-                  Green card two
-                </div>
-              </Carousel.Item>
-              <Carousel.Item interval={1500}>
-                <div className="score-card">
-                  Green card three
-                </div>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+          <UnityFrame score={100} givenWidth='640em' givenHeight='300em'/>
         </Col>
         <Col>
           <Row style={{ height: '50%', marginTop: '3em' }}>
