@@ -2,15 +2,14 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Users } from '../../api/user/User';
 import BulletinBoard from '../components/BulletinBoard';
 import UnityFrame from '../components/UnityFrame';
 import LoadingSpinner from '../components/LoadingSpinner';
-import LeaderBoard from '../components/LeaderBoard';
 import Functions from '../../api/functions/functions';
+import NeighborLeaderBoard from '../components/NeighborLeaderBoard';
 
 /* A simple static component to render some text for the landing page. */
 const Neighbors = () => {
@@ -49,7 +48,7 @@ const Neighbors = () => {
           <Navbar sticky="top">
             <Stack>
               <div>
-                <LeaderBoard className="mb-5" />
+                <NeighborLeaderBoard className="mb-5" />
               </div>
             </Stack>
           </Navbar>

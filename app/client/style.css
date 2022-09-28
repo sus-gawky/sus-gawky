@@ -77,18 +77,21 @@ html {
   font-size: xxx-large;
 }
 
-#leader-carousel {
-  width:640px;
+#home-leader-carousel {
+  width:30em !important;
   height:500px;
   background-color: darkseagreen;
   border-radius: 20px 20px 20px 20px;
   overflow: hidden;
 }
 
-.center-block {
-  position: absolute;
-  top: 25%;
-  left: 55%;
+#neighbor-leader-carousel {
+  width:640px !important;
+  height:500px;
+  left: 13%;
+  background-color: darkseagreen;
+  border-radius: 20px 20px 20px 20px;
+  overflow: hidden;
 }
 
 /*--------------------
@@ -464,7 +467,7 @@ Leaderboard
   margin-right: 0em;
 }
 .ribbon {
-  background: hsl(30, 90%, 65%) url(http://portfolio.queenofwhisks.com/demo/overlay/noise.png);
+  background: hsl(115, 27%, 64%);
   box-shadow: 2px 6px 12px rgba(0,0,0,0.5);
   font-family: Charter, serif;
   font-size: 16px;
@@ -477,7 +480,7 @@ Leaderboard
 }
 .ribbon:before,
 .ribbon:after {
-  border: 1.5em solid hsl(30, 82%, 62%);
+  border: 1.5em solid hsl(115.2, 26.5%, 54.1%);
   content: '';
   display: block;
   position: absolute;
@@ -497,8 +500,8 @@ Leaderboard
   box-shadow: -2px 2px 2px rgba(0,0,0,0.5);
 }
 .ribbon-content {
-  border-top: 0.0625em dashed hsl(30, 90%, 44%);
-  border-bottom: 0.0625em dashed hsl(30, 90%, 44%);
+  border-top: 0.0625em dashed hsl(114.3, 26.6%, 39%);
+  border-bottom: 0.0625em dashed hsl(114.3, 26.6%, 39%);
   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.08), inset 0px -1px 1px rgba(255,255,255,0.08), 0px -1px 1px rgba(255,255,255,0.2), 0px 1px 1px rgba(0,0,0,0.08);
   display: block;
   padding: 0.6875em 0;
@@ -509,7 +512,7 @@ Leaderboard
   display: block;
   position: absolute;
   border-style: solid;
-  border-color: hsl(30, 80%, 40%) transparent transparent transparent;
+  border-color: hsl(114, 27%, 29%) transparent transparent transparent;
   bottom: -1em;
 }
 .ribbon-content:before {

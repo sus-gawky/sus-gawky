@@ -3,8 +3,8 @@ import { Carousel } from 'react-bootstrap';
 import { EmojiAngry, EmojiNeutral, EmojiSmile, Trophy } from 'react-bootstrap-icons';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
-const LeaderBoard = () => (
-  <Carousel id="leader-carousel" className="ms-2" variant="dark" style={{ width: '45.5em' }}>
+const HomeLeaderBoard = () => (
+  <Carousel id="home-leader-carousel" className="ms-2" variant="dark" style={{ width: '45.5em' }}>
     <Carousel.Item className="leader-body">
       <div className="leaderboard">
         <h1>
@@ -119,4 +119,4 @@ const LeaderBoard = () => (
   </Carousel>
 );
 
-export default LeaderBoard;
+export default HomeLeaderBoard;
