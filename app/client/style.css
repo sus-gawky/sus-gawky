@@ -545,3 +545,45 @@ Leaderboard
 .underpage p:last-child {
   margin-bottom: 0;
 }
+
+#landing-page {
+
+  /*background: url('https://t4.ftcdn.net/jpg/03/03/48/83/240_F_303488381_JhSyhTrrQbJXmrFrKE9VZisLebc5JLoT.jpg') no-repeat center center fixed;
+  background: url('https://w7.pngwing.com/pngs/534/405/png-transparent-water-below-mountains-ed-art-illustration-katunskiy-khrebet-cartoon-illustration-cartoon-mountains-lake-cartoon-character-leaf-landscape.png') no-repeat center center fixed;
+  background: url('https://wallpapercave.com/wp/wp9689089.jpg') no-repeat center center fixed;*/
+
+  background-color: skyblue;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  transform: translateZ(0) scale(1, 1);
+
+  /* Preserve aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.translateGawkysaur{
+  height: 100px;
+  width: 100px;
+  transition: 0.5s;
+  animation: Gawkysaurmove 40s infinite;
+}
+
+@keyframes Gawkysaurmove{
+  0% {
+    transform: translateX(100px) rotateY(0deg);
+  }
+  49% {
+    transform: translateX(1500px) rotateY(0deg);
+  }
+  50% {
+    transform: translateX(1500px) rotateY(180deg);
+  }
+  100% {
+    transform: translateX(100px) rotateY(180deg);
+  }
+}

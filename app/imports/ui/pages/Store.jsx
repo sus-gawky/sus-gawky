@@ -28,7 +28,7 @@ const Store = () => {
 
   return (ready ? (
     <div>
-      <Container id="landing-page" fluid className="py-3">
+      <Container id="store-page" fluid className="py-3">
         <Row className="align-middle text-center">
           <Col />
           <Col />
