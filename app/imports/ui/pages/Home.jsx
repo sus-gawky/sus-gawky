@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Carousel, Col, Container, Form, Nav, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Nav, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -10,6 +10,7 @@ import SpecialCheck from '../components/SpecialCheck';
 import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
+import HomeLeaderBoard from '../components/HomeLeaderBoard';
 
 const Home = () => {
   const { ready, currentUser, owner, users } = useTracker(() => {
@@ -20,8 +21,7 @@ const Home = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    console.log(Meteor.user().username);
-    const ownerItem = Meteor.user().username;
+    const ownerItem = Meteor.user() == null ? null : Meteor.user().username;
     const userItems = Users.collection.find({}).fetch();
     const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
     return {
@@ -49,7 +49,7 @@ const Home = () => {
       </Row>
       <Row className="mt-4">
         <Col xs={8} className="d-flex justify-content-center">
-          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em' }}>
+          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em', borderRadius: '1%' }}>
             <h2>Challenges<span style={{ float: 'right' }}><AddChallengeModal /></span></h2>
 
             {createFakeGoals().map((data, index) => (
@@ -73,31 +73,13 @@ const Home = () => {
             ))}
           </div>
         </Col>
-        <Col className="d-flex justify-content-center" style={{ paddingRight: '1em' }}>
-          <UnityFrame score={100} />
+        <Col xs={4} className="d-flex justify-content-center" style={{ paddingRight: '1em' }}>
+          <HomeLeaderBoard />
         </Col>
       </Row>
       <Row className="mt-3">
         <Col className="d-flex justify-content-center">
-          <div className="score-card">
-            <Carousel>
-              <Carousel.Item interval={1500}>
-                <div className="score-card">
-                  Green card one
-                </div>
-              </Carousel.Item>
-              <Carousel.Item interval={1500}>
-                <div className="score-card">
-                  Green card two
-                </div>
-              </Carousel.Item>
-              <Carousel.Item interval={1500}>
-                <div className="score-card">
-                  Green card three
-                </div>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+          <UnityFrame score={100} givenWidth="640em" givenHeight="300em" />
         </Col>
         <Col>
           <Row style={{ height: '50%', marginTop: '3em' }}>
@@ -115,7 +97,7 @@ const Home = () => {
           </Row>
           <Row style={{ height: '50%' }}>
             <Col className="d-flex justify-content-center">
-              <h2>"Tip of the day" - Albert Einstein</h2>
+              <h2>&quot;Tip of the day&quot; - Albert Einstein</h2>
             </Col>
           </Row>
         </Col>

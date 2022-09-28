@@ -71,26 +71,26 @@ html {
 }
 
 #neighbors-page {
-  background-color: #f8f8f5;
-  height: 100%;
 }
 
 .title {
   font-size: xxx-large;
 }
 
-#leader-carousel {
-  width:640px;
+#home-leader-carousel {
+  width:30em !important;
   height:500px;
   background-color: darkseagreen;
   border-radius: 20px 20px 20px 20px;
   overflow: hidden;
 }
 
-.center-block {
-  position: absolute;
-  top: 25%;
-  left: 55%;
+#neighbor-leader-carousel {
+  width:640px !important;
+  height:500px;
+  background-color: darkseagreen;
+  border-radius: 20px 20px 20px 20px;
+  overflow: hidden;
 }
 
 /*--------------------
@@ -466,7 +466,7 @@ Leaderboard
   margin-right: 0em;
 }
 .ribbon {
-  background: hsl(30, 90%, 65%) url(http://portfolio.queenofwhisks.com/demo/overlay/noise.png);
+  background: hsl(115, 27%, 64%);
   box-shadow: 2px 6px 12px rgba(0,0,0,0.5);
   font-family: Charter, serif;
   font-size: 16px;
@@ -479,7 +479,7 @@ Leaderboard
 }
 .ribbon:before,
 .ribbon:after {
-  border: 1.5em solid hsl(30, 82%, 62%);
+  border: 1.5em solid hsl(115.2, 26.5%, 54.1%);
   content: '';
   display: block;
   position: absolute;
@@ -499,8 +499,8 @@ Leaderboard
   box-shadow: -2px 2px 2px rgba(0,0,0,0.5);
 }
 .ribbon-content {
-  border-top: 0.0625em dashed hsl(30, 90%, 44%);
-  border-bottom: 0.0625em dashed hsl(30, 90%, 44%);
+  border-top: 0.0625em dashed hsl(114.3, 26.6%, 39%);
+  border-bottom: 0.0625em dashed hsl(114.3, 26.6%, 39%);
   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.08), inset 0px -1px 1px rgba(255,255,255,0.08), 0px -1px 1px rgba(255,255,255,0.2), 0px 1px 1px rgba(0,0,0,0.08);
   display: block;
   padding: 0.6875em 0;
@@ -511,7 +511,7 @@ Leaderboard
   display: block;
   position: absolute;
   border-style: solid;
-  border-color: hsl(30, 80%, 40%) transparent transparent transparent;
+  border-color: hsl(114, 27%, 29%) transparent transparent transparent;
   bottom: -1em;
 }
 .ribbon-content:before {
@@ -546,4 +546,52 @@ Leaderboard
 }
 .underpage p:last-child {
   margin-bottom: 0;
+}
+
+#landing-page {
+
+  /*background: url('https://t4.ftcdn.net/jpg/03/03/48/83/240_F_303488381_JhSyhTrrQbJXmrFrKE9VZisLebc5JLoT.jpg') no-repeat center center fixed;
+  background: url('https://w7.pngwing.com/pngs/534/405/png-transparent-water-below-mountains-ed-art-illustration-katunskiy-khrebet-cartoon-illustration-cartoon-mountains-lake-cartoon-character-leaf-landscape.png') no-repeat center center fixed;
+  background: url('https://wallpapercave.com/wp/wp9689089.jpg') no-repeat center center fixed;*/
+
+  background-color: skyblue;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: '0 0 0 0';
+  /* Preserve aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.translateGawkysaur{
+  height: 100px;
+  width: 100px;
+  transition: 0.5s;
+  animation: Gawkysaurmove 50s infinite;
+}
+
+@keyframes Gawkysaurmove{
+  0% {
+    transform: translateX(100px) rotateY(0deg);
+  }
+  49% {
+    transform: translateX(1500px) rotateY(0deg);
+  }
+  50% {
+    transform: translateX(1500px) rotateY(180deg);
+  }
+  100% {
+    transform: translateX(100px) rotateY(180deg);
+  }
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
 }

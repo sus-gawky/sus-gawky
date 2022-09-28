@@ -14,19 +14,21 @@ const Comment = ({ comment, currentUser, users }) => {
   nameDisplayed += ownComment ? ' (you)' : '';
   return (
     (
-      <Card>
-        <Row style={{ paddingLeft: 8, paddingRight: 8, paddingTop: 5 }}>
+      <div>
+        <Row className="mt-3 goalItems" style={{ paddingLeft: 8, paddingRight: 8, paddingTop: 5 }}>
           <Col md="auto">
-            <Card.Subtitle style={{ textAlign: 'left', color: color }}>{nameDisplayed}</Card.Subtitle>
+            <div className="subTitle" style={{ textAlign: 'left', color: color, fontSize: 'small' }}>{nameDisplayed}</div>
           </Col>
           <Col>
-            <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(comment.createdAt)}</Card.Subtitle>
+            <div className="mb-2 text-muted" style={{ textAlign: 'left', fontSize: 'small' }}> - posted {Functions.timeDisplay(comment.createdAt)}
+            </div>
           </Col>
         </Row>
-        <Row style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 20 }}>
+        <Row style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 0, fontSize: 'medium' }}>
           {comment.text}
         </Row>
-      </Card>
+        <hr />
+      </div>
     ));
 };
 

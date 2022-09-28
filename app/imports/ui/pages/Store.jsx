@@ -28,7 +28,7 @@ const Store = () => {
 
   return (ready ? (
     <div>
-      <Container id="landing-page" fluid className="py-3">
+      <Container id="store-page" fluid className="py-3">
         <Row className="align-middle text-center">
           <Col />
           <Col />
@@ -54,7 +54,7 @@ const Store = () => {
           <div id="bottom">
             <header className="ribbon-container">
               <h2 className="ribbon">
-                <span className="ribbon-content">For personal or charitable fun</span>
+                <span className="ribbon-content" style={{ fontFamily: 'advent pro' }}>For personal or charitable fun</span>
               </h2>
             </header>
           </div>

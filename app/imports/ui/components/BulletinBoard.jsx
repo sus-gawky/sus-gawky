@@ -50,9 +50,6 @@ const BulletinBoard = () => {
   };
   return (ready ? (
     <Container style={{ padding: 0 }}>
-      <div style={{ height: '100%', width: '100%' }}>
-        {bulletins.reverse().map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
-      </div>
       <>
         <Button variant="primary" onClick={handleShow}>
           Create Post
@@ -85,6 +82,10 @@ const BulletinBoard = () => {
           </AutoForm>
         </Modal>
       </>
+      <hr />
+      <div style={{ height: '100%', width: '100%' }}>
+        {bulletins.reverse().map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
+      </div>
     </Container>
   ) : <LoadingSpinner />);
 };

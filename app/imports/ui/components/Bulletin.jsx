@@ -29,7 +29,6 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
     const createdAt = new Date();
     const comments = bulletin.comments;
     comments.push({ text: text, from: currentUser.owner, createdAt: createdAt });
-    console.log(comments);
     Bulletins.collection.update(
       { _id: bulletin._id },
       { $set: { comments } },
@@ -39,34 +38,39 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
   let fRef = null;
   return (
     (
-      <Card style={{ width: '100%' }}>
-        <Card.Body>
+      <div className="fredoka-one goals" style={{ width: '100%' }}>
+        <div>
           <Row>
             <Col md="auto">
-              <Card.Subtitle style={{ textAlign: 'left', color: color }}>{nameDisplayed}</Card.Subtitle>
+              <div className="mt-3 goalItems" style={{ textAlign: 'left', color: color }}>{nameDisplayed}</div>
             </Col>
             <Col>
-              <Card.Subtitle className="mb-2 text-muted" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(bulletin.createdAt)}</Card.Subtitle>
+              <div className="mt-3 goalItems" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(bulletin.createdAt)}</div>
             </Col>
           </Row>
-          <Card.Title style={{ textAlign: 'left' }}>{subject}</Card.Title>
-          <Card.Text style={{ textAlign: 'left' }}>
+          <div className="title" style={{ textAlign: 'left', fontSize: 'xx-large' }}>{subject}</div>
+          <div style={{ textAlign: 'left', paddingBottom: '10px', fontSize: 'large' }}>
             {message}
-          </Card.Text>
+          </div>
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Comments</Accordion.Header>
               <Accordion.Body style={{ padding: 0 }}>
                 {bulletin.comments.map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
                 <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-                  <LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
-                  <SubmitField style={{ textAlign: 'left' }} />
+                  <Row>
+                    <Col xs={10}><LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
+                    </Col>
+                    <Col xs={2} style={{ padding: '0.5em 0em 1em 0em' }}><SubmitField style={{ textAlign: 'left', color: '#2AA404FF' }} /></Col>
+                  </Row>
+
                 </AutoForm>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </Card.Body>
-      </Card>
+          <hr />
+        </div>
+      </div>
     ));
 };
 

@@ -3,16 +3,20 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <div>
-    <Container id="landing-page" fluid className="py-3">
+  <div id="landing-page">
+    <div style={{ float: 'right', paddingRight: '5em' }}>
+      <h1>Welcome to Gawkysaur!</h1>
+    </div>
+    <div style={{ position: 'fixed', bottom: 30, zIndex: 2 }}>
+      <Image className="translateGawkysaur" src="images/gawkysaurTurtleFancy.png" style={{ height: '20%', width: '20%' }} />
+    </div>
+    <Col>
 
-      <Row className="align-middle text-center">
-        <Col xs={4}>
-          <Image roundedCircle src="/images/meteor-logo.png" width="150px" />
-        </Col>
-
+      <Image src="images/backgroundTransparent.png" style={{ width: '100%', height: '50%', float: 'right' }} />
+      <Row style={{ paddingRight: 0, float: 'right' }}>
+        <Image style={{ position: 'fixed', bottom: '0', zIndex: 1 }} src="images/waterPretty.png" />
       </Row>
-    </Container>
+    </Col>
   </div>
 );
 
