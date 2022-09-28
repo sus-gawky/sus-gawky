@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Carousel, Col, Container, Form, Nav, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Nav, Row } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -10,7 +10,7 @@ import SpecialCheck from '../components/SpecialCheck';
 import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
-import LeaderBoard from '../components/LeaderBoard';
+import HomeLeaderBoard from '../components/HomeLeaderBoard';
 
 const Home = () => {
   const { ready, currentUser, owner, users } = useTracker(() => {
@@ -73,7 +73,9 @@ const Home = () => {
             ))}
           </div>
         </Col>
-        <Col className="d-flex justify-content-center" style={{ paddingRight: '1em' }} />
+        <Col xs={4} className="d-flex justify-content-center" style={{ paddingRight: '1em' }}>
+          <HomeLeaderBoard />
+        </Col>
       </Row>
       <Row className="mt-3">
         <Col className="d-flex justify-content-center">
