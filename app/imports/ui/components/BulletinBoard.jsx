@@ -56,10 +56,10 @@ const BulletinBoard = () => {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Card>
+          <Card className="fredoka-one goals">
             <AutoForm schema={bridge} onSubmit={data => submit(data)}>
               <Card.Header>
-                <Card.Title>Create a post</Card.Title>
+                <div className="h2">Create a post</div>
               </Card.Header>
               <Card.Body>
                 <TextField name="subject" label="Title" placeholder="What do you want to talk about?" autoComplete="off" />
