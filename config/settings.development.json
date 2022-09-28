@@ -12,9 +12,9 @@
   ],
 
   "Users":[
-    { "firstName": "John", "lastName": "Smith", "owner": "john@foo.com", "zipCode": 11111,
+    { "firstName": "John", "lastName": "Smith", "owner": "john@foo.com", "zipCode": 11111, "city": "aiea",
       "points": 83, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 },
-    { "firstName": "Steve", "lastName": "Jobs", "owner": "admin@foo.com", "zipCode": 11111, "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 }
+    { "firstName": "Steve", "lastName": "Jobs", "owner": "admin@foo.com", "zipCode": 11111, "points": 67, "fullScore": 1, "foodScore": 1, "transportationScore": 1, "city": "waimalu", "miscScore": 1, "carbonFootprintScore": 1, "householdSize": 1 }
     ],
 
   "challenges": [
