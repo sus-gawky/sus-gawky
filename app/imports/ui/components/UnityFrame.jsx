@@ -7,7 +7,7 @@ const srcs = ['https://itch.io/embed-upload/6186209?color=577139'];
 const hrefs = ['https://alyssiachen.itch.io/pomegranate-baby'];
 
 const UnityFrame = ({ score }) => (
-  <div style={style}>
+  <div style={style} className="mt-5">
     <iframe frameBorder="0.1" src={srcs[score]} allowFullScreen="" width="100%" height="280" title="unity">
       <a href={hrefs[score]}>Play Pomegranate Baby on itch.io</a>
     </iframe>
