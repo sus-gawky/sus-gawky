@@ -38,19 +38,20 @@ const BulletinBoard = () => {
     subject: String,
     message: String,
   });
+  const bridge = new SimpleSchema2Bridge(schema);
   const submit = (doc) => {
     handleClose();
     const { subject, message } = doc;
     const from = currentUser.owner;
     const createdAt = new Date();
     const zipCode = currentUser.zipCode;
-    Bulletins.collection.insert({ subject, message, from, createdAt, zipCode });
+    const comments = [];
+    Bulletins.collection.insert({ subject, message, from, createdAt, zipCode, comments });
   };
-  const bridge = new SimpleSchema2Bridge(schema);
   return (ready ? (
     <Container>
       <h2>Neighborhood Chat</h2>
-      <div className="overflow-scroll" style={{ height: 400 }}>
+      <div className="overflow-scroll" style={{ height: 400, width: 600 }}>
         {bulletins.reverse().map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
       </div>
       <>

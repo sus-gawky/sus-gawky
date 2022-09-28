@@ -8,6 +8,11 @@ class BulletinsCollection {
     this.name = 'BulletinsCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
+    const commentSchema = new SimpleSchema({
+      text: String,
+      from: String,
+      createdAt: Date,
+    });
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       subject: String,
@@ -15,6 +20,11 @@ class BulletinsCollection {
       from: String,
       createdAt: Date,
       zipCode: Number,
+      comments: {
+        type: Array,
+        optional: true,
+      },
+      'comments.$': { type: commentSchema },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

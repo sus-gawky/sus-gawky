@@ -11,7 +11,7 @@ import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home = () => {
-  const { ready, users, currentUser } = useTracker(() => {
+  const { ready, currentUser, owner, users } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
@@ -19,11 +19,14 @@ const Home = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
+    console.log(Meteor.user().username);
+    const ownerItem = Meteor.user().username;
     const userItems = Users.collection.find({}).fetch();
-    const currentUserItem = userItems.filter((user) => (user.owner === Meteor.user().username))[0];
+    const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
     return {
-      currentUser: currentUserItem,
       users: userItems,
+      owner: ownerItem,
+      currentUser: currentUserItem,
       ready: rdy,
     };
   }, []);
@@ -38,7 +41,6 @@ const Home = () => {
     }
     return fakeGoals;
   };
-
   return (ready ? (
     <Container style={{ backgroundColor: '#F5F5F5' }}>
       <Row className="fredoka-one">
