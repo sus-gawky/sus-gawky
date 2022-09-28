@@ -1,13 +1,16 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Row } from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import Stack from 'react-bootstrap/Stack';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Users } from '../../api/user/User';
 import BulletinBoard from '../components/BulletinBoard';
 import UnityFrame from '../components/UnityFrame';
 import LoadingSpinner from '../components/LoadingSpinner';
 import LeaderBoard from '../components/LeaderBoard';
+import Functions from '../../api/functions/functions';
 
 /* A simple static component to render some text for the landing page. */
 const Neighbors = () => {
@@ -27,25 +30,29 @@ const Neighbors = () => {
       ready: rdy,
     };
   }, []);
+  console.log(Functions.topTravelScores(users));
   return (ready ? (
     <Container id="neighbors-page" fluid className="py-3">
-      <Row className="align-middle">
-        <Col xs={12} className="title">
-          Zip Code: {currentUser.zipCode}
-        </Col>
-      </Row>
       <Row className="align-middle text-center">
         <Col xs={6} className="d-flex flex-column justify-content-top" syle={{ paddingTop: 0 }}>
+          <Col xs={12} className="fredoka-one" style={{ textAlign: 'center' }}>
+            {currentUser.city} forum
+          </Col>
+          <hr />
           <BulletinBoard />
         </Col>
-        <Col xs={5} className="d-flex flex-column justify-content-top">
-          <Row>
-            <LeaderBoard className="mb-5" />
-          </Row>
-          <Row>
-            <UnityFrame score={0} />
-            <Button variant="success">Score</Button>
-          </Row>
+        <Col xs={5}>
+          <Navbar sticky="top">
+            <Stack>
+              <div>
+                <LeaderBoard className="mb-5" />
+              </div>
+              <div>
+                <UnityFrame score={0} />
+                <Button variant="success">Score</Button>
+              </div>
+            </Stack>
+          </Navbar>
         </Col>
       </Row>
     </Container>
