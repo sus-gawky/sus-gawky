@@ -29,7 +29,6 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
     const createdAt = new Date();
     const comments = bulletin.comments;
     comments.push({ text: text, from: currentUser.owner, createdAt: createdAt });
-    console.log(comments);
     Bulletins.collection.update(
       { _id: bulletin._id },
       { $set: { comments } },
