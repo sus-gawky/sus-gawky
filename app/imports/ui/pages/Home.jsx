@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import AddChallengeModal from '../components/AddChallengeModal';
 import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
@@ -42,10 +43,19 @@ const Home = () => {
     }
     return fakeGoals;
   };
+
   return (ready ? (
     <Container>
       <Row className="fredoka-one" style={{ margin: '0.5em' }}>
         <Col className="d-flex justify-content-center">Welcome, {currentUser.firstName} {currentUser.lastName}</Col>
+      </Row>
+      <Row>
+        <Col xs={1}>
+          <h4 className="fredoka-one goals">Level 3</h4>
+        </Col>
+        <Col xs={11}>
+          <ProgressBar className="mt-2" variant="success" now={70} label={`${70}%`} />
+        </Col>
       </Row>
       <Row className="mt-4">
         <Col xs={8} className="d-flex justify-content-center">
