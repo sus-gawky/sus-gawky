@@ -16,20 +16,21 @@ const formSchema = new SimpleSchema({
 });
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-// On submit, insert the data.
-const submit = (data) => {
-  // Will use these variables to calculate scores
-  const { electricityBill, waterBill, donation, volunteer } = data;
-
-  const owner = Meteor.user().username;
-  Meteor.call('specialCheckIn', owner, electricityBill, waterBill, donation, volunteer);
-};
-
 const DailyCheck = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // On submit, insert the data.
+  const submit = (data) => {
+    // Will use these variables to calculate scores
+    const { electricityBill, waterBill, donation, volunteer } = data;
+
+    const owner = Meteor.user().username;
+    Meteor.call('specialCheckIn', owner, electricityBill, waterBill, donation, volunteer);
+    handleClose();
+  };
 
   return (
     <>
