@@ -560,9 +560,7 @@ Leaderboard
   position: fixed;
   top: 0;
   left: 0;
-
-  transform: translateZ(0) scale(1, 1);
-
+  padding: '0 0 0 0';
   /* Preserve aspect ratio */
   min-width: 100%;
   min-height: 100%;
@@ -572,7 +570,7 @@ Leaderboard
   height: 100px;
   width: 100px;
   transition: 0.5s;
-  animation: Gawkysaurmove 40s infinite;
+  animation: Gawkysaurmove 50s infinite;
 }
 
 @keyframes Gawkysaurmove{
@@ -588,4 +586,12 @@ Leaderboard
   100% {
     transform: translateX(100px) rotateY(180deg);
   }
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
 }
