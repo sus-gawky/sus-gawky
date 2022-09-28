@@ -1,10 +1,10 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { CurrencyBitcoin } from 'react-bootstrap-icons';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
+import StoreNavigation from '../components/StoreNavigation';
 
 /* A simple static component to render some text for the landing page. */
 const Store = () => {
@@ -30,20 +30,23 @@ const Store = () => {
     <div>
       <Container id="landing-page" fluid className="py-3">
         <Row className="align-middle text-center">
+          <Col />
+          <Col />
           <Col>
-            <h1 className="fredoka-one float-end store-title">Store</h1>
+            <h1 className="fredoka-one text-center store-title">Store</h1>
           </Col>
+          <Col />
           <Col>
             <Row>
-              <Col />
-              <Col className="float-end">
+              <Col className="float-start">
                 <h6 className="text-center fredoka-one currency">
-                  <span className="float-start badge bg-dark">
+                  <span className="badge bg-dark">
                     Points: {' '}
                     {currentUser.points}
                   </span>
                 </h6>
               </Col>
+              <Col />
             </Row>
           </Col>
         </Row>
@@ -51,10 +54,13 @@ const Store = () => {
           <div id="bottom">
             <header className="ribbon-container">
               <h2 className="ribbon">
-                <span className="ribbon-content">Ribbon Overlay</span>
+                <span className="ribbon-content">For personal or charitable fun</span>
               </h2>
             </header>
           </div>
+        </Row>
+        <Row className="justify-content-center">
+          <StoreNavigation />
         </Row>
       </Container>
     </div>

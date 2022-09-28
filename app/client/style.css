@@ -35,7 +35,11 @@ html {
 
 .store-title {
   position: relative;
-  margin-left: 11em;
+}
+
+.card {
+  width: 80% !important;
+  margin: 20px;
 }
 
 .fredoka-one { 
@@ -430,15 +434,17 @@ Leaderboard
   height: 150%;
 }
 
+
+
 /* Ribbon */
 .ribbon-body {
-  margin: 0;
+  margin-bottom: 0;
 }
 #top,
 #bottom {
   box-sizing: border-box;
   padding: 20px 0;
-  min-height: 50vh;
+  min-height: 20vh;
 }
 #top {
   background: url(http://portfolio.queenofwhisks.com/demo/overlay/border-bottom-triangle-edge.png) repeat-x center bottom, hsl(180, 40%, 80%) url(http://portfolio.queenofwhisks.com/demo/overlay/canvas.png);
