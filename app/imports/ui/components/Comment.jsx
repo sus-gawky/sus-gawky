@@ -31,9 +31,9 @@ const Comment = ({ comment, currentUser, users }) => {
 };
 
 Comment.propTypes = {
-  comment: PropTypes.object.isRequired,
-  currentUser: PropTypes.object.isRequired,
-  users: PropTypes.array.isRequired,
+  comment: PropTypes.objectOf.isRequired,
+  currentUser: PropTypes.objectOf.isRequired,
+  users: PropTypes.arrayOf.isRequired,
 };
 
 export default Comment;

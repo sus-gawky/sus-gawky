@@ -24,7 +24,7 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
     text: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
-  const submit = (doc) => {
+  const submit = (doc, formRef) => {
     const { text } = doc;
     const createdAt = new Date();
     const comments = bulletin.comments;
@@ -34,7 +34,9 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
       { _id: bulletin._id },
       { $set: { comments } },
     );
+    formRef.reset();
   };
+  let fRef = null;
   return (
     (
       <Card style={{ width: '100%' }}>
@@ -56,7 +58,7 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
               <Accordion.Header>Comments</Accordion.Header>
               <Accordion.Body style={{ padding: 0 }}>
                 {bulletin.comments.map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
-                <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+                <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
                   <LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
                   <SubmitField style={{ textAlign: 'left' }} />
                 </AutoForm>
@@ -69,9 +71,9 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
 };
 
 Bulletin.propTypes = {
-  bulletin: PropTypes.object.isRequired,
-  currentUser: PropTypes.object.isRequired,
-  users: PropTypes.array.isRequired,
+  bulletin: PropTypes.objectOf.isRequired,
+  currentUser: PropTypes.objectOf.isRequired,
+  users: PropTypes.arrayOf.isRequired,
 };
 
 export default Bulletin;
