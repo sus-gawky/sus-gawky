@@ -59,12 +59,12 @@ const BulletinBoard = () => {
           <Card className="fredoka-one goals">
             <AutoForm schema={bridge} onSubmit={data => submit(data)}>
               <Card.Header>
-                <div className="h2">Create a post</div>
+                <div className="h2" style={{ textAlign: 'center' }}>Create a post</div>
               </Card.Header>
               <Card.Body>
                 <TextField name="subject" label="Title" placeholder="What do you want to talk about?" autoComplete="off" />
                 <LongTextField name="message" label="Body" placeholder="Elaborate here..." autoComplete="off" />
-                <ErrorsField />
+                <ErrorsField className="mt-3 goalItems"/>
               </Card.Body>
               <Card.Footer>
                 <Row>
@@ -84,7 +84,7 @@ const BulletinBoard = () => {
       </>
       <hr />
       <div style={{ height: '100%', width: '100%' }}>
-        {bulletins.reverse().map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
+        {bulletins.sort(function (a, b) { return b.createdAt - a.createdAt; }).map((bulletin, index) => <Bulletin key={index} bulletin={bulletin} users={users} currentUser={currentUser} />)}
       </div>
     </Container>
   ) : <LoadingSpinner />);
