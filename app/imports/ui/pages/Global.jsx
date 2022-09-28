@@ -29,15 +29,15 @@ const Global = () => {
     id: 'google-map-script',
     googleMapsApiKey: apiKey['react-maps-api-key'],
   });
-  console.log("calling avPoints");
+  console.log('calling avPoints');
   console.log(Functions.avPoints(11111, users));
-  console.log("calling avFoodScore");
+  console.log('calling avFoodScore');
   console.log(Functions.avFoodScore(11111, users));
-  console.log("calling avFullScore");
+  console.log('calling avFullScore');
   console.log(Functions.avFullScore(11111, users));
-  console.log("calling avTransporationScore");
+  console.log('calling avTransporationScore');
   console.log(Functions.avTransportationScore(11111, users));
-  console.log("calling avMiscScore");
+  console.log('calling avMiscScore');
   console.log(Functions.avMiscScore(11111, users));
 
   useEffect(() => {
