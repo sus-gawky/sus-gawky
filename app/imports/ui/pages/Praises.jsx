@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { SlackSelector } from 'react-reactions/src';
 import { Praise } from '../../api/praise/Praise';
 import AddPraiseModal from '../components/AddPraiseForm';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -55,7 +54,6 @@ const Praises = () => {
                     {praise.comment}
                   </Card.Body>
                   <Card.Footer>
-                    <SlackSelector />
                   </Card.Footer>
                 </Card>
               ))}
