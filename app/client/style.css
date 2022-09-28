@@ -88,7 +88,6 @@ html {
 #neighbor-leader-carousel {
   width:640px !important;
   height:500px;
-  left: 13%;
   background-color: darkseagreen;
   border-radius: 20px 20px 20px 20px;
   overflow: hidden;

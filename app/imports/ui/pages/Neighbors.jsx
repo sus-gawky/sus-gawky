@@ -47,8 +47,8 @@ const Neighbors = () => {
           <UnityFrame score={100} givenHeight={300} givenWidth={640} />
           <Navbar sticky="top">
             <Stack>
-              <div>
-                <NeighborLeaderBoard className="mb-5" />
+              <div className="d-flex justify-content-center">
+                <NeighborLeaderBoard />
               </div>
             </Stack>
           </Navbar>
