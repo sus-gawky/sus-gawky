@@ -54,7 +54,7 @@ const Global = () => {
         setLng(response.data.results[0].geometry.location.lng);
         const polygonResponse = await axios.get('https://nominatim.openstreetmap.org/search.php', {
           params: {
-            q: 'aiea',
+            q: 'pearl harbor',
             polygon_geojson: 1,
             format: 'json',
           },

@@ -9,6 +9,7 @@ import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
 import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
+import UnityFrame from '../components/UnityFrame';
 
 const Home = () => {
   const { ready, currentUser, owner, users } = useTracker(() => {
@@ -35,68 +36,49 @@ const Home = () => {
     const fakeGoals = [];
     for (let i = 0; i < 5; i++) {
       fakeGoals.push({
-        goal: `Fake goal ${i + 1}`,
+        goal: `This is fake goal ${i + 1}    |    09/21/22    |    22 challengers`,
         finished: false,
       });
     }
     return fakeGoals;
   };
   return (ready ? (
-    <Container style={{ backgroundColor: '#F5F5F5' }}>
-      <Row className="fredoka-one">
+    <Container>
+      <Row className="fredoka-one" style={{ margin: '0.5em' }}>
         <Col className="d-flex justify-content-center">Welcome, {currentUser.firstName} {currentUser.lastName}</Col>
-        <h1>Points: {currentUser.points}</h1>
       </Row>
       <Row className="mt-4">
-        <Col className="d-flex justify-content-center">
-          <Form>
-            <>
-              <div className="fredoka-one goals mt-5">
-                Challenges
-                <AddChallengeModal />
-              </div>
-              {createFakeGoals().map((data, index) => (
-                <motion.div
-                  className="mt-3"
-                  key={index}
-                  initial={{
-                    opacity: 0,
-                    translateX: -50,
-                    translateY: -50,
-                  }}
-                  animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                >
-                  <Form.Check
-                    type="checkbox"
-                    id="default-i"
-                    label={data.goal}
-                  />
-                </motion.div>
-              ))}
-            </>
-          </Form>
+        <Col xs={8} className="d-flex justify-content-center">
+          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em' }}>
+            <h2>Challenges<span style={{ float: 'right' }}><AddChallengeModal /></span></h2>
+
+            {createFakeGoals().map((data, index) => (
+              <motion.div
+                className="mt-3 goalItems"
+                key={index}
+                initial={{
+                  opacity: 0,
+                  translateX: -50,
+                  translateY: -50,
+                }}
+                animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Form.Check
+                  type="checkbox"
+                  id="default-i"
+                  label={data.goal}
+                />
+              </motion.div>
+            ))}
+          </div>
         </Col>
-        <Col className="d-flex justify-content-center">
-          <div className="home-picture" />
+        <Col className="d-flex justify-content-center" style={{ paddingRight: '1em' }}>
+          <UnityFrame score={100} />
         </Col>
       </Row>
-      <Row className="mt-5">
-        {/* TODO: Make this have a dotted line connecting the buttons */}
+      <Row className="mt-3">
         <Col className="d-flex justify-content-center">
-          <Nav.Link as={NavLink} to="/challenges" className="homeButtons">
-            <Button style={{ backgroundColor: '#60E831FF', border: 'none', width: '100%', height: '100%' }}>Challenges</Button>
-          </Nav.Link>
-        </Col>
-        <Col className="d-flex justify-content-center">
-          <DailyCheck />
-        </Col>
-        <Col className="d-flex justify-content-center">
-          <SpecialCheck />
-        </Col>
-      </Row>
-      <Row className="mt-5 mb-3">
-        <Col className="d-flex justify-content-center mx-5">
           <div className="score-card">
             <Carousel>
               <Carousel.Item interval={1500}>
@@ -117,10 +99,25 @@ const Home = () => {
             </Carousel>
           </div>
         </Col>
-        <Col className="d-flex justify-content-center mt-5">
-          <div>
-            Some motivational speech
-          </div>
+        <Col>
+          <Row style={{ height: '50%', marginTop: '3em' }}>
+            <Col className="d-flex justify-content-center" xs={4}>
+              <Nav.Link as={NavLink} to="/challenges" style={{ width: '100%' }} className="d-flex justify-content-center">
+                <Button className="homeButtons" style={{ backgroundColor: '#60E831FF', border: 'none' }}>Challenges</Button>
+              </Nav.Link>
+            </Col>
+            <Col className="d-flex justify-content-center" xs={4}>
+              <DailyCheck />
+            </Col>
+            <Col className="d-flex justify-content-center" xs={4}>
+              <SpecialCheck />
+            </Col>
+          </Row>
+          <Row style={{ height: '50%' }}>
+            <Col className="d-flex justify-content-center">
+              <h2>"Tip of the day" - Albert Einstein</h2>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>

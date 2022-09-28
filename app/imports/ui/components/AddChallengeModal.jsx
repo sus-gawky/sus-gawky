@@ -13,6 +13,7 @@ import {
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import swal from 'sweetalert';
+import { BsPatchPlusFill } from 'react-bootstrap-icons';
 import { Challenges } from '../../api/challenge/Challenge';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -55,8 +56,8 @@ const AddChallengeModal = () => {
   };
   return (
     <>
-      <Button variant="success" size="sm" className="mx-3" onClick={handleShow}>
-        Add Challenge
+      <Button variant="success" size="sm" onClick={handleShow}>
+        Add
       </Button>
 
       <Modal show={show} onHide={handleClose} centered backdrop="static">
