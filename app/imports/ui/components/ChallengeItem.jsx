@@ -19,7 +19,7 @@ const ChallengeItem = ({ challenge }) => (
     <td>{challenge.signUpList.length}</td>
     <td>
       {challenge.signUpList.includes(Meteor.user().username) ?
-        <Button variant="success" onClick={() => Meteor.call('leaveChallenge', challenge._id, Meteor.user().username, challenge.owner)}>Leave</Button>
+        <Button variant="success" onClick={() => Meteor.call('leaveChallenge', challenge._id, Meteor.user().username, false, 0)}>Leave</Button>
         : <Button variant="success" onClick={() => Meteor.call('updateChallenge', challenge._id, Meteor.user().username)}>Sign Up</Button>}
     </td>
   </tr>

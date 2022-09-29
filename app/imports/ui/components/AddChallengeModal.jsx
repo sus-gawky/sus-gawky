@@ -13,7 +13,6 @@ import {
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import swal from 'sweetalert';
-import { BsPatchPlusFill } from 'react-bootstrap-icons';
 import { Challenges } from '../../api/challenge/Challenge';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
@@ -21,7 +20,7 @@ const formSchema = new SimpleSchema({
   challenge: String,
   endDate: String,
   description: String,
-  points: String,
+  points: Number,
   tags: {
     type: String,
     allowedValues: ['Food', 'Shopping', 'Transportation'],

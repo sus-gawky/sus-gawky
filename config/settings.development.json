@@ -23,6 +23,7 @@
       "city": "Aiea",
       "points": 83,
       "xp": 100,
+      "swag": [],
       "fullScore": 92,
       "foodScore": 29,
       "transportationScore": 31,
@@ -36,6 +37,7 @@
       "zipCode": 96791,
       "points": 67,
       "xp": 800,
+      "swag": [],
       "fullScore": 53,
       "foodScore": 25,
       "transportationScore": 25,
@@ -50,6 +52,7 @@
       "city": "Aiea",
       "points": 76,
       "xp": 780,
+      "swag": [],
       "fullScore": 76,
       "foodScore": 21,
       "transportationScore": 22,
@@ -64,6 +67,7 @@
       "city": "Aiea",
       "points": 25,
       "xp": 50,
+      "swag": [],
       "fullScore": 8,
       "foodScore": 2,
       "transportationScore": 4,
@@ -78,6 +82,7 @@
       "city": "Aiea",
       "points": 83,
       "xp": 40,
+      "swag": [],
       "fullScore": 53,
       "foodScore": 18,
       "transportationScore": 19,
@@ -92,6 +97,7 @@
       "city": "Aiea",
       "points": 253,
       "xp": 80,
+      "swag": [],
       "fullScore": 38,
       "foodScore": 9,
       "transportationScore": 17,
@@ -106,6 +112,7 @@
       "city": "Aiea",
       "points": 645,
       "xp": 5000,
+      "swag": [],
       "fullScore": 98,
       "foodScore": 32,
       "transportationScore": 33,
@@ -120,6 +127,7 @@
       "city": "Aiea",
       "points": 63,
       "xp": 300,
+      "swag": [],
       "fullScore": 49,
       "foodScore": 18,
       "transportationScore": 9,
@@ -134,6 +142,7 @@
       "city": "Waimalu",
       "points": 987,
       "xp": 230,
+      "swag": [],
       "fullScore": 87,
       "foodScore": 30,
       "transportationScore": 29,
@@ -148,6 +157,7 @@
       "city": "Waimalu",
       "points": 809,
       "xp": 350,
+      "swag": [],
       "fullScore": 78,
       "foodScore": 33,
       "transportationScore": 18,
@@ -162,6 +172,7 @@
       "city": "Waimalu",
       "points": 800,
       "xp": 408,
+      "swag": [],
       "fullScore": 20,
       "foodScore": 22,
       "transportationScore": 22,
@@ -176,6 +187,7 @@
       "city": "Waimalu",
       "points": 54,
       "xp": 950,
+      "swag": [],
       "fullScore": 59,
       "foodScore": 28,
       "transportationScore": 15,
@@ -190,6 +202,7 @@
       "city": "Waimalu",
       "points": 83,
       "xp": 700,
+      "swag": [],
       "fullScore": 35,
       "foodScore": 18,
       "transportationScore": 10,
@@ -206,35 +219,59 @@
       "signUpList": ["john@foo.com", "admin@foo.com"],
       "tags": ["environment", "conservation"],
       "endDate":  "2022-09-21",
-      "points":  "10"},
+      "points":  10},
     { "challenge": "Bags",
       "description": "Use reuseable bags instead of single use ones",
       "owner": "john@foo.com",
       "signUpList": ["john@foo.com"],
       "tags":  ["environment", "conservation"],
       "endDate":  "2022-09-21",
-      "points":  "10"},
+      "points":  10},
     { "challenge": "Transportation",
       "description": "Use less thank 50% the average american's CO2",
       "owner": "admin@foo.com",
       "signUpList": ["admin@foo.com"],
       "tags":  ["environment", "conservation"],
       "endDate":  "2022-09-21",
-      "points":  "10"}
+      "points":  10}
   ],
 
   "tips": [
     {
-      "tip": "Water Bottles",
-      "id": 1
+      "tip": "Always be kind to others.",
+      "name": "Anonymous"
     },
     {
-      "tip": "Bags",
-      "id": 2
+      "tip": "Try to use less electricity",
+      "name": "Anonymous"
     },
     {
-      "tip": "Transportation",
-      "id": 3
+      "tip": "Many hands make light work",
+      "name": "Anonymous"
+    }
+  ],
+
+  "defaultMerch": [
+    {
+      "points": 600,
+      "src": "../images/bulba.png",
+      "desc": "Bulbasaur Pet",
+      "modalDialog": false,
+      "modalWithoutAnimation": false
+    },
+    {
+      "points": 8000,
+      "src": "../images/nft.png",
+      "desc": "Godzilla NFT",
+      "modalDialog": false,
+      "modalWithoutAnimation": false
+    },
+    {
+      "points": 100,
+      "src": "../images/pixel-glasses.jpeg",
+      "desc": "Avatar Glasses",
+      "modalDialog": false,
+      "modalWithoutAnimation": false
     }
   ]
 }

@@ -4,54 +4,30 @@ import { CardGroup, Tab, Tabs } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Users } from '../../api/user/User';
+import { Merch } from '../../api/merch/Merch';
 import PurchaseModal from './PurchaseModal';
 
 const StoreNavigation = () => {
 
-  const { currentUser } = useTracker(() => {
+  const { currentUser, merch } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Users.userPublicationName);
+    const subscription1 = Meteor.subscribe(Users.userPublicationName);
+    const subscription2 = Meteor.subscribe(Merch.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription1.ready() && subscription2;
     // Get the Stuff documents
     const userItems = Users.collection.find({}).fetch();
+    const merchItems = Merch.collection.find({}).fetch();
     const currentUserItem = userItems.filter((user) => (user.owner === Meteor.user().username))[0];
     return {
+      merch: merchItems,
       currentUser: currentUserItem,
       users: userItems,
       ready: rdy,
     };
   }, []);
-  const weeklyData = {
-    cardData: [
-      {
-        id: '1',
-        points: 600,
-        src: '../images/bulba.png',
-        desc: 'Bulbasaur Pet',
-        modalDialog: false,
-        modalWithoutAnimation: false,
-      },
-      {
-        id: '2',
-        points: 8000,
-        src: '../images/nft.png',
-        desc: 'Godzilla NFT',
-        modalDialog: false,
-        modalWithoutAnimation: false,
-      },
-      {
-        id: '3',
-        points: 100,
-        src: '../images/pixel-glasses.jpeg',
-        desc: 'Avatar Glasses',
-        modalDialog: false,
-        modalWithoutAnimation: false,
-      },
-    ],
-  };
   const charityData = {
     cardData: [
       {
@@ -86,7 +62,7 @@ const StoreNavigation = () => {
         <Tab eventKey="weekly" title="Weekly">
           <CardGroup>
             {
-              weeklyData.cardData.map((item, index) => (
+              merch.map((item, index) => (
                 <Card key={index} style={{ width: '10px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
                   <Card.Img variant="top" src={item.src} />
                   <Card.Text className="text-center fredoka-one goals">
