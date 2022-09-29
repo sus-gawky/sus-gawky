@@ -15,6 +15,14 @@ class UsersCollection {
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
+    const swagSchema = new SimpleSchema({
+      points: Number,
+      src: String,
+      desc: String,
+      modalDialog: Boolean,
+      modalWithoutAnimation: Boolean,
+    }, { tracker: Tracker });
+
     this.schema = new SimpleSchema({
       firstName: String,
       lastName: String,
@@ -23,7 +31,11 @@ class UsersCollection {
       city: String,
       points: Number,
       xp: Number,
-      swag: [String],
+      swag: {
+        type: Array,
+        optional: true,
+      },
+      'swag.$': { type: swagSchema },
       // All scores out of 100
       fullScore: Number,
       foodScore: Number,
@@ -112,7 +124,7 @@ Meteor.methods({
     Users.collection.update(
       { owner: owner },
       { $set: { fullScore, foodScore, transportationScore, miscScore },
-        $inc: { points: dailyCheckInPointsAdd } },
+        $inc: { points: dailyCheckInPointsAdd, xp: dailyCheckInPointsAdd } },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -129,7 +141,7 @@ Meteor.methods({
     console.log(`specialCheckIn ${owner} ${electricityBill} ${waterBill} ${donation} ${volunteer}`);
     Users.collection.update(
       { owner: owner },
-      { $set: { electricityBill, waterBill, donation, volunteer }, $inc: { points: specialCheckInPoints } },
+      { $set: { electricityBill, waterBill, donation, volunteer }, $inc: { points: specialCheckInPoints, xp: dailyCheckInPointsAdd } },
       (error) => (error ?
         swal('Error', error.message, 'error') :
         swal('Success', 'Special check-in completed successfully!', 'success')),

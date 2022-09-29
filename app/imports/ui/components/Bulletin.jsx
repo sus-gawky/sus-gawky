@@ -45,7 +45,7 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
               <div className="mt-3 goalItems" style={{ textAlign: 'left', color: color }}>{nameDisplayed}</div>
             </Col>
             <Col>
-              <div className="mt-3 goalItems" style={{ textAlign: 'left' }}> - posted {Functions.timeDisplay(bulletin.createdAt)}</div>
+              <div className="mt-3 goalItems" style={{ textAlign: 'left' }}>- (lvl {Functions.getLvlInfo(currentUser).level}) - posted {Functions.timeDisplay(bulletin.createdAt)}</div>
             </Col>
           </Row>
           <div className="title" style={{ textAlign: 'left', fontSize: 'xx-large' }}>{subject}</div>
@@ -75,9 +75,9 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
 };
 
 Bulletin.propTypes = {
-  bulletin: PropTypes.objectOf.isRequired,
-  currentUser: PropTypes.objectOf.isRequired,
-  users: PropTypes.arrayOf.isRequired,
+  bulletin: PropTypes.object.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired,
 };
 
 export default Bulletin;

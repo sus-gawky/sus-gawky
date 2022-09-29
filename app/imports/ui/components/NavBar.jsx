@@ -82,11 +82,11 @@ const NavBar = () => {
               placement="right"
               key="k-5"
               delay={{ show: 250, hide: 200 }}
-              overlay={<Tooltip>Praise</Tooltip>}
+              overlay={<Tooltip>Challenges</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<Stars size={50} />}>
                 <Nav.Link as={NavLink} to="/challenges">
-                  <h4 className="text-center">Praise</h4>
+                  <h4 className="text-center">Challenges</h4>
                 </Nav.Link>
               </MenuItem>
             </OverlayTrigger>,
