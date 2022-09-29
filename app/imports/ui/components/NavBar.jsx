@@ -47,7 +47,7 @@ const NavBar = () => {
               overlay={<Tooltip>Profile</Tooltip>}
             >
               <MenuItem className="mt-3" icon={<PersonCircle size={50} />}>
-                <Nav.Link as={NavLink} to="/">
+                <Nav.Link as={NavLink} to="/profile">
                   <h4 className="text-center">Profile</h4>
                 </Nav.Link>
               </MenuItem>
