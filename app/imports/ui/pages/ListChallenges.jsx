@@ -24,31 +24,33 @@ const ListChallenges = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3" id="challenges-page">
-      <Row className="justify-content-center">
-        <Col md={10}>
-          <Col className="text-center">
-            <h2 className="fredoka-one mt-3">List Challenges</h2>
+    <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background3.png\')' }}>
+      <Container className="py-3" id="challenges-page">
+        <Row className="justify-content-center">
+          <Col md={10}>
+            <Col className="text-center">
+              <h2 className="fredoka-one mt-3">List Challenges</h2>
+            </Col>
+            <Table className="mt-5">
+              <thead>
+                <tr>
+                  <th>Challenge</th>
+                  <th>Description</th>
+                  <th>Tags</th>
+                  <th>End Date</th>
+                  <th>Points</th>
+                  <th>Popularity</th>
+                  <th>Sign Up</th>
+                </tr>
+              </thead>
+              <tbody>
+                {challenges.map((challenge) => <ChallengeItem key={challenge._id} challenge={challenge} />)}
+              </tbody>
+            </Table>
           </Col>
-          <Table className="mt-5">
-            <thead>
-              <tr>
-                <th>Challenge</th>
-                <th>Description</th>
-                <th>Tags</th>
-                <th>End Date</th>
-                <th>Points</th>
-                <th>Popularity</th>
-                <th>Sign Up</th>
-              </tr>
-            </thead>
-            <tbody>
-              {challenges.map((challenge) => <ChallengeItem key={challenge._id} challenge={challenge} />)}
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </div>
   ) : <LoadingSpinner />);
 };
 
