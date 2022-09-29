@@ -12,20 +12,27 @@ import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
 import HomeLeaderBoard from '../components/HomeLeaderBoard';
+import { Challenges } from '../../api/challenge/Challenge';
 import Functions from '../../api/functions/functions';
 
 const Home = () => {
-  const { ready, currentUser, lvlInfo, owner, users } = useTracker(() => {
+  const { ready, currentUser, lvlInfo, challengesUser, owner, users } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
+    const userName = Meteor.user();
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Users.userPublicationName);
+    const subscriptionChal = Meteor.subscribe(Challenges.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription.ready() && subscriptionChal.ready();
     // Get the Stuff documents
-    const ownerItem = Meteor.user() == null ? null : Meteor.user().username;
+    const ownerItem = userName ? userName.username : 'hi';
     const userItems = Users.collection.find({}).fetch();
-    const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
+    const currentUserItem = userName ? userItems.filter((user) => (user.owner === ownerItem))[0] : '';
+    // Users.collection.find({ signUpList });
+    const foundChallenges = userName ? Challenges.collection.find(
+      { signUpList: userName.username },
+    ).fetch() : 'hi';
     const lvlInfoItem = rdy ? Functions.getLvlInfo(currentUserItem) : null;
     return {
       lvlInfo: lvlInfoItem,
@@ -33,18 +40,25 @@ const Home = () => {
       owner: ownerItem,
       currentUser: currentUserItem,
       ready: rdy,
+      challengesUser: foundChallenges,
     };
   }, []);
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
-    const fakeGoals = [];
-    for (let i = 0; i < 5; i++) {
-      fakeGoals.push({
-        goal: `This is fake goal ${i + 1}    |    09/21/22    |    22 challengers`,
-        finished: false,
-      });
+
+    console.log(`challengesUser: ${JSON.stringify(challengesUser)}`);
+    const challenges = [];
+
+    for (const challengeObject of challengesUser) {
+      const dateObj = new Date(challengeObject.endDate);
+      const month = dateObj.getMonth() + 1; // months from 1-12
+      const day = dateObj.getDate();
+      const year = dateObj.getFullYear();
+      const newdate = `${month}/${day}/${year}`;
+
+      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description} | ${challengeObject.signUpList.length} people signed up | ${newdate}` });
     }
-    return fakeGoals;
+    return challenges;
   };
   return (ready ? (
     <Container>

@@ -41,7 +41,7 @@ const AddChallengeModal = () => {
     // eslint-disable-next-line no-unused-vars
     const { challenge, endDate, description, points, tags } = data;
     const owner = Meteor.user().username;
-    const signUpList = [];
+    const signUpList = [owner];
     Challenges.collection.insert(
       { challenge, endDate, description, points, tags, owner, signUpList },
       (error) => {

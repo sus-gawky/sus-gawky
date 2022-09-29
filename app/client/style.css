@@ -52,7 +52,7 @@ html {
   margin: 20px;
 }
 
-.fredoka-one { 
+.fredoka-one {
   font-family: 'Advent Pro';
   font-size: 3.3em;
 }
@@ -67,8 +67,8 @@ html {
 }
 
 .home-picture {
-  width: 18.75em; 
-  height: 18.75em; 
+  width: 18.75em;
+  height: 18.75em;
   background-color: lightcoral;
 }
 
@@ -583,16 +583,16 @@ Leaderboard
 
 @keyframes Gawkysaurmove{
   0% {
-    transform: translateX(100px) rotateY(0deg);
+    transform: translateX(10em) rotateY(0deg);
   }
   49% {
-    transform: translateX(1500px) rotateY(0deg);
+    transform: translateX(100em) rotateY(0deg);
   }
   50% {
-    transform: translateX(1500px) rotateY(180deg);
+    transform: translateX(100em) rotateY(180deg);
   }
   100% {
-    transform: translateX(100px) rotateY(180deg);
+    transform: translateX(10em) rotateY(180deg);
   }
 }
 
