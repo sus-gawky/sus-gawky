@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { CardGroup, Tab, Tabs } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import Modal from 'react-bootstrap/Modal';
 import { Users } from '../../api/user/User';
 
 const StoreNavigation = () => {
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { currentUser } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
@@ -24,6 +28,9 @@ const StoreNavigation = () => {
       ready: rdy,
     };
   }, []);
+  const bulbaPts = 600;
+  const nftPts = 8000;
+  const glassesPts = 100;
   return (
     <Card className="pt-3 pb-3 store-card">
       <Tabs>
@@ -35,8 +42,8 @@ const StoreNavigation = () => {
                 Bulbasaur Pet
               </Card.Text>
               <Card.Footer>
-                <small className="text-muted">600 points</small>
-                <Button className="float-end" size="sm">Claim</Button>
+                <small className="text-muted">{bulbaPts} points</small>
+                <Button className="float-end" size="sm" onClick={handleShow}>Claim</Button>
               </Card.Footer>
             </Card>
             <Card style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
@@ -45,8 +52,8 @@ const StoreNavigation = () => {
                 Godzilla NFT
               </Card.Text>
               <Card.Footer>
-                <small className="text-muted">8000 points</small>
-                <Button className="float-end" size="sm">Claim</Button>
+                <small className="text-muted">{nftPts} points</small>
+                <Button className="float-end" size="sm" onClick={handleShow}>Claim</Button>
               </Card.Footer>
             </Card>
             <Card style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
@@ -55,10 +62,24 @@ const StoreNavigation = () => {
                 Avatar Glasses
               </Card.Text>
               <Card.Footer>
-                <small className="text-muted">100 points</small>
-                <Button className="float-end" size="sm">Claim</Button>
+                <small className="text-muted">{glassesPts} points</small>
+                <Button className="float-end" size="sm" onClick={handleShow}>Claim</Button>
               </Card.Footer>
             </Card>
+            <Modal size="md" show={show} onHide={handleClose} centered backdrop="static">
+              <Modal.Header closeButton>
+                <Modal.Title>Confirm your in-app purchase</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Are you sure you want to purchase this item? </Modal.Body>
+              <Modal.Footer>
+                <Button size="md" variant="danger" onClick={handleClose}>
+                  No
+                </Button>
+                <Button size="md" variant="success" onClick={handleClose}>
+                  Yes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </CardGroup>
         </Tab>
         <Tab eventKey="charity" title="Charity">

@@ -59,7 +59,7 @@ const Home = () => {
       </Row>
       <Row className="mt-4">
         <Col xs={8} className="d-flex justify-content-center">
-          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em', borderRadius: '1%' }}>
+          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em', borderRadius: '20px' }}>
             <h2>Challenges<span style={{ float: 'right' }}><AddChallengeModal /></span></h2>
 
             {createFakeGoals().map((data, index) => (
