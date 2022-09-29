@@ -25,6 +25,7 @@ const PurchaseModal = ({ merchItem, user }) => {
       );
     }
     handleClose();
+    swal('Success', 'Sucessfully Purchased', 'success');
   };
   const pointCheck = () => {
     if (user.points - merchItem.points < 0) {

@@ -583,16 +583,16 @@ Leaderboard
 
 @keyframes Gawkysaurmove{
   0% {
-    transform: translateX(10em) rotateY(0deg);
+    transform: translateX(1em) rotateY(0deg);
   }
   49% {
-    transform: translateX(100em) rotateY(0deg);
+    transform: translateX(20em) rotateY(0deg);
   }
   50% {
-    transform: translateX(100em) rotateY(180deg);
+    transform: translateX(20em) rotateY(180deg);
   }
   100% {
-    transform: translateX(10em) rotateY(180deg);
+    transform: translateX(1em) rotateY(180deg);
   }
 }
 
