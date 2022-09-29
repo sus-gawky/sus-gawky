@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Users } from '../../api/user/User.js';
-import { Bulletins } from '../../api/bulletin/Bulletin.js';
 import { Challenges } from '../../api/challenge/Challenge';
 import { Tips } from '../../api/tip/Tips';
+import { Merch } from '../../api/merch/Merch';
 
 /* eslint-disable no-console */
 
@@ -48,14 +48,14 @@ const userData = (data) => {
 // Initialize the StuffsCollection if empty.
 if (Users.collection.find().count() === 0) {
   if (Meteor.settings.Users) {
-    console.log('Creating default data.');
+    console.log('Creating default users.');
     Meteor.settings.Users.forEach(data => userData(data));
   }
 }
 // Initialize the StuffsCollection if empty.
 if (Challenges.collection.find().count() === 0) {
   if (Meteor.settings.challenges) {
-    console.log('Creating default data.');
+    console.log('Creating default challenges.');
     Meteor.settings.challenges.forEach(data => addChallenges(data));
   }
 }
@@ -69,7 +69,20 @@ const addTips = (data) => {
 // Initialize the StuffsCollection if empty.
 if (Tips.collection.find().count() === 0) {
   if (Meteor.settings.tips) {
-    console.log('Creating default data.');
+    console.log('Creating default tips.');
     Meteor.settings.tips.forEach(data => addTips(data));
+  }
+}
+
+const addMerch = (data) => {
+  console.log(`  Adding: ${data.desc})`);
+  Merch.collection.insert(data);
+};
+
+// Initialize the StuffsCollection if empty.
+if (Merch.collection.find().count() === 0) {
+  if (Meteor.settings.defaultMerch) {
+    console.log('Creating default merch.');
+    Meteor.settings.defaultMerch.forEach(data => addMerch(data));
   }
 }

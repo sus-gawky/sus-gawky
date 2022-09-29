@@ -23,6 +23,7 @@ class UsersCollection {
       city: String,
       points: Number,
       xp: Number,
+      swag: [String],
       // All scores out of 100
       fullScore: Number,
       foodScore: Number,

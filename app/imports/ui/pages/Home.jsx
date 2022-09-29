@@ -9,27 +9,34 @@ import AddChallengeModal from '../components/AddChallengeModal';
 import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
 import { Users } from '../../api/user/User';
+import { Tips } from '../../api/tip/Tips';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
 import HomeLeaderBoard from '../components/HomeLeaderBoard';
 import { Challenges } from '../../api/challenge/Challenge';
 import Functions from '../../api/functions/functions';
+import TipSubmission from '../components/TipSubmission';
 
 const Home = () => {
-  const { ready, currentUser, lvlInfo, challengesUser } = useTracker(() => {
+  const { ready, currentUser, lvlInfo, challengesUser, tip, tipPerson } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     const userName = Meteor.user();
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Users.userPublicationName);
     const subscriptionChal = Meteor.subscribe(Challenges.userPublicationName);
+    const subscriptionTips = Meteor.subscribe(Tips.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready() && subscriptionChal.ready();
+    const rdy = subscription.ready() && subscriptionChal.ready() && subscriptionTips.ready();
     // Get the Stuff documents
     const ownerItem = userName ? userName.username : 'hi';
     const userItems = Users.collection.find({}).fetch();
     const currentUserItem = userName ? userItems.filter((user) => (user.owner === ownerItem))[0] : '';
     // Users.collection.find({ signUpList });
+    const allTips = Tips.collection.find({}).fetch();
+    const randomNum = Math.floor(Math.random() * (allTips.length - 0 + 1) + 0);
+    const aTip = allTips.length !== 0 ? allTips[randomNum].tip : 'Always be kind to the Earth.';
+    const tipWriter = allTips.length !== 0 ? allTips[randomNum].name : 'Mom';
     const foundChallenges = userName ? Challenges.collection.find(
       { signUpList: userName.username },
     ).fetch() : 'hi';
@@ -41,6 +48,8 @@ const Home = () => {
       currentUser: currentUserItem,
       ready: rdy,
       challengesUser: foundChallenges,
+      tip: aTip,
+      tipPerson: tipWriter,
     };
   }, []);
   const handleCheckGoals = (e, indexSelected) => {
@@ -130,7 +139,16 @@ const Home = () => {
           </Row>
           <Row style={{ height: '50%' }}>
             <Col className="d-flex justify-content-center">
-              <h2>&quot;Tip of the day&quot; - Albert Einstein</h2>
+              <Row>
+                <Col xs={1} />
+                <Col xs={8}>
+                  <h2>&quot;{tip}&quot; - {tipPerson}</h2>
+                </Col>
+                <Col xs={2}>
+                  <TipSubmission tipSubmitter={currentUser.firstName} />
+                </Col>
+                <Col xs={1} />
+              </Row>
             </Col>
           </Row>
         </Col>
