@@ -63,7 +63,7 @@ Meteor.methods({
       // increment the user's points
       Users.collection.update(
         { owner: challenger },
-        { $inc: { points: numberOfPoints } },
+        { $inc: { points: numberOfPoints, xp: numberOfPoints } },
       );
     }
   },
