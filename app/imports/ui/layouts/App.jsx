@@ -20,6 +20,7 @@ import ManageChallenge from '../pages/ManageChallenge';
 import Home from '../pages/Home';
 import Global from '../pages/Global';
 import Store from '../pages/Store';
+import UserProfile from '../pages/UserProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/neighbors" element={<ProtectedRoute><Neighbors /></ProtectedRoute>} />
             <Route path="/homepage" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route path="/map" element={<ProtectedRoute><Global /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
             <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
             <Route path="/notauthorized" element={<NotAuthorized />} />
             <Route path="*" element={<NotFound />} />

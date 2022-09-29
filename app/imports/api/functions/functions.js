@@ -56,11 +56,11 @@ class Functions {
     return result;
   };
 
-  static topFoodScores = (users) => users.sort(function (a, b) { return b.foodScore - a.foodScore; }).slice(0, 10);
+  static topFoodScores = (users) => users.sort(function (a, b) { return b.foodScore - a.foodScore; }).slice(0, 5);
 
-  static topTravelScores = (users) => users.sort(function (a, b) { return b.transportationScore - a.transportationScore; }).slice(0, 10);
+  static topTravelScores = (users) => users.sort(function (a, b) { return b.transportationScore - a.transportationScore; }).slice(0, 5);
 
-  static topTotalScores = (users) => users.sort(function (a, b) { return b.fullScore - a.fullScore; }).slice(0, 10);
+  static topTotalScores = (users) => users.sort(function (a, b) { return b.fullScore - a.fullScore; }).slice(0, 5);
 }
 
 export default Functions;

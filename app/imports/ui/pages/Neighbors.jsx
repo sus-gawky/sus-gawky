@@ -23,14 +23,12 @@ const Neighbors = () => {
     // Get the Stuff documents
     const userItems = Users.collection.find({}).fetch();
     const currentUserItem = userItems.filter((user) => (user.owner === Meteor.user().username))[0];
-    console.log('currentUserItem' + JSON.stringify(currentUserItem));
     return {
       currentUser: currentUserItem,
       users: userItems,
       ready: rdy,
     };
   }, []);
-  console.log(Functions.topTravelScores(users));
   return (ready ? (
     <Container id="neighbors-page" fluid className="py-3">
       <Row className="fredoka-one">
@@ -44,7 +42,7 @@ const Neighbors = () => {
           <BulletinBoard />
         </Col>
         <Col xs={6} style={{ paddingTop: '5em' }}>
-          <UnityFrame score={100} givenHeight={300} givenWidth={640} />
+          <UnityFrame score={100} givenHeight="300" givenWidth="640" />
           <Navbar sticky="top">
             <Stack>
               <div className="d-flex justify-content-center">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import AddChallengeModal from '../components/AddChallengeModal';
 import DailyCheck from '../components/DailyCheck';
 import SpecialCheck from '../components/SpecialCheck';
@@ -11,45 +12,62 @@ import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
 import HomeLeaderBoard from '../components/HomeLeaderBoard';
+import { Challenges } from '../../api/challenge/Challenge';
 
 const Home = () => {
-  const { ready, currentUser, owner, users } = useTracker(() => {
+  const { ready, currentUser, owner, users, challengesUser } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
+    const userName = Meteor.user();
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Users.userPublicationName);
+    const subscriptionChal = Meteor.subscribe(Challenges.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription.ready() && subscriptionChal.ready();
     // Get the Stuff documents
-    const ownerItem = Meteor.user() == null ? null : Meteor.user().username;
+    const ownerItem = userName ? userName.username : 'hi';
     const userItems = Users.collection.find({}).fetch();
-    const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
+    const currentUserItem = userName ? userItems.filter((user) => (user.owner === ownerItem))[0] : '';
+    // Users.collection.find({ signUpList });
+    const foundChallenges = userName ? Challenges.collection.find(
+      { signUpList: userName.username },
+    ).fetch() : 'hi';
     return {
       users: userItems,
       owner: ownerItem,
       currentUser: currentUserItem,
       ready: rdy,
+      challengesUser: foundChallenges,
     };
   }, []);
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
-    const fakeGoals = [];
-    for (let i = 0; i < 5; i++) {
-      fakeGoals.push({
-        goal: `This is fake goal ${i + 1}    |    09/21/22    |    22 challengers`,
-        finished: false,
-      });
+
+    console.log(`challengesUser: ${JSON.stringify(challengesUser)}`);
+    const challenges = [];
+    for (const challengeObject of challengesUser) {
+      console.log('challengeObject.challenge' + JSON.stringify(challengeObject.challenge))
+      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description}` });
     }
-    return fakeGoals;
+    return challenges;
   };
+
   return (ready ? (
     <Container>
       <Row className="fredoka-one" style={{ margin: '0.5em' }}>
         <Col className="d-flex justify-content-center">Welcome, {currentUser.firstName} {currentUser.lastName}</Col>
       </Row>
+      <Row>
+        <Col xs={1}>
+          <h4 className="fredoka-one goals">Level 3</h4>
+        </Col>
+        <Col xs={11}>
+          <ProgressBar className="mt-2" variant="success" now={70} label={`${70}%`} />
+        </Col>
+      </Row>
       <Row className="mt-4">
         <Col xs={8} className="d-flex justify-content-center">
-          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em', borderRadius: '1%' }}>
+          <div className="fredoka-one goals" style={{ background: 'rgb(227, 241, 212, 0.5)', marginTop: '0px', width: '100%', padding: '0.5em', borderRadius: '20px' }}>
             <h2>Challenges<span style={{ float: 'right' }}><AddChallengeModal /></span></h2>
 
             {createFakeGoals().map((data, index) => (
