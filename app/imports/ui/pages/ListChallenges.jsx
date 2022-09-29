@@ -24,13 +24,13 @@ const ListChallenges = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container className="py-3" id="challenges-page">
       <Row className="justify-content-center">
         <Col md={10}>
           <Col className="text-center">
-            <h2 className="fredoka-one">List Challenges</h2>
+            <h2 className="fredoka-one mt-3">List Challenges</h2>
           </Col>
-          <Table striped bordered hover>
+          <Table className="mt-5">
             <thead>
               <tr>
                 <th>Challenge</th>

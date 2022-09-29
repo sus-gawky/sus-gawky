@@ -27,7 +27,7 @@ html {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
-#signin-page, #signout-page, #setup-page, #signup-page {
+#signin-page, #signout-page, #setup-page, #signup-page, #challenges-page {
   font-family: "Advent Pro";
 }
 

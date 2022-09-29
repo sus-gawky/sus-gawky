@@ -120,7 +120,7 @@ const Home = () => {
       </Row>
       <Row className="mt-3">
         <Col className="d-flex justify-content-center">
-          <UnityFrame score={100} givenWidth="640em" givenHeight="300em" />
+          <UnityFrame score={currentUser.fullScore} givenWidth="640em" givenHeight="300em" />
         </Col>
         <Col>
           <Row style={{ height: '50%', marginTop: '3em' }}>

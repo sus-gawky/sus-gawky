@@ -28,8 +28,8 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 const calcFoodScore = (foodWaste, minShower, mainProtein) => {
   let points = 34;
-  points -= foodWaste % 2;
-  points -= minShower % 5;
+  points -= Math.ceil(foodWaste / 2);
+  points -= Math.ceil(minShower / 5);
   switch (mainProtein) {
   case 'Beef':
     points -= 20;
@@ -54,7 +54,7 @@ const calcFoodScore = (foodWaste, minShower, mainProtein) => {
 
 const calcTransportationScore = (milesTraveled, modeOfTransport) => {
   let points = 33;
-  points -= milesTraveled % 2;
+  points -= Math.ceil(milesTraveled / 2);
   switch (modeOfTransport) {
   case 'Gas Vehicle':
     points -= 20;
@@ -68,12 +68,13 @@ const calcTransportationScore = (milesTraveled, modeOfTransport) => {
   default:
     console.log('Bike/Walk');
   }
+
   return points < 0 ? 0 : points;
 };
 
 const calcMiscScore = (plasticTrash) => {
   let points = 33;
-  points -= plasticTrash % 2;
+  points -= Math.ceil(plasticTrash / 2);
   return points < 0 ? 0 : points;
 };
 

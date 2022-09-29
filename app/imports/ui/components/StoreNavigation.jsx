@@ -70,7 +70,7 @@ const StoreNavigation = () => {
                   </Card.Text>
                   <Card.Footer>
                     <small className="text-muted">{item.points} points</small>
-                    <PurchaseModal user={currentUser} desc={item.desc} points={item.points} />
+                    <PurchaseModal user={currentUser} desc={item.desc} price={item.points} />
                   </Card.Footer>
                 </Card>
               ))
@@ -89,7 +89,7 @@ const StoreNavigation = () => {
                   </Card.Text>
                   <Card.Footer>
                     <small className="text-muted">{item.points} points</small>
-                    <PurchaseModal user={currentUser} desc={item.desc} points={item.points} />
+                    <PurchaseModal user={currentUser} desc={item.desc} price={item.points} />
                   </Card.Footer>
                 </Card>
               ))
