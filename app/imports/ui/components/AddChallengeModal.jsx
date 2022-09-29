@@ -56,7 +56,7 @@ const AddChallengeModal = () => {
   };
   return (
     <>
-      <Button variant="success" size="sm" onClick={handleShow} >
+      <Button variant="success" size="sm" onClick={handleShow}>
         Add
       </Button>
 
