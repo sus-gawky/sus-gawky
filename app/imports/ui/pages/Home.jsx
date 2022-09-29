@@ -13,9 +13,10 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
 import HomeLeaderBoard from '../components/HomeLeaderBoard';
 import { Challenges } from '../../api/challenge/Challenge';
+import Functions from '../../api/functions/functions';
 
 const Home = () => {
-  const { ready, currentUser, owner, users, challengesUser } = useTracker(() => {
+  const { ready, currentUser, lvlInfo, challengesUser, owner, users } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     const userName = Meteor.user();
@@ -32,7 +33,9 @@ const Home = () => {
     const foundChallenges = userName ? Challenges.collection.find(
       { signUpList: userName.username },
     ).fetch() : 'hi';
+    const lvlInfoItem = rdy ? Functions.getLvlInfo(currentUserItem) : null;
     return {
+      lvlInfo: lvlInfoItem,
       users: userItems,
       owner: ownerItem,
       currentUser: currentUserItem,
@@ -45,13 +48,18 @@ const Home = () => {
 
     console.log(`challengesUser: ${JSON.stringify(challengesUser)}`);
     const challenges = [];
+
     for (const challengeObject of challengesUser) {
-      console.log('challengeObject.challenge' + JSON.stringify(challengeObject.challenge))
-      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description}` });
+      const dateObj = new Date(challengeObject.endDate);
+      const month = dateObj.getMonth() + 1; // months from 1-12
+      const day = dateObj.getDate();
+      const year = dateObj.getFullYear();
+      const newdate = `${month}/${day}/${year}`;
+
+      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description} | ${challengeObject.signUpList.length} people signed up | ${newdate}` });
     }
     return challenges;
   };
-
   return (ready ? (
     <Container>
       <Row className="fredoka-one" style={{ margin: '0.5em' }}>
@@ -59,10 +67,10 @@ const Home = () => {
       </Row>
       <Row>
         <Col xs={1}>
-          <h4 className="fredoka-one goals">Level 3</h4>
+          <h4 className="fredoka-one goals">Level {lvlInfo.level}</h4>
         </Col>
         <Col xs={11}>
-          <ProgressBar className="mt-2" variant="success" now={70} label={`${70}%`} />
+          <ProgressBar className="mt-2" variant="success" now={lvlInfo.progress} label={`${lvlInfo.progress}%`} />
         </Col>
       </Row>
       <Row className="mt-4">

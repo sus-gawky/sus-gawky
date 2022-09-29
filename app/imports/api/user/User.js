@@ -22,6 +22,7 @@ class UsersCollection {
       zipCode: Number,
       city: String,
       points: Number,
+      xp: Number,
       // All scores out of 100
       fullScore: Number,
       foodScore: Number,
