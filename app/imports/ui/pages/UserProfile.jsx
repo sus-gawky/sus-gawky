@@ -31,7 +31,7 @@ const UserProfile = () => {
   return (ready ? (
     <div>
       <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background2.png\')' }}>
-        <Container>
+        <Container style={{ paddingLeft: 80 }}>
           <div className="fredoka-one pt-5">
             {currentUser.firstName} {currentUser.lastName}
           </div>
