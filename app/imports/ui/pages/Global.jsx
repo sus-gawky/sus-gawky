@@ -45,7 +45,7 @@ const Global = () => {
         setLat(response.data.results[0].geometry.location.lat);
         setLng(response.data.results[0].geometry.location.lng);
         const testAreaInformation = [];
-        const visitedZipcode = {};
+        const visitedCity = {};
         // eslint-disable-next-line no-restricted-syntax
         for (const data of users) {
           const { zipCode, city } = data;
@@ -56,8 +56,8 @@ const Global = () => {
           const points = Functions.avPoints(zipCode, users);
           // if the zipcode has been seen push the city to the areaInformation array
           // eslint-disable-next-line no-prototype-builtins
-          if (!visitedZipcode.hasOwnProperty(zipCode)) {
-            visitedZipcode[zipCode] = true;
+          if (!visitedCity.hasOwnProperty(city)) {
+            visitedCity[city] = true;
             testAreaInformation.push({
               area: {
                 miscScore,
@@ -78,7 +78,7 @@ const Global = () => {
           // eslint-disable-next-line no-await-in-loop
           const testPolygonResponse = await axios.get('https://nominatim.openstreetmap.org/search.php', {
             params: {
-              q: city,
+              q: city.toString(),
               polygon_geojson: 1,
               format: 'json',
               limit: 1,
@@ -134,17 +134,19 @@ const Global = () => {
       geodesic: false,
       zIndex: 1,
     };
-    console.log(score >= 0);
     if (score > 90) {
       options.fillColor = 'green';
     }
     if (score <= 90 && score > 70) {
       options.fillColor = 'lightgreen';
     }
-    if (score <= 70 && score > 60) {
+    if (score <= 70 && score > 50) {
       options.fillColor = '#FDE992';
     }
-    if (score <= 60 && score >= 0) {
+    if (score <= 50 && score > 30) {
+      options.fillColor = '#e58d38';
+    }
+    if (score <= 30 && score >= 0) {
       options.fillColor = 'red';
     }
     return options;
