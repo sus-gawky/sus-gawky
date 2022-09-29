@@ -12,9 +12,10 @@ import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
 import HomeLeaderBoard from '../components/HomeLeaderBoard';
+import Functions from '../../api/functions/functions';
 
 const Home = () => {
-  const { ready, currentUser, owner, users } = useTracker(() => {
+  const { ready, currentUser, lvlInfo, owner, users } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
@@ -25,7 +26,9 @@ const Home = () => {
     const ownerItem = Meteor.user() == null ? null : Meteor.user().username;
     const userItems = Users.collection.find({}).fetch();
     const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
+    const lvlInfoItem = rdy ? Functions.getLvlInfo(currentUserItem) : null;
     return {
+      lvlInfo: lvlInfoItem,
       users: userItems,
       owner: ownerItem,
       currentUser: currentUserItem,
@@ -43,7 +46,6 @@ const Home = () => {
     }
     return fakeGoals;
   };
-
   return (ready ? (
     <Container>
       <Row className="fredoka-one" style={{ margin: '0.5em' }}>
@@ -51,10 +53,10 @@ const Home = () => {
       </Row>
       <Row>
         <Col xs={1}>
-          <h4 className="fredoka-one goals">Level 3</h4>
+          <h4 className="fredoka-one goals">Level {lvlInfo.level}</h4>
         </Col>
         <Col xs={11}>
-          <ProgressBar className="mt-2" variant="success" now={70} label={`${70}%`} />
+          <ProgressBar className="mt-2" variant="success" now={lvlInfo.progress} label={`${lvlInfo.progress}%`} />
         </Col>
       </Row>
       <Row className="mt-4">
