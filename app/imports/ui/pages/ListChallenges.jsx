@@ -24,7 +24,7 @@ const ListChallenges = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container className="py-3" id="challenges-page">
       <Row className="justify-content-center">
         <Col md={10}>
           <Col className="text-center">
