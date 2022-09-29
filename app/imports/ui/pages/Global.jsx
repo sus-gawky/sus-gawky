@@ -24,7 +24,7 @@ const Global = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
-  const [areaInfomration, setAreaInfomration] = useState([]);
+  const [areaInformation, setAreaInformation] = useState([]);
   const { isLoaded } = useLoadScript({
     id: 'google-map-script',
     googleMapsApiKey: apiKey['react-maps-api-key'],
@@ -53,14 +53,9 @@ const Global = () => {
 
         setLat(response.data.results[0].geometry.location.lat);
         setLng(response.data.results[0].geometry.location.lng);
-        // [
-        //  { area: {miscScore: 0, transportationScore: 0, fullScore: 0, foodScore: 0, points: 0, city: ''}, polygonData: '', }
-        //  { area: {miscScore: 0, transportationScore: 0, fullScore: 0, foodScore: 0, points: 0, name: ''}, polygonData: '', }
-        //  { area: {miscScore: 0, transportationScore: 0, fullScore: 0, foodScore: 0, points: 0, name: ''}, polygonData: '', }
-        // ]
-        // Create area obj
         const testAreaInformation = [];
         const visitedZipcode = {};
+        // eslint-disable-next-line no-restricted-syntax
         for (const data of users) {
           const { zipCode, city } = data;
           const miscScore = Functions.avMiscScore(zipCode, users);
@@ -95,14 +90,21 @@ const Global = () => {
               q: city,
               polygon_geojson: 1,
               format: 'json',
+              limit: 1,
             },
           });
           // eslint-disable-next-line no-await-in-loop
-          areaObj.polygonData = await testPolygonResponse.data.filter((data) => (data.geojson.type === 'Polygon' || data.geojson.type === 'MultiPolygon'));
+          const results = await testPolygonResponse.data.filter((data) => (data.geojson.type === 'Polygon' || data.geojson.type === 'MultiPolygon'));
+          const latLngCoordinates = [];
+          for (const pairOfCoordinates of results[0].geojson.coordinates) {
+            for (const coordinates of pairOfCoordinates) {
+              latLngCoordinates.push({ lat: coordinates[1], lng: coordinates[0] });
+            }
+          }
+          areaObj.polygonData = latLngCoordinates;
+          // areaObj.polygonData = await retrievePaths(results);
           // eslint-disable-next-line no-await-in-loop
-          await setAreaInfomration((prev) => ([...prev, areaObj]));
-          console.log(areaInfomration);
-          // console.log(filterGeoJsonType);
+          await setAreaInformation((prev) => ([...prev, areaObj]));
         }
       } catch (e) {
         console.log(`The error is: ${e}`);
@@ -110,39 +112,7 @@ const Global = () => {
     }
     fetchData();
   }, []);
-  const retrievePaths = () => {
-    const returnArr = [];
-    const polygon = areaInfomration.map((data) => {
-      const { polygonData } = data;
-      return polygonData;
-    });
-    console.log(polygon);
-    // // eslint-disable-next-line no-restricted-syntax
-    // for (const coordinates of polygon) {
-    //   // combine multi polygon into one
-    //   let s = [];
-    //   if (coordinates.length > 1) {
-    //     // eslint-disable-next-line no-restricted-syntax
-    //     for (const cods of coordinates) {
-    //       cods is not iterable because it is an obj
-    //       s = [...s, ...cods];
-    //     }
-    //   } else {
-    //     s = [...coordinates];
-    //   }
-    //   const part = [];
-    //   // eslint-disable-next-line no-restricted-syntax
-    //   for (const coordinate of s) {
-    //     // eslint-disable-next-line no-restricted-syntax
-    //     for (const c of coordinate) {
-    //       part.push({ lat: parseFloat(c[1]), lng: parseFloat(c[0]) });
-    //     }
-    //   }
-    //   returnArr.push(part);
-    // }
-    // return returnArr;
-  };
-  retrievePaths();
+  console.log(areaInformation);
   const center = useMemo(() => ({ lat, lng }), [lat, lng]);
   return (isLoaded && ready) ? (
     <>
@@ -152,25 +122,25 @@ const Global = () => {
         zoom={13}
       >
         <>
-          {/*{retrievePaths().map((place, index) => (*/}
-          {/*  <Polygon*/}
-          {/*    paths={place}*/}
-          {/*    key={index}*/}
-          {/*    onClick={() => (setShowOverlay(!showOverlay))}*/}
-          {/*    options={{*/}
-          {/*      fillColor: 'lightgreen',*/}
-          {/*      fillOpacity: 0.5,*/}
-          {/*      strokeColor: 'black',*/}
-          {/*      strokeOpacity: 0.5,*/}
-          {/*      strokeWeight: 1,*/}
-          {/*      clickable: true,*/}
-          {/*      draggable: false,*/}
-          {/*      editable: false,*/}
-          {/*      geodesic: false,*/}
-          {/*      zIndex: 1,*/}
-          {/*    }}*/}
-          {/*  />*/}
-          {/*))}*/}
+          {areaInformation.map((place, index) => (
+            <Polygon
+              paths={place.polygonData}
+              key={index}
+              onClick={() => (setShowOverlay(!showOverlay))}
+              options={{
+                fillColor: 'lightgreen',
+                fillOpacity: 0.5,
+                strokeColor: 'black',
+                strokeOpacity: 0.5,
+                strokeWeight: 1,
+                clickable: true,
+                draggable: false,
+                editable: false,
+                geodesic: false,
+                zIndex: 1,
+              }}
+            />
+          ))}
         </>
       </GoogleMap>
       <Offcanvas show={showOverlay} onHide={() => (setShowOverlay(false))} placement="end" name="end" backdrop={false}>
