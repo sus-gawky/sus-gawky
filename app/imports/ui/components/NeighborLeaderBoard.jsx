@@ -25,6 +25,33 @@ const NeighborLeaderBoard = () => {
       ready: rdy,
     };
   }, []);
+  // eslint-disable-next-line consistent-return
+  const scoreSelector = (score) => {
+    if (score <= 30 && score > 0) {
+      return (<EmojiAngry className="float-end" />);
+    }
+    if (score <= 60 && score > 30) {
+      return (<EmojiNeutral className="float-end" />);
+    }
+    if (score <= 100 && score > 60) {
+      return (<EmojiSmile className="float-end" />);
+    }
+  };
+  // eslint-disable-next-line consistent-return
+  const emojiBasedOnscore = (leaderBoardScore) => {
+    const transportationSScore = currentUser.transportationScore;
+    const fullScore = currentUser.fullScore;
+    const foodScore = currentUser.foodScore;
+    if (leaderBoardScore === 'Total Score') {
+      return scoreSelector(fullScore);
+    }
+    if (leaderBoardScore === 'Food Score') {
+      return scoreSelector(foodScore);
+    }
+    if (leaderBoardScore === 'Travel Score') {
+      return scoreSelector(transportationSScore);
+    }
+  };
   return (ready ? (
     <Carousel id="neighbor-leader-carousel" className="ms-2" variant="dark" style={{ width: '45.5em' }}>
       <Carousel.Item className="leader-body">
@@ -32,7 +59,7 @@ const NeighborLeaderBoard = () => {
           <h1>
             <Trophy fill="#B2D2A4" />
             <span> Total Score </span>
-            <EmojiSmile className="float-end" />
+            {emojiBasedOnscore('Total Score')}
           </h1>
           <ul>
             <li>
@@ -50,7 +77,7 @@ const NeighborLeaderBoard = () => {
           <h1>
             <Trophy fill="#B2D2A4" />
             Food Score
-            <EmojiAngry className="float-end" />
+            {emojiBasedOnscore('Food Score')}
           </h1>
           <ul>
             <li>
@@ -68,7 +95,7 @@ const NeighborLeaderBoard = () => {
           <h1>
             <Trophy fill="#B2D2A4" />
             Travel Score
-            <EmojiNeutral className="float-end" />
+            {emojiBasedOnscore('Travel Score')}
           </h1>
           <ul>
             <li>
