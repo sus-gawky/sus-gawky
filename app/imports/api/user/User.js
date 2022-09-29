@@ -102,6 +102,7 @@ class UsersCollection {
 export const Users = new UsersCollection();
 
 const dailyCheckInPointsAdd = 10;
+const specialCheckInPoints = 20;
 
 Meteor.methods({
   // eslint-disable-next-line meteor/audit-argument-checks
@@ -127,7 +128,7 @@ Meteor.methods({
     console.log(`specialCheckIn ${owner} ${electricityBill} ${waterBill} ${donation} ${volunteer}`);
     Users.collection.update(
       { owner: owner },
-      { $set: { electricityBill, waterBill, donation, volunteer } },
+      { $set: { electricityBill, waterBill, donation, volunteer }, $inc: { points: specialCheckInPoints } },
       (error) => (error ?
         swal('Error', error.message, 'error') :
         swal('Success', 'Special check-in completed successfully!', 'success')),

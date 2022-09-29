@@ -16,7 +16,7 @@ import { Challenges } from '../../api/challenge/Challenge';
 import Functions from '../../api/functions/functions';
 
 const Home = () => {
-  const { ready, currentUser, lvlInfo, challengesUser, owner, users } = useTracker(() => {
+  const { ready, currentUser, lvlInfo, challengesUser } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     const userName = Meteor.user();
@@ -43,6 +43,12 @@ const Home = () => {
       challengesUser: foundChallenges,
     };
   }, []);
+  const handleCheckGoals = (e, indexSelected) => {
+    const { checked } = e.target;
+    if (checked) {
+      Meteor.call('leaveChallenge', challengesUser[indexSelected]._id, currentUser.owner, true, challengesUser[indexSelected].points);
+    }
+  };
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
 
@@ -93,6 +99,7 @@ const Home = () => {
                 <Form.Check
                   type="checkbox"
                   id="default-i"
+                  onClick={(e) => { handleCheckGoals(e, index); }}
                   label={data.goal}
                 />
               </motion.div>
