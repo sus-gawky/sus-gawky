@@ -25,6 +25,7 @@ const PurchaseModal = ({ desc, price, user }) => {
       );
     }
     handleClose();
+    swal('Success', 'Sucessfully Purchased', 'success');
   };
   const pointCheck = () => {
     if (user.points - price < 0) {
