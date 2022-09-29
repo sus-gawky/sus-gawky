@@ -37,7 +37,7 @@ const SignupModal = () => {
         setError('');
         const owner = Meteor.user().username;
         Users.collection.insert(
-          { fullScore: '-1', foodScore: '-1', transportationScore: '-1', swag: [], xp: 0, points: 0, miscScore: '-1', firstName, lastName, zipCode, householdSize, city, owner, specificInfos: [] },
+          { fullScore: '0', foodScore: '0', transportationScore: '0', swag: [], xp: 0, points: 0, miscScore: '0', firstName, lastName, zipCode, householdSize, city, owner, specificInfos: [] },
           (badUser) => {
             if (badUser) {
               swal('Error', badUser.message, 'error');
