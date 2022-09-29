@@ -25,10 +25,10 @@ const TipSubmission = () => {
     // Will use these variables to calculate scores
     // eslint-disable-next-line no-unused-vars
     const { tip } = data;
-    const id = 9;
+    const name = 'Anonymous';
 
     Tips.collection.insert(
-      { tip, id },
+      { tip, name },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -42,8 +42,8 @@ const TipSubmission = () => {
 
   return (
     <>
-      <Button variant="success" onClick={handleShow} style={{ backgroundColor: '#2AA404FF', border: 'none' }} className="homeButtons">
-        Tip Submission
+      <Button variant="success" onClick={handleShow} style={{ backgroundColor: '#2AA404FF', border: 'none', width: '100px' }} className="homeButtons">
+        Add Tip
       </Button>
 
       <Modal show={show} onHide={handleClose} backdrop="static">

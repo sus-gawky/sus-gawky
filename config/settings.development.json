@@ -238,16 +238,16 @@
 
   "tips": [
     {
-      "tip": "Water Bottles",
-      "id": 1
+      "tip": "Always be kind to others.",
+      "name": "Anonymous"
     },
     {
-      "tip": "Bags",
-      "id": 2
+      "tip": "Try to use less electricity",
+      "name": "Anonymous"
     },
     {
-      "tip": "Transportation",
-      "id": 3
+      "tip": "Many hands make light work",
+      "name": "Anonymous"
     }
   ],
 
