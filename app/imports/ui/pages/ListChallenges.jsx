@@ -24,7 +24,7 @@ const ListChallenges = () => {
     };
   }, []);
   return (ready ? (
-    <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background2.png\')' }}>
+    <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background3.png\')' }}>
       <Container className="py-3" id="challenges-page">
         <Row className="justify-content-center">
           <Col md={10}>
