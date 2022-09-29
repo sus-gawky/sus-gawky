@@ -18,7 +18,7 @@ import Functions from '../../api/functions/functions';
 import TipSubmission from '../components/TipSubmission';
 
 const Home = () => {
-  const { ready, currentUser, lvlInfo, challengesUser, owner, users, tip, tipPerson } = useTracker(() => {
+  const { ready, currentUser, lvlInfo, challengesUser, tip, tipPerson } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     const userName = Meteor.user();
@@ -52,6 +52,12 @@ const Home = () => {
       tipPerson: tipWriter,
     };
   }, []);
+  const handleCheckGoals = (e, indexSelected) => {
+    const { checked } = e.target;
+    if (checked) {
+      Meteor.call('leaveChallenge', challengesUser[indexSelected]._id, currentUser.owner, true, challengesUser[indexSelected].points);
+    }
+  };
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
 
@@ -102,6 +108,7 @@ const Home = () => {
                 <Form.Check
                   type="checkbox"
                   id="default-i"
+                  onClick={(e) => { handleCheckGoals(e, index); }}
                   label={data.goal}
                 />
               </motion.div>

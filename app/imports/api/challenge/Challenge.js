@@ -2,6 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 import { Meteor } from 'meteor/meteor';
+import { Users } from '../user/User';
 
 /**
  * The StuffsCollection. It encapsulates state and variable values for stuff.
@@ -22,7 +23,7 @@ class ChallengesCollection {
       tags: Array,
       'tags.$': { type: String },
       endDate: String,
-      points: String,
+      points: Number,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -51,13 +52,18 @@ Meteor.methods({
   },
 
   // eslint-disable-next-line meteor/audit-argument-checks
-  'leaveChallenge'(challengeId, challenger, challengeOwner) {
+  'leaveChallenge'(challengeId, challenger, givePoints, numberOfPoints) {
     console.log(`leaveChallenge ${challengeId} ${challenger} `);
     // TODO Check if user is owner, if they are, don't delete
-    if (challenger !== challengeOwner) {
-      Challenges.collection.update(
-        { _id: challengeId },
-        { $pull: { signUpList: challenger } },
+    Challenges.collection.update(
+      { _id: challengeId },
+      { $pull: { signUpList: challenger } },
+    );
+    if (givePoints) {
+      // increment the user's points
+      Users.collection.update(
+        { owner: challenger },
+        { $inc: { points: numberOfPoints } },
       );
     }
   },
