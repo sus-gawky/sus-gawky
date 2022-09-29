@@ -112,7 +112,7 @@ Meteor.methods({
     Users.collection.update(
       { owner: owner },
       { $set: { fullScore, foodScore, transportationScore, miscScore },
-        $inc: { points: dailyCheckInPointsAdd } },
+        $inc: { points: dailyCheckInPointsAdd, xp: dailyCheckInPointsAdd } },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -129,7 +129,7 @@ Meteor.methods({
     console.log(`specialCheckIn ${owner} ${electricityBill} ${waterBill} ${donation} ${volunteer}`);
     Users.collection.update(
       { owner: owner },
-      { $set: { electricityBill, waterBill, donation, volunteer }, $inc: { points: specialCheckInPoints } },
+      { $set: { electricityBill, waterBill, donation, volunteer }, $inc: { points: specialCheckInPoints, xp: dailyCheckInPointsAdd } },
       (error) => (error ?
         swal('Error', error.message, 'error') :
         swal('Success', 'Special check-in completed successfully!', 'success')),
