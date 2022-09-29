@@ -40,7 +40,7 @@ const StoreNavigation = () => {
               </Card.Footer>
             </Card>
             <Card style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
-              <Card.Img variant="top" src="../images/nft.png" style={{ height: '414px' }} />
+              <Card.Img variant="top" src="../images/nft.png" />
               <Card.Text className="text-center fredoka-one goals">
                 Godzilla NFT
               </Card.Text>
@@ -50,7 +50,7 @@ const StoreNavigation = () => {
               </Card.Footer>
             </Card>
             <Card style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
-              <Card.Img variant="top" src="../images/pixel-glasses.jpeg" style={{ height: '414px', width: '443px' }} />
+              <Card.Img variant="top" src="../images/pixel-glasses.jpeg" />
               <Card.Text className="text-center fredoka-one goals">
                 Avatar Glasses
               </Card.Text>
@@ -65,7 +65,7 @@ const StoreNavigation = () => {
           <h5 className="fredoka-one goals ms-5 mt-3 mb-0">100 points = $1 donated</h5>
           <CardGroup>
             <Card style={{ width: '10px', borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
-              <Card.Img variant="top" src="../images/RMHC.jpeg" style={{ height: '414px', width: '443px' }} />
+              <Card.Img variant="top" src="../images/RMHC.jpeg" />
               <Card.Text className="text-center fredoka-one goals">
                 Ronald McDonald House Charities
               </Card.Text>
@@ -75,7 +75,7 @@ const StoreNavigation = () => {
               </Card.Footer>
             </Card>
             <Card style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
-              <Card.Img variant="top" src="../images/ACS.png" style={{ height: '414px', width: '443px' }} />
+              <Card.Img variant="top" src="../images/ACS.png" />
               <Card.Text className="text-center fredoka-one goals">
                 American Cancer Society
               </Card.Text>
@@ -85,7 +85,7 @@ const StoreNavigation = () => {
               </Card.Footer>
             </Card>
             <Card style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'lightgray', borderRadius: 5.5 }}>
-              <Card.Img variant="top" src="../images/LLS.jpeg" style={{ height: '414px', width: '443px' }} />
+              <Card.Img variant="top" src="../images/LLS.png" />
               <Card.Text className="text-center fredoka-one goals">
                 Leukemia & Lymphoma Society
               </Card.Text>
