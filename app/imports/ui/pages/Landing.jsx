@@ -3,7 +3,7 @@ import { Image } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background.png\')' }}>
+  <div className="d-flex justify-content-center fredoka-one" id="landing-page" style={{ backgroundImage: 'url(\'../../images/background.png\')' }}>
     <div style={{ float: 'right', paddingRight: '5em' }}>
       <h1>Welcome to Gawkysaur!</h1>
     </div>
