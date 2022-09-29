@@ -1,10 +1,10 @@
 import React from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Image, Row } from 'react-bootstrap';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
   <div id="landing-page">
-    <div style={{ float: 'right', paddingRight: '5em' }}>
+    <div className="d-flex justify-content-center fredoka-one">
       <h1>Welcome to Gawkysaur!</h1>
     </div>
     <div style={{ position: 'fixed', bottom: 30, zIndex: 2 }}>
