@@ -15,6 +15,14 @@ class UsersCollection {
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
+    const swagSchema = new SimpleSchema({
+      points: Number,
+      src: String,
+      desc: String,
+      modalDialog: Boolean,
+      modalWithoutAnimation: Boolean,
+    }, { tracker: Tracker });
+
     this.schema = new SimpleSchema({
       firstName: String,
       lastName: String,
@@ -23,7 +31,11 @@ class UsersCollection {
       city: String,
       points: Number,
       xp: Number,
-      swag: [String],
+      swag: {
+        type: Array,
+        optional: true,
+      },
+      'swag.$': { type: swagSchema },
       // All scores out of 100
       fullScore: Number,
       foodScore: Number,
