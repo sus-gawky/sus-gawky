@@ -7,9 +7,8 @@ import { Accounts } from 'meteor/accounts-base';
 import { Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
-import { Users } from '../../api/user/User';
 import PropTypes from 'prop-types';
-import SignUp from '../pages/SignUp';
+import { Users } from '../../api/user/User';
 
 const SignupModal = () => {
   const [show, setShow] = useState(false);
@@ -30,26 +29,23 @@ const SignupModal = () => {
   const bridge = new SimpleSchema2Bridge(schema);
 
   const submit = (doc) => {
-    console.log('works');
     const { email, password, firstName, lastName, zipCode, householdSize, city } = doc;
-
-    console.log(typeof password);
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
+        setError('');
         const owner = Meteor.user().username;
         Users.collection.insert(
-          { fullScore: '-1', foodScore: '-1', transportationScore: '-1', miscScore: '-1', firstName, lastName, zipCode, householdSize, city, owner, specificInfos: [] },
+          { fullScore: '-1', foodScore: '-1', transportationScore: '-1', swag: [], xp: 0, points: 0, miscScore: '-1', firstName, lastName, zipCode, householdSize, city, owner, specificInfos: [] },
           (badUser) => {
             if (badUser) {
-              swal('Error', error.message, 'error');
+              swal('Error', badUser.message, 'error');
             } else {
               swal('Success', 'Profile created successfully', 'success');
             }
           },
         );
-        setError('');
         setRedirectToRef(true);
       }
     });
@@ -79,7 +75,7 @@ const SignupModal = () => {
             <TextField name="email" placeholder="E-mail address" />
             <TextField name="password" placeholder="Password" type="password" />
             <ErrorsField />
-            <Button className="float-end" onClick={submit} />
+            <SubmitField className="float-end" />
             <Button className="float-end me-3" size="md" variant="danger" onClick={handleClose}>
               Cancel
             </Button>
