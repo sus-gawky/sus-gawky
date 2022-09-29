@@ -219,35 +219,35 @@
       "signUpList": ["john@foo.com", "admin@foo.com"],
       "tags": ["environment", "conservation"],
       "endDate":  "2022-09-21",
-      "points":  "10"},
+      "points":  10},
     { "challenge": "Bags",
       "description": "Use reuseable bags instead of single use ones",
       "owner": "john@foo.com",
       "signUpList": ["john@foo.com"],
       "tags":  ["environment", "conservation"],
       "endDate":  "2022-09-21",
-      "points":  "10"},
+      "points":  10},
     { "challenge": "Transportation",
       "description": "Use less thank 50% the average american's CO2",
       "owner": "admin@foo.com",
       "signUpList": ["admin@foo.com"],
       "tags":  ["environment", "conservation"],
       "endDate":  "2022-09-21",
-      "points":  "10"}
+      "points":  10}
   ],
 
   "tips": [
     {
-      "tip": "Water Bottles",
-      "id": 1
+      "tip": "Always be kind to others.",
+      "name": "Anonymous"
     },
     {
-      "tip": "Bags",
-      "id": 2
+      "tip": "Try to use less electricity",
+      "name": "Anonymous"
     },
     {
-      "tip": "Transportation",
-      "id": 3
+      "tip": "Many hands make light work",
+      "name": "Anonymous"
     }
   ],
 
