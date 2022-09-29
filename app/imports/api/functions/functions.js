@@ -61,6 +61,14 @@ class Functions {
   static topTravelScores = (users) => users.sort(function (a, b) { return b.transportationScore - a.transportationScore; }).slice(0, 5);
 
   static topTotalScores = (users) => users.sort(function (a, b) { return b.fullScore - a.fullScore; }).slice(0, 5);
+
+  static getLvlInfo = (user) => {
+    const startingLvl = 1;
+    const reqForLvl2 = 100;
+    const xpIncrease = 1.5;
+    const getLvlHelp = (xp, req, lvl) => ((xp < req) ? ({ progress: Math.round(100 * (xp / req)), level: lvl }) : getLvlHelp((xp - req), (req * xpIncrease), (lvl + 1)));
+    return getLvlHelp(user.xp, reqForLvl2, startingLvl);
+  };
 }
 
 export default Functions;
