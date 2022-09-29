@@ -8,8 +8,8 @@ const hrefs = ['https://alyssiachen.itch.io/gawkysaur-level1', 'https://alyssiac
 
 const UnityFrame = ({ score, givenWidth = '320', givenHeight = '320' }) => (
   <div style={style}>
-    <iframe frameBorder="0" src={srcs[Math.ceil(score + 1 / 10 / 2) - 1]} allowFullScreen="" width={givenWidth} height={givenHeight} title="unity">
-      <a href={hrefs[score]}>Play Pomegranate Baby on itch.io</a>
+    <iframe frameBorder="0" src={srcs[Math.ceil(score / 10 / 2) - 1]} allowFullScreen="" width={givenWidth} height={givenHeight} title="unity">
+      <a href={hrefs[Math.ceil(score / 10 / 2) - 1]}>Play Pomegranate Baby on itch.io</a>
     </iframe>
   </div>
 );
