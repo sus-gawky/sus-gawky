@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { CardGroup, Tab, Tabs } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import Modal from 'react-bootstrap/Modal';
 import { Users } from '../../api/user/User';
+import PurchaseModal from './PurchaseModal';
 
 const StoreNavigation = () => {
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const { currentUser } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
@@ -98,25 +94,11 @@ const StoreNavigation = () => {
                   </Card.Text>
                   <Card.Footer>
                     <small className="text-muted">{item.points} points</small>
-                    <Button className="float-end" size="sm" onClick={handleShow}>Claim</Button>
+                    <PurchaseModal desc={item.desc} points={item.points} />
                   </Card.Footer>
                 </Card>
               ))
             }
-            <Modal size="md" show={show} onHide={handleClose} centered backdrop="static">
-              <Modal.Header closeButton>
-                <Modal.Title>Confirm your in-app purchase</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>Are you sure you want to purchase this item? </Modal.Body>
-              <Modal.Footer>
-                <Button size="md" variant="danger" onClick={handleClose}>
-                  No
-                </Button>
-                <Button size="md" variant="success" onClick={handleClose}>
-                  Yes
-                </Button>
-              </Modal.Footer>
-            </Modal>
           </CardGroup>
         </Tab>
         <Tab eventKey="charity" title="Charity">
@@ -131,7 +113,7 @@ const StoreNavigation = () => {
                   </Card.Text>
                   <Card.Footer>
                     <small className="text-muted">{item.points} points</small>
-                    <Button className="float-end" size="sm" onClick={handleShow}>Claim</Button>
+                    <PurchaseModal desc={item.desc} points={item.points} />
                   </Card.Footer>
                 </Card>
               ))
