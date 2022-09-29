@@ -12,36 +12,44 @@ import { Users } from '../../api/user/User';
 import LoadingSpinner from '../components/LoadingSpinner';
 import UnityFrame from '../components/UnityFrame';
 import HomeLeaderBoard from '../components/HomeLeaderBoard';
+import { Challenges } from '../../api/challenge/Challenge';
 
 const Home = () => {
-  const { ready, currentUser, owner, users } = useTracker(() => {
+  const { ready, currentUser, owner, users, challengesUser } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
+    const userName = Meteor.user();
     // Get access to Stuff documents.
     const subscription = Meteor.subscribe(Users.userPublicationName);
+    const subscriptionChal = Meteor.subscribe(Challenges.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription.ready() && subscriptionChal.ready();
     // Get the Stuff documents
-    const ownerItem = Meteor.user() == null ? null : Meteor.user().username;
+    const ownerItem = userName ? userName.username : 'hi';
     const userItems = Users.collection.find({}).fetch();
-    const currentUserItem = userItems.filter((user) => (user.owner === ownerItem))[0];
+    const currentUserItem = userName ? userItems.filter((user) => (user.owner === ownerItem))[0] : '';
+    // Users.collection.find({ signUpList });
+    const foundChallenges = userName ? Challenges.collection.find(
+      { signUpList: userName.username },
+    ).fetch() : 'hi';
     return {
       users: userItems,
       owner: ownerItem,
       currentUser: currentUserItem,
       ready: rdy,
+      challengesUser: foundChallenges,
     };
   }, []);
   // const [modal, setModal] = useState(false);
   const createFakeGoals = () => {
-    const fakeGoals = [];
-    for (let i = 0; i < 5; i++) {
-      fakeGoals.push({
-        goal: `This is fake goal ${i + 1}    |    09/21/22    |    22 challengers`,
-        finished: false,
-      });
+
+    console.log(`challengesUser: ${JSON.stringify(challengesUser)}`);
+    const challenges = [];
+    for (const challengeObject of challengesUser) {
+      console.log('challengeObject.challenge' + JSON.stringify(challengeObject.challenge))
+      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description}` });
     }
-    return fakeGoals;
+    return challenges;
   };
 
   return (ready ? (
