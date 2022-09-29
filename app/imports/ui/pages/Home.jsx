@@ -34,9 +34,8 @@ const Home = () => {
     const currentUserItem = userName ? userItems.filter((user) => (user.owner === ownerItem))[0] : '';
     // Users.collection.find({ signUpList });
     const allTips = Tips.collection.find({}).fetch();
-    const randomNum = Math.floor(Math.random() * (allTips.length - 0 + 1) + 0);
-    const aTip = allTips.length !== 0 ? allTips[randomNum].tip : 'Always be kind to the Earth.';
-    const tipWriter = allTips.length !== 0 ? allTips[randomNum].name : 'Mom';
+    const aTip = allTips.length !== 0 && allTips[Math.floor(Math.random() * (allTips.length))] ? allTips[Math.floor(Math.random() * (allTips.length))].tip : 'Always be kind to the Earth.';
+    const tipWriter = allTips.length !== 0 ? allTips[Math.floor(Math.random() * (allTips.length))].name : 'Mom';
     const foundChallenges = userName ? Challenges.collection.find(
       { signUpList: userName.username },
     ).fetch() : 'hi';

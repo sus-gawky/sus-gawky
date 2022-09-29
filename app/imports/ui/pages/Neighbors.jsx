@@ -42,7 +42,7 @@ const Neighbors = () => {
           <BulletinBoard />
         </Col>
         <Col xs={6} style={{ paddingTop: '5em' }}>
-          <UnityFrame score={100} givenHeight="300" givenWidth="640" />
+          <UnityFrame score={currentUser.fullScore} givenHeight="300" givenWidth="640" />
           <Navbar sticky="top">
             <Stack>
               <div className="d-flex justify-content-center">
