@@ -45,9 +45,15 @@ const Home = () => {
 
     console.log(`challengesUser: ${JSON.stringify(challengesUser)}`);
     const challenges = [];
+
     for (const challengeObject of challengesUser) {
-      console.log('challengeObject.challenge' + JSON.stringify(challengeObject.challenge))
-      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description}` });
+      const dateObj = new Date(challengeObject.endDate);
+      const month = dateObj.getMonth() + 1; // months from 1-12
+      const day = dateObj.getDate();
+      const year = dateObj.getFullYear();
+      const newdate = `${month}/${day}/${year}`;
+
+      challenges.push({ goal: `${challengeObject.challenge} : ${challengeObject.description} | ${challengeObject.signUpList.length} people signed up | ${newdate}` });
     }
     return challenges;
   };

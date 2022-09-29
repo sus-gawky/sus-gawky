@@ -14,7 +14,7 @@ const ChallengeItem = ({ challenge }) => (
     </td>
     <td>{challenge.description}</td>
     <td>{challenge.tags.map((tag) => <Badge pill bg="dark">{tag}</Badge>)}</td>
-    <td>{challenge.endDate}</td>
+    <td>{`${(new Date(challenge.endDate)).getMonth() + 1}/${(new Date(challenge.endDate)).getDate()}/${(new Date(challenge.endDate)).getFullYear()}`}</td>
     <td>{challenge.points}</td>
     <td>{challenge.signUpList.length}</td>
     <td>
