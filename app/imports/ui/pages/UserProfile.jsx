@@ -30,7 +30,7 @@ const UserProfile = () => {
 
   return (ready ? (
     <div>
-      <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background2.png\')' }}>
+      <div id="landing-page" style={{ backgroundImage: 'url(\'../../images/background2.png\')', overflowY: 'auto' }}>
         <Container style={{ paddingLeft: 80 }}>
           <div className="fredoka-one pt-5">
             {currentUser.firstName} {currentUser.lastName}
@@ -53,7 +53,7 @@ const UserProfile = () => {
             </div>
             {currentUser.swag.map((swag, index) => (
               <span className="float-start me-3 mt-3">
-                <Card key={index} style={{ width: '18rem' }}>
+                <Card key={index} style={{ width: '13rem' }}>
                   <Card.Img variant="top" src={swag.src} />
                   <Card.Body>
                     <Card.Title>{swag.desc}</Card.Title>
