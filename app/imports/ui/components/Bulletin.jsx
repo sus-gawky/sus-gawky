@@ -59,7 +59,7 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
                 {bulletin.comments.sort(function (a, b) { return a.createdAt - b.createdAt; }).map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
                 <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
                   <Row>
-                    <Col xs={10}><LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
+                    <Col xs={10}><LongTextField className="ms-2" name="text" label="" placeholder="Add a comment..." autoComplete="off" />
                     </Col>
                     <Col xs={2} style={{ padding: '0.5em 0em 1em 0em' }}><SubmitField style={{ textAlign: 'left', color: '#2AA404FF' }} /></Col>
                   </Row>
