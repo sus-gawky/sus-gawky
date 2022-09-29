@@ -56,7 +56,7 @@ const Bulletin = ({ bulletin, currentUser, users }) => {
             <Accordion.Item eventKey="0">
               <Accordion.Header>Comments</Accordion.Header>
               <Accordion.Body style={{ padding: 0 }}>
-                {bulletin.comments.map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
+                {bulletin.comments.sort(function (a, b) { return a.createdAt - b.createdAt; }).map((comment, index) => <Comment key={index} comment={comment} currentUser={currentUser} users={users} />)}
                 <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
                   <Row>
                     <Col xs={10}><LongTextField name="text" label="" placeholder="Add a comment..." autoComplete="off" />
