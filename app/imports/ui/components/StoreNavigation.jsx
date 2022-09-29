@@ -4,6 +4,7 @@ import { CardGroup, Tab, Tabs } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Users } from '../../api/user/User';
+import { Merch } from '../../api/merch/Merch';
 import PurchaseModal from './PurchaseModal';
 
 const StoreNavigation = () => {
