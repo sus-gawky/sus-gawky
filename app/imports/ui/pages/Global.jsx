@@ -134,17 +134,19 @@ const Global = () => {
       geodesic: false,
       zIndex: 1,
     };
-    console.log(score >= 0);
     if (score > 90) {
       options.fillColor = 'green';
     }
     if (score <= 90 && score > 70) {
       options.fillColor = 'lightgreen';
     }
-    if (score <= 70 && score > 60) {
+    if (score <= 70 && score > 50) {
       options.fillColor = '#FDE992';
     }
-    if (score <= 60 && score >= 0) {
+    if (score <= 50 && score > 30) {
+      options.fillColor = '#e58d38';
+    }
+    if (score <= 30 && score >= 0) {
       options.fillColor = 'red';
     }
     return options;
