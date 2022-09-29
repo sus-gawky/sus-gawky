@@ -63,10 +63,10 @@ const SignupModal = () => {
       <Button onClick={handleShow}>Create New Account</Button>
       <Modal size="md" show={show} onHide={handleClose} centered backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Sign up</Modal.Title>
+          <Modal.Title className="fredoka-one">Sign up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+          <AutoForm className="fredoka-one goals" schema={bridge} onSubmit={data => submit(data)}>
             <TextField name="firstName" />
             <TextField name="lastName" />
             <TextField name="city" />
