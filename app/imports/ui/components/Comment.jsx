@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Functions from '../../api/functions/functions';
@@ -20,7 +19,8 @@ const Comment = ({ comment, currentUser, users }) => {
             <div className="subTitle" style={{ textAlign: 'left', color: color, fontSize: 'small' }}>{nameDisplayed}</div>
           </Col>
           <Col>
-            <div className="mb-2 text-muted" style={{ textAlign: 'left', fontSize: 'small' }}> - posted {Functions.timeDisplay(comment.createdAt)}
+            <div className="mb-2 text-muted" style={{ textAlign: 'left', fontSize: 'small' }}>
+              - (lvl {Functions.getLvlInfo(from).level}) - posted {Functions.timeDisplay(comment.createdAt)}
             </div>
           </Col>
         </Row>
