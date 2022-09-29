@@ -5,19 +5,19 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { Users } from '../../api/user/User';
 
-const PurchaseModal = ({ desc, price, user }) => {
+const PurchaseModal = ({ merchItem, user }) => {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const points = user.points - price;
+  const points = user.points - merchItem.points;
   const submit = () => {
     if (points < 0) {
       console.log('Youre too broke for this');
       handleClose();
     } else {
       const swag = user.swag;
-      swag.push(desc);
+      swag.push(merchItem);
       Users.collection.update(
         { _id: user._id },
         { $set: { points, swag } },
@@ -27,7 +27,7 @@ const PurchaseModal = ({ desc, price, user }) => {
     handleClose();
   };
   const pointCheck = () => {
-    if (user.points - price < 0) {
+    if (user.points - merchItem.points < 0) {
       swal('Error', 'Not enough points', 'error');
     } else {
       handleShow();
@@ -41,7 +41,7 @@ const PurchaseModal = ({ desc, price, user }) => {
         <Modal.Header closeButton>
           <Modal.Title>Confirm your in-app purchase</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to purchase {desc} for {price} points? {console.log(price)}</Modal.Body>
+        <Modal.Body>Are you sure you want to purchase {merchItem.desc} for {merchItem.points} points?</Modal.Body>
         <Modal.Footer>
           <Button size="md" variant="danger" onClick={handleClose}>
             No
@@ -56,8 +56,7 @@ const PurchaseModal = ({ desc, price, user }) => {
 };
 
 PurchaseModal.propTypes = {
-  desc: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  merchItem: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 };
 
