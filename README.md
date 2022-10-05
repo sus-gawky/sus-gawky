@@ -5,6 +5,8 @@ We are creating a sustainability application that will make it more seemless to 
 
 View our idea pitch on Youtube: https://youtu.be/no10E9VYg9s
 
+Deployment: https://sus-gawky.meteorapp.com/
+
 ## Our Team
 Kobey Arai
 Alyssia Chen
