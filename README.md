@@ -16,10 +16,10 @@ Deployment: https://sus-gawky.meteorapp.com/
 
 ## Our application pages
 <p><img src="doc/LandingPage.png">
-First off, our applications mascot is swimming in the waters of our landing page! </p>
+First off, our application's mascot is swimming in the waters of our landing page! </p>
 
 <p><img src="doc/HomePage.png">
-This dashboard provides the user easy access to the challenges, check-in forms, and our means of using social comparison + social norm. In the bottom left is a Unity scene which changes based on the user's sustainability score. We believed that this image could show user's the impact of their decisions now on the future. On the top right are the rankings of various users in the application. Additionally, there's an emoji in the top right based on how well the user is doing because we read research about how a face can prompt action too.</p>
+This dashboard provides the user easy access to the challenges, check-in forms, and other features of the app. It also contains our means of using social comparison and social norm. In the bottom left is a Unity scene which changes based on the user's sustainability score. We believed that this image could show users the impact of their current decisions on the future. On the top right are the rankings of various users in the application. Additionally, there's an emoji in the top right based on how well the user is doing because we read research about how a face can prompt action too.</p>
 
 <p><img src="doc/NeighborhoodPage.png">
 To make people feel less isolated in their sustainability efforts, we aggregated people by their neighborhoods. Here, they can chat with their neighbors and also see the impact of their neighborhood on the world.</p>
