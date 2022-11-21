@@ -1,7 +1,7 @@
 # Meteor Hackathon 2022: Team SUS-GAWKY
 Stands for (Sus)tainability and our first name initials: Gavin, Alyssia, William, Kobey, Yong-Sung
 
-We are creating a sustainability application that will make it more seemless to track how well you are doing compared to peers when it comes to being sustainable to our earth.
+We are creating a sustainability application that will make it more seamless to track how well you are doing compared to peers when it comes to being sustainable to our earth.
 
 View our idea pitch on Youtube: https://youtu.be/no10E9VYg9s
 
